@@ -1,0 +1,12 @@
+# main links
+main:
+  - title: "Blog"
+    url: ""
+  - title: "Our Pilot"
+    url: "/pilot/"
+  - title: "Corpus (OpenITI)"
+    url: "/corpus/"
+  - title: "Text Reuse Methods"
+    url: "/methods/"
+  - title: "About the Project"
+    url: "/about/"

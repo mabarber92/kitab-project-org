@@ -1,0 +1,38 @@
+sarah_savant:
+  name             : "Sarah Savant"
+  avatar           : "/images/kitab/sarah_savant.jpg" # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
+  bio              : "Sarah Bowen Savant, Associate Professor, AKU-ISMC, and Principle Investigator of KITAB. Dr Savant is a cultural historian specialising in the Middle East and Iran ca. 600-1500. Her work on KITAB is motivated by a desire to write a cultural history of the Arabic book using digital tools. Her publications include three monographs and numerous articles treating ethnic identity, cultural memory, genealogy, and history writing."
+  location         : "London, UK"
+  email            : "sarah.savant@aku.edu"
+  uri              :
+  flickr           :
+  facebook         : ""
+  github           : "SarahKITAB"
+  google_plus      :
+  instagram        :
+  linkedin         :
+  pinterest        :
+  soundcloud       :
+  stackoverflow    : # "123456/username" (the last part of your profile url, e.g. http://stackoverflow.com/users/123456/username)
+  steam            :
+  tumblr           :
+  twitter          : ""
+maxim_romanov:
+  name             : "Maxim Romanov"
+  avatar           : "/images/kitab/maxim_romanov.png" # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
+  bio              : "Universitätsassistent für Digital Humanities (PhD in Near Eastern Studies, U of Michigan, 2013), Institut für Geschichte, Universität Wien. He studies Islamic historical texts with computational methods, currently focusing on the analysis of multivolume biographical and bibliographical collections."
+  location         : "Vienna, Austria"
+  email            : "romanov.maxim@gmail.com"
+  uri              :
+  flickr           :
+  facebook         : "maxim.romanov.925"
+  github           : "maximromanov"
+  google_plus      :
+  instagram        :
+  linkedin         :
+  pinterest        :
+  soundcloud       :
+  stackoverflow    : # "123456/username" (the last part of your profile url, e.g. http://stackoverflow.com/users/123456/username)
+  steam            :
+  tumblr           :
+  twitter          : "maximromanov"
