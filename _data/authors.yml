@@ -36,3 +36,22 @@ maxim_romanov:
   steam            :
   tumblr           :
   twitter          : "maximromanov"
+david_smith:
+  name             : "David Smith"
+  avatar           : "/images/kitab/david_smith.jpg" # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
+  bio              : "David Smith is an Assistant Professor in the College of Computer and Information Science at Northeastern University and a founding member of the NULab for Texts, Maps, and Networks, Northeastern’s center for the digital humanities and computational social sciences. Previously, he was a research faculty member at the University of Massachusetts’ Center for Intelligent Information Retrieval, a Ph.D. student in computer science at Johns Hopkins University, and the head programmer at the Perseus Digital Library Project. His research focuses on building statistical models of human language, with applications to information retrieval, machine translation, the humanities, and social sciences. Most recently, he has been working on inference for social networks from textual evidence, in collaboration with colleagues in English, history, and political science, under the aegis of the Proteus and Viral Texts projects."
+  location         : "Boston, USA"
+  email            : ""
+  uri              :
+  flickr           :
+  facebook         : ""
+  github           : ""
+  google_plus      :
+  instagram        :
+  linkedin         :
+  pinterest        :
+  soundcloud       :
+  stackoverflow    : # "123456/username" (the last part of your profile url, e.g. http://stackoverflow.com/users/123456/username)
+  steam            :
+  tumblr           :
+  twitter          : ""
