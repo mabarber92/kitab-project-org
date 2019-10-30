@@ -11,7 +11,7 @@ author_profile: true
 permalink: /pilot/
 ---
 
-![image-right](/images/kitab/photo01.jpg){: .align-right}
+![image-right](/images/kitab/photo01.jpg){: .align-right}  
 ![image-right](/images/kitab/photo02.jpg){: .align-right}
 
 Our current main method was authored by David Smith of Northeastern University and is well-suited to work on a large corpus such as we have with Arabic. David’s most noted project so far has been on “viral texts” that circulated widely in [19th century American newspapers](https://viraltexts.org/). Specifically, he and a team of researchers focused on newspapers in the Library of Congress’s [Chronicling America online newspaper archive](https://chroniclingamerica.loc.gov/), comprising 1.6 billion words from 41,829 issues of 132 newspapers. He has also used his algorithm to study how the wording of bills introduced into the US Congress have been reused and circulated.
