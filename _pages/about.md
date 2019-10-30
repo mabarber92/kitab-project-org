@@ -13,7 +13,7 @@ permalink: /about/
 
 {% include toc icon="gears" title="Table of Contents" %}
 
-# Message from the PI (Hi)
+# Message from the PI 
 
 KITAB provides a digital tool-box and a forum for discussions about Arabic texts. We wish to empower users to explore Arabic texts in completely new ways and to expand the frontiers of knowledge about one of the world’s largest and most complex textual traditions.
 
@@ -37,7 +37,9 @@ Knowledge, Information Technology, and the Arabic Book
 
 ![image-left](../images/kitab/sarah_savant_150dpi.jpg){: .align-left}
 
-**Sarah Bowen Savant**, Associate Professor, AKU-ISMC, and Principle Investigator of KITAB. Dr Savant is a cultural historian specialising in the Middle East and Iran ca. 600-1500. Her work on KITAB is motivated by a desire to write a cultural history of the Arabic book using digital tools. Her publications include The New Muslims of Post-Conquest Iran: Tradition, Memory, and Conversion (Cambridge University Press, 2013; winner of the Said-Sirjani book award given by the International Society for Iranian Studies on behalf of the Persian Heritage Foundation); as editor (with Helena de Felipe), Genealogy and Knowledge in Muslim Societies: Understanding the Past (AKU-ISMC, Exploring Muslim Contexts/Edinburgh University Press, 2014); as translator (with Peter Webb), The Excellence of the Arabs. A Translation of Ibn Qutaybah’s *Faḍl al-ʿArab wa l-tanbīh ʿalā ʿulūmihā* (The Library of Arabic Literature/New York University Press, 2017); and numerous articles treating ethnic identity, cultural memory, genealogy, and history writing. She serves as president of Middle East Medievalists and as an ex-officio member of the editorial board of its online, open-access journal, Al-ʿUsur al-Wusta. She is also a board member of the British Institute for the Study of Iraq, and a member of the editorial board of its journal, Iraq. In 2016-17, she was a mid-career fellow of the British Academy and a fellow at the Leiden University Centre for the Study of Islam and Society. During that time she prepared much of her next book, based on KITAB’s data: A Cultural History of the Arabic Book (Leiden: Brill, 2019, expected).
+### Sarah Bowen Savant
+#### Associate Professor, AKU-ISMC, and Principle Investigator of KITAB
+Dr Savant is a cultural historian specialising in the Middle East and Iran ca. 600-1500. Her work on KITAB is motivated by a desire to write a cultural history of the Arabic book using digital tools. Her publications include The New Muslims of Post-Conquest Iran: Tradition, Memory, and Conversion (Cambridge University Press, 2013; winner of the Said-Sirjani book award given by the International Society for Iranian Studies on behalf of the Persian Heritage Foundation); as editor (with Helena de Felipe), Genealogy and Knowledge in Muslim Societies: Understanding the Past (AKU-ISMC, Exploring Muslim Contexts/Edinburgh University Press, 2014); as translator (with Peter Webb), The Excellence of the Arabs. A Translation of Ibn Qutaybah’s *Faḍl al-ʿArab wa l-tanbīh ʿalā ʿulūmihā* (The Library of Arabic Literature/New York University Press, 2017); and numerous articles treating ethnic identity, cultural memory, genealogy, and history writing. She serves as president of Middle East Medievalists and as an ex-officio member of the editorial board of its online, open-access journal, Al-ʿUsur al-Wusta. She is also a board member of the British Institute for the Study of Iraq, and a member of the editorial board of its journal, Iraq. In 2016-17, she was a mid-career fellow of the British Academy and a fellow at the Leiden University Centre for the Study of Islam and Society. During that time she prepared much of her next book, based on KITAB’s data: A Cultural History of the Arabic Book (Leiden: Brill, 2019, expected).
 
 ![image-left](../images/kitab/maxim_romanov_150dpi.jpg){: .align-left}
 
