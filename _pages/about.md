@@ -13,7 +13,7 @@ permalink: /about/
 
 {% include toc icon="gears" title="Table of Contents" %}
 
-# Message from the PI
+# Message from the PI (Hi)
 
 KITAB provides a digital tool-box and a forum for discussions about Arabic texts. We wish to empower users to explore Arabic texts in completely new ways and to expand the frontiers of knowledge about one of the world’s largest and most complex textual traditions.
 
