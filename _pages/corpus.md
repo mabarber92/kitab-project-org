@@ -73,11 +73,13 @@ A major aim of KITAB is to increase both the number and diversity of texts in ou
 <details><summary>Can I propose additional texts for KITAB?</summary>
 <p>
 
-Yes. Please check [Open Islamicate Texts Initiative](https://github.com/OpenITI) to ensure that we do not already have it.
+Yes. Please check <a href="https://github.com/OpenITI">
+Open Islamicate Texts Initiative</a> to ensure that we do not already have it.
 
 If your text is already available in machine-readable format, we will add it to the corpus.
 
-If your text is not already available in machine-readable format, please add it to our list for [books to OCR in the future](https://t.co/GULp3OmQi9).
+If your text is not already available in machine-readable format, please add it to our list for <a href="https://t.co/GULp3OmQi9">
+books to OCR in the future</a>.
 
 </p>
 </details>
