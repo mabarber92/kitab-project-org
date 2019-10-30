@@ -25,7 +25,7 @@ There is no one-size-fits-all algorithm to perfectly detect text reuse—it is v
 ![image-right](/images/kitab/textreuse.jpg){: .align-right}
 # About passim
 
-Our aim is to analyse patterns of reuse in a large collection of texts for the period of 700–1500. This will help us  to identify which texts—or which traditions of similar texts—were widely quoted over the centuries, or which sources a given historian might have used, or which books and passages were most widely commented on. If we knew, hypothetically, that we were going to focus on a particular book—e.g., al-Ṭabarī’s Taʾrīkh—we might make do with an existing full-text search engine. [Read more…]()
+Our aim is to analyse patterns of reuse in a large collection of texts for the period of 700–1500. This will help us  to identify which texts—or which traditions of similar texts—were widely quoted over the centuries, or which sources a given historian might have used, or which books and passages were most widely commented on. If we knew, hypothetically, that we were going to focus on a particular book—e.g., al-Ṭabarī’s Taʾrīkh—we might make do with an existing full-text search engine. [Read more…](about-passim.md)
 
 
 # Use Cases

@@ -1,5 +1,5 @@
 ---
-excerpt:	"Knowledge, Information Technology, and the Arabic Book"
+excerpt:	""
 header:
   overlay_image: /images/covers/kitab2.jpg
   overlay_filter: rgba(0, 0, 0, 0.45)

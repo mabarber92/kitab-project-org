@@ -28,5 +28,9 @@ Click here to explore our first data visualisation (2015).
 
 Click here to explore our second data visualisation (2017).
 
+![full](/images/kitab/textalignment.png)
+{: .full}
+
+
 
 
