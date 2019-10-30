@@ -10,3 +10,5 @@ main:
     url: "/methods/"
   - title: "About the Project"
     url: "/about/"
+  - title: "About passim"
+    url: "/about-passim/"

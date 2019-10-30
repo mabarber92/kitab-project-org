@@ -21,6 +21,13 @@ Existing search engines that accompany common domain Arabic editions or database
 
 There is no one-size-fits-all algorithm to perfectly detect text reuse—it is very different to look for and visualise rare similarities versus rare differences between texts and across corpora. To detect text reuse and to graphically display it in the most illuminating ways, programmers design algorithms differently, depending on the types of reuse being investigated.
 
+
+![image-right](/images/kitab/textreuse.jpg){: .align-right}
+# About passim
+
+Our aim is to analyse patterns of reuse in a large collection of texts for the period of 700–1500. This will help us  to identify which texts—or which traditions of similar texts—were widely quoted over the centuries, or which sources a given historian might have used, or which books and passages were most widely commented on. If we knew, hypothetically, that we were going to focus on a particular book—e.g., al-Ṭabarī’s Taʾrīkh—we might make do with an existing full-text search engine. [Read more…]()
+
+
 # Use Cases
 
 KITAB’s team is developing algorithms to investigate the following types of reuse in Arabic.

@@ -88,7 +88,7 @@ With a BA and Dphil from Oxford University, Dr Azzam’s focus is on the develop
 Since 2007 Abdul Rahman has been working at Qatar Foundation where he has led several important cultural and educational projects. He was delegated by Sheikha Moza to lead and negotiate the partnership between The British Library and Qatar Foundation. The first phase of the partnership, signed in July 2012, created a state-of-the-art online portal of materials on Gulf History with over half a million documents digitised. Abdul Rahman also negotiated and launched the joint venture deal between Bloomsbury and Qatar Foundation to establish a regional publishing house. Bloomsbury Qatar Foundation was launched in the presence of HM Queen Elizabeth at Windsor in April 2010.
 
 
-![image-left](../images/kitab/Copie-de-ryan-muther.jpg){: .align-left}
+![image-left](../images/kitab/ryan200px.jpg){: .align-left}
 
 ### Ryan Muther
 #### Digital Sirah Project
@@ -108,7 +108,7 @@ Gowaart Van Den Bossche studied History and Arabic and Islamic Studies at Ghent 
 #### Research Associate - Digital Sirah Project
 Mathew Barber is a PhD Candidate at the department of Middle Eastern Studies in the University of Edinburgh. His doctoral research (entitled: ‘Text reuse and memory in Egypt: al-Maqrīzī’s muqaffā as a lost Fatimid source for the vizierate of al-Yāzūrī (r. 1050–8).’) analyses patterns of text reuse in the Egyptian historiography to shed light on lost Fatimid sources. He is interested more broadly in the representation of the Fatimids in Egyptian historical memory through the study of text reuse. Contemporary sources for the Fatimids are rare, especially for the eleventh and twelfth centuries, but later Egyptian historical writing on the Fatimids (especially the Mamluk historiography) is especially rich. As such, he is excited about the possibilities that digital humanities could bring to this field, providing insights into the composition of Egyptian historiography and potentially lost Fatimid texts and traditions.
 
-![image-left](../images/kitab/aku_150dpi.jpg){: .align-left}
+![image-right](../images/kitab/aku_150dpi.jpg){: .align-right}
 
 KITAB’s team is supported by many members of the AKU computing staff, including: 
 
