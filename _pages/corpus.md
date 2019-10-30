@@ -29,33 +29,62 @@ The system works by training the computer to recognise different typefaces. It i
 
 The work is led by the OpenITI team (Sarah Bowen Savant, Maxim Romanov, and Matthew Miller) and is currently being funded by the Roshan Institute for Persian Studies at the University of Maryland, the Alexander von Humboldt chair in Digital Humanities at Leipzig University, the Institute for the Study of Muslim Civilisations at the Aga Khan University, and the Harvard University Law School (through its SHARIASource project). Additional funding is being sought, and collaboration is welcomed from other projects.
 
+
+# OpenITI / OpenArabic
+
+The *Open Islamicate Texts Initiative* (**OpenITI**, see [iti-corpus.github.io](iti-corpus.github.io)), which is a multi-institutional effort to construct the first machine-actionable scholarly corpus of premodern Islamicate texts. Led by researchers at the Aga Khan University (AKU), University of Vienna/Leipzig University (LU), and the Roshan Institute for Persian Studies at the University of Maryland (College Park) and an interdisciplinary advisory board of leading digital humanists and Islamic, Persian, and Arabic studies scholars, **OpenITI** aims to provide the essential textual infrastructure in Persian and Arabic for new forms of macro textual analysis and digital scholarship. In the process, **OpenITI** will enable new synergies between Digital Humanities and the inter-related Islamicate fields of Islamic, Persian, and Arabic Studies.
+
+You can find the latest report on the development of Arabic part of the project, **OpenArabic**, at the status page: [github.com/OpenArabic/Annotation](https://github.com/OpenArabic/Annotation). **OpenArabic** is an effort that was initiated within the Alexander von Humboldt Chair for Digital Humanities (Leipzig University) to create the first machine-actionable scholarly corpus of premodern Arabic texts.
+
 # Common questions about our Corpus
 
-### What texts does KITAB analyse?
+<details><summary>What does KITAB analyse?</summary>
+<p>
 
-We focus on the origins of the written tradition, in the eighth century, up to roughly the fifteenth century, but aim to include as many texts as possible, so you can also find texts written after 1500.
+We focus on the origins of the written Arabic tradition, in the eighth century, up to roughly the fifteenth century, but aim to include as many texts as possible, so you can also find texts written after 1500.
 
-### What quality of texts is necessary for computational analysis?
+</p>
+</details>
+
+
+<details><summary>What quality of texts is necessary for computational analysis?</summary>
+<p>
 
 It depends on the type of analysis. Regarding OCR, text reuse detection methods can be adapted to detect patterns even with badly OCRed texts (as has been done for studies of 19th-century newspapers). For our OCRed texts, we aim, however, to obtain digital files that match within 1 or 2% the printed editions upon which they are based.
 
-### Are your texts representative of the historical tradition?
+</p>
+</details>
+
+
+
+<details><summary>Are your texts representative of the historical Arabic tradition?</summary>
+<p>
 
 Yes and no. We have a lot of texts. Digitisation efforts in the Middle East over the past twenty years have been extensive and impressive. But equally, we have nowhere near what once existed. The electronic files we have are based on printed editions. Many printed editions have not been converted into machine-readable texts. And many manuscripts have not made it into print.
 
-There are some biases in what we do have and an overrepresentation of works from particular authors and treating particular topics. Texts with legal significance are heavily represented.
+There are some biases in what we do have and an overrepresentation of works from particular authors and treating particular topics. Texts with religious and legal significance are heavily represented.
 
 A major aim of KITAB is to increase both the number and diversity of texts in our corpus. We seek works treating, for example, philosophy and science.
 
-### Can I propose additional texts for KITAB?
+</p>
+</details>
 
-Yes. Please check Open Islamicate Texts Initiative to ensure that we do not already have it.
 
-If your text is already available in machine-readable format, we will add it to the corpus. Please get in touch with us.
+<details><summary>Can I propose additional texts for KITAB?</summary>
+<p>
 
-If your text is not already available in machine-readable format, please add it to our list for books to OCR in the future.
+Yes. Please check [Open Islamicate Texts Initiative](https://github.com/OpenITI) to ensure that we do not already have it.
 
-### How reliable are texts in digital formats?
+If your text is already available in machine-readable format, we will add it to the corpus.
+
+If your text is not already available in machine-readable format, please add it to our list for [books to OCR in the future](https://t.co/GULp3OmQi9).
+
+</p>
+</details>
+
+
+<details><summary>How reliable are texts in Digital Format?</summary>
+<p>
 
 Our digital texts are generally speaking reliable reproductions of modern printed editions.  We are finding this as we annotate digital files of books and compare them to their printed counterparts.
 
@@ -63,8 +92,5 @@ There are problems with printed editions and the extent to which any edition ser
 
 We will also tackle problems with metadata that arise also in the printed editions. For example, many books are reprinted without acknowledgement to the original editions or their editors. We need to verify bibliographic data.
 
-# OpenITI / OpenArabic
-
-The *Open Islamicate Texts Initiative* (**OpenITI**, see [iti-corpus.github.io](iti-corpus.github.io)), which is a multi-institutional effort to construct the first machine-actionable scholarly corpus of premodern Islamicate texts. Led by researchers at the Aga Khan University (AKU), University of Vienna/Leipzig University (LU), and the Roshan Institute for Persian Studies at the University of Maryland (College Park) and an interdisciplinary advisory board of leading digital humanists and Islamic, Persian, and Arabic studies scholars, **OpenITI** aims to provide the essential textual infrastructure in Persian and Arabic for new forms of macro textual analysis and digital scholarship. In the process, **OpenITI** will enable new synergies between Digital Humanities and the inter-related Islamicate fields of Islamic, Persian, and Arabic Studies.
-
-You can find the latest report on the development of Arabic part of the project, **OpenArabic**, at the status page: [github.com/OpenArabic/Annotation](https://github.com/OpenArabic/Annotation). **OpenArabic** is an effort that was initiated within the Alexander von Humboldt Chair for Digital Humanities (Leipzig University) to create the first machine-actionable scholarly corpus of premodern Arabic texts.
+</p>
+</details>
