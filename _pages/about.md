@@ -164,9 +164,14 @@ KITAB’s team is supported by many members of the AKU computing staff, includin
 
 # Research Based on KITAB
 
+![image-left](../images/kitab/mesa.jpg){: .align-left}  
+
 ## Cultural Memory in the Pre-Modern Middle East: Köprülü 01589, A Library Manuscript
 
-This paper features my first application of KITAB’s text reuse detection methods to a manuscript transcription. It was delivered Nov. 22, 2015 at the Middle East Studies Annual Meeting in Denver for a panel entitled “Imagining the Ummah.” The panel papers focused on the composition, meaning, and reception of sources pertaining to the first centuries of the Muslim community (600-1000). The paper’s contents (which reflect oral delivery, the audience, and the 20 minute time limit) will be revised, expanded, and incorporated into my 2017 University of Leiden LUCIS lectures. Read more…
+This paper features my first application of KITAB’s text reuse detection methods to a manuscript transcription. It was delivered Nov. 22, 2015 at the Middle East Studies Annual Meeting in Denver for a panel entitled “Imagining the Ummah.” The panel papers focused on the composition, meaning, and reception of sources pertaining to the first centuries of the Muslim community (600-1000). The paper’s contents (which reflect oral delivery, the audience, and the 20 minute time limit) will be revised, expanded, and incorporated into my 2017 University of Leiden LUCIS lectures. [Read more…](http://web.kitab-project.org/wp-content/uploads/2016/04/MESA2015paper.pdf)
+
+
+![image-left](../images/kitab/Capture-1.jpg){: .align-left}  
 
 ## Oxford PhD Thesis uses KITAB to Assess Reception History of Major Arabic Book on the Early Caliphate
 
