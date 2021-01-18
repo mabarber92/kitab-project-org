@@ -4,7 +4,7 @@ about: Suggest a new feature/enhancement for a KITAB application
 title: 'Feature suggestion: PowerBI corpus and text reuse stats / Book-to-book view
   (with chart) / Book-to-book comparison (in tabular form) / ''Nuwayri'' app / ''Tabari''
   app / Isnads App / Ngram Reader (delete as appropriate)'
-labels: enhancement, applications
+labels: applications, enhancement
 assignees: mabarber92
 
 ---
