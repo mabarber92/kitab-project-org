@@ -11,9 +11,9 @@ title                    : "KITAB Project"
 title_separator          : "-"
 name                     : "Knowledge, Information Technology, and the Arabic Book"
 description              : "Knowledge, Information Technology, and the Arabic Book - Studying the formation and development of the written Arabic tradition with digital methods"
-baseurl                  : "kitab-project-org"
+baseurl                  : "kitab-project-org/"
 url                      : "https://mabarber92.github.io/"
-repository               : # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
+repository               : # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes/kitab-project-org"
 teaser                   : # path of fallback teaser image, e.g. "/assets/images/500x300.png"
 breadcrumbs              : false # true, false (default)
 words_per_minute         : 200
