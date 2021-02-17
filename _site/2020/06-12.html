@@ -1,0 +1,490 @@
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin SEO -->
+
+
+
+
+
+
+
+
+
+<title>Tagging the Structure of Texts in the OPENITI Corpus - KITAB Project</title>
+
+
+
+
+<meta name="description" content="With currently more than 7,000 titles, collected from a number of huge digital Arabic libraries (al-Jami al-Kabir, al-Maktaba al-Shamila, Shia Online Library, etc.), the OPENITI corpus is recognised as one of the most comprehensive Arabic corpora online.The KITAB project relies on this corpus in its work on text reuse detection (through which the project aims to discover relationships among texts by aligning parts of them that share common wording). In the project’s workflow, a first step is manual tagging of the structural elements of the texts (headings and subheadings, or, for example, the names that order biographical dictionaries). For a complete description of the tags, click here. To annotate the texts, we use EditPad Pro, a powerful text editor that supports Arabic and can easily handle large texts. Annotators start by collating each machine-readable file with a printed version of the text (ideally using a PDF from the internet, but alternatively, the physical object in a library).To briefly review the annotating of a text and some of the routine difficulties this involves, let’s have a glance at tagging the first few pages of a typical text in our corpus. Fortunately, the edition of the text in question here – the ‘Iqd al-Farid, by the author/compiler Ibn ʿAbd Rabbih (d. 328/940) – is both of high-quality and is accessible online (when it is not possible to find the same edition, annotators can use a different edition for collation; however, this needs to be done with care since two editions of the same text may well have a lot of differences). Although at this stage of preparing the text, it is only necessary to tag the structural elements, this process presents its own difficulties and is not as simple as it might seem. For example, in most cases, annotators cannot rely on the books’ table of contents (TOC). This is partly because some structural elements (like individual biographies) do not appear in the TOC. It is also because many published books do not have a TOC. Even when one is included, it may be practically useless for annotation. For example, by comparing the book’s TOC and the human-annotated digital text in figures 1 and 2, it is clear that some of the headings in the text are missing in the book’s TOC. Moreover, the book’s TOC does not accurately reflect the way that headings and subheadings are nested within the book itself. The heading titles are all presented as if the logic is parallel (except Kitab al-Lu’lu’a which is bold), whereas some of them are obviously subordinated to others. In addition, some empty header tags should ideally be added to make the structure coherent. As is evident in figure 3, the author jumps to mentioning the holy wars (ghazawat) of one of the Umayyad caliphs in Andalusia without any heading specifying this shift.Figure 1: The book’s table of contents.Figure 2: The human-annotated text. The level of headings are shown by the number of pipe symbols (|) in EditPad Pro, and the colors change accordingly.Figure 3: Empty header tags should be added in appropriate locations to make the structure of the text coherentSo, to present a useful annotation, annotators need to collate each page with a printed version in order to avoid missing headings, while at the same time exercising judgement about the relationship between headings and subheadings. When you consider that there are on average 2 headings per page in this text, for example, it is clear that the process of tagging can be extremely tedious, while at the same time more intellectually challenging than the mechanical task it may initially appear to be. This is particularly in cases where the annotator has to deal with editions where the structure is poorly marked out or work on dictionaries or biographical collections which include thousands of entries or names all of which need to be tagged (figure 4).Figure 4: A biographical collection including more than 4000 name entries of men and women tagged separately.Each digital text is accompanied with a series of yml files. Figure 5 shows a yml file in which annotators keep track of their annotation by recording all relevant information. This includes providing a link to the PDF, links to both the edition of the digital text and the edition of the collated text in Worldcat library, and any other explanation that is necessary for reviewers. All issues of the digital version (pagination problems, entering HTML tags into the text, redundant or missing parts, etc.) must also be reported in this file so that they can be fixed at a later stage. We also log the contents of the yml files as ‘issues’ on Github so that reviewers double-check the texts at the next step. After vetting, these issues will be closed (click here to see the latest issues for annotated texts on our project).Figure 5: A yml FileTo summarise, annotators must face the probable shortcomings caused by the actors in the text production circle. This circle consists of two groups: one, the producers of the digital texts, and two, the producers of the printed versions including the publishers, editors, and medieval writers. On one side, there might be some problems in the digital texts because they are produced by various research institutions and for a variety of different purposes. These institutions may either intentionally change the structure of the texts by adding or deleting the headings (to adapt the structure to their intended purposes), or unintentionally make mistakes. And on the other side, lacking TOC, faulty TOCs, or the inability to find and present the correct structure of the text are some of the problems related to publishers and editors. Even medieval writers can sometimes be another bugbear as in many of their writings the thematic classification is so haphazard that annotators must spend a lot of time to understand the structure of a text they are working with. Each text usually brings unique difficulties that must be dealt with in a different way and our team is working hard to present the most accurate form as possible for these texts. To date, 550 texts have been tagged and more are in progress. Everything is open access on our corpus and we have a search engine to help you browse through all the texts in the corpus (both annotated and not-yet-annotated). Click here to start browsing!">
+
+
+
+
+<meta property="og:locale" content="en">
+<meta property="og:site_name" content="KITAB Project">
+<meta property="og:title" content="Tagging the Structure of Texts in the OPENITI Corpus">
+
+
+  <link rel="canonical" href="http://localhost:4000/2020/06-12.html">
+  <meta property="og:url" content="http://localhost:4000/2020/06-12.html">
+
+
+
+  <meta property="og:description" content="With currently more than 7,000 titles, collected from a number of huge digital Arabic libraries (al-Jami al-Kabir, al-Maktaba al-Shamila, Shia Online Library, etc.), the OPENITI corpus is recognised as one of the most comprehensive Arabic corpora online.The KITAB project relies on this corpus in its work on text reuse detection (through which the project aims to discover relationships among texts by aligning parts of them that share common wording). In the project’s workflow, a first step is manual tagging of the structural elements of the texts (headings and subheadings, or, for example, the names that order biographical dictionaries). For a complete description of the tags, click here. To annotate the texts, we use EditPad Pro, a powerful text editor that supports Arabic and can easily handle large texts. Annotators start by collating each machine-readable file with a printed version of the text (ideally using a PDF from the internet, but alternatively, the physical object in a library).To briefly review the annotating of a text and some of the routine difficulties this involves, let’s have a glance at tagging the first few pages of a typical text in our corpus. Fortunately, the edition of the text in question here – the ‘Iqd al-Farid, by the author/compiler Ibn ʿAbd Rabbih (d. 328/940) – is both of high-quality and is accessible online (when it is not possible to find the same edition, annotators can use a different edition for collation; however, this needs to be done with care since two editions of the same text may well have a lot of differences). Although at this stage of preparing the text, it is only necessary to tag the structural elements, this process presents its own difficulties and is not as simple as it might seem. For example, in most cases, annotators cannot rely on the books’ table of contents (TOC). This is partly because some structural elements (like individual biographies) do not appear in the TOC. It is also because many published books do not have a TOC. Even when one is included, it may be practically useless for annotation. For example, by comparing the book’s TOC and the human-annotated digital text in figures 1 and 2, it is clear that some of the headings in the text are missing in the book’s TOC. Moreover, the book’s TOC does not accurately reflect the way that headings and subheadings are nested within the book itself. The heading titles are all presented as if the logic is parallel (except Kitab al-Lu’lu’a which is bold), whereas some of them are obviously subordinated to others. In addition, some empty header tags should ideally be added to make the structure coherent. As is evident in figure 3, the author jumps to mentioning the holy wars (ghazawat) of one of the Umayyad caliphs in Andalusia without any heading specifying this shift.Figure 1: The book’s table of contents.Figure 2: The human-annotated text. The level of headings are shown by the number of pipe symbols (|) in EditPad Pro, and the colors change accordingly.Figure 3: Empty header tags should be added in appropriate locations to make the structure of the text coherentSo, to present a useful annotation, annotators need to collate each page with a printed version in order to avoid missing headings, while at the same time exercising judgement about the relationship between headings and subheadings. When you consider that there are on average 2 headings per page in this text, for example, it is clear that the process of tagging can be extremely tedious, while at the same time more intellectually challenging than the mechanical task it may initially appear to be. This is particularly in cases where the annotator has to deal with editions where the structure is poorly marked out or work on dictionaries or biographical collections which include thousands of entries or names all of which need to be tagged (figure 4).Figure 4: A biographical collection including more than 4000 name entries of men and women tagged separately.Each digital text is accompanied with a series of yml files. Figure 5 shows a yml file in which annotators keep track of their annotation by recording all relevant information. This includes providing a link to the PDF, links to both the edition of the digital text and the edition of the collated text in Worldcat library, and any other explanation that is necessary for reviewers. All issues of the digital version (pagination problems, entering HTML tags into the text, redundant or missing parts, etc.) must also be reported in this file so that they can be fixed at a later stage. We also log the contents of the yml files as ‘issues’ on Github so that reviewers double-check the texts at the next step. After vetting, these issues will be closed (click here to see the latest issues for annotated texts on our project).Figure 5: A yml FileTo summarise, annotators must face the probable shortcomings caused by the actors in the text production circle. This circle consists of two groups: one, the producers of the digital texts, and two, the producers of the printed versions including the publishers, editors, and medieval writers. On one side, there might be some problems in the digital texts because they are produced by various research institutions and for a variety of different purposes. These institutions may either intentionally change the structure of the texts by adding or deleting the headings (to adapt the structure to their intended purposes), or unintentionally make mistakes. And on the other side, lacking TOC, faulty TOCs, or the inability to find and present the correct structure of the text are some of the problems related to publishers and editors. Even medieval writers can sometimes be another bugbear as in many of their writings the thematic classification is so haphazard that annotators must spend a lot of time to understand the structure of a text they are working with. Each text usually brings unique difficulties that must be dealt with in a different way and our team is working hard to present the most accurate form as possible for these texts. To date, 550 texts have been tagged and more are in progress. Everything is open access on our corpus and we have a search engine to help you browse through all the texts in the corpus (both annotated and not-yet-annotated). Click here to start browsing!">
+
+
+
+
+
+  
+
+  
+
+
+
+
+
+  <meta property="og:type" content="article">
+  <meta property="article:published_time" content="2020-06-12T00:00:00+01:00">
+
+
+
+
+
+
+
+
+  <script type="application/ld+json">
+    {
+      "@context" : "http://schema.org",
+      "@type" : "Person",
+      "name" : "Knowledge, Information Technology, and the Arabic Book",
+      "url" : "http://localhost:4000",
+      "sameAs" : null
+    }
+  </script>
+
+
+
+
+
+
+<!-- end SEO -->
+
+
+<link href="http://localhost:4000/feed.xml" type="application/atom+xml" rel="alternate" title="KITAB Project Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://localhost:4000/assets/css/main.css">
+
+<meta http-equiv="cleartype" content="on">
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use http://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+  </head>
+
+  <body class="layout--single">
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+    <div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        <button><div class="navicon"></div></button>
+        <ul class="visible-links">
+          <li class="masthead__menu-item masthead__menu-item--lg"><a href="http://localhost:4000/">KITAB Project</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000">Blog</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/pilot/">Our Pilot</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/corpus/">Corpus (OpenITI)</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/methods/">Text Reuse Methods</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/about/">About the Project</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/about-passim/">About passim</a></li>
+          
+        </ul>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+    
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+<div itemscope itemtype="http://schema.org/Person">
+
+  
+
+  <div class="author__content">
+    <h3 class="author__name" itemprop="name">Hamid Reza Hakimi</h3>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs">
+      <i class="fa fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+  <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Tagging the Structure of Texts in the OPENITI Corpus">
+    <meta itemprop="description" content="With currently more than 7,000 titles, collected from a number of huge digital Arabic libraries (al-Jami al-Kabir, al-Maktaba al-Shamila, Shia Online Library, etc.), the OPENITI corpus is recognised as one of the most comprehensive Arabic corpora online.The KITAB project relies on this corpus in its work on text reuse detection (through which the project aims to discover relationships among texts by aligning parts of them that share common wording). In the project’s workflow, a first step is manual tagging of the structural elements of the texts (headings and subheadings, or, for example, the names that order biographical dictionaries). For a complete description of the tags, click here. To annotate the texts, we use EditPad Pro, a powerful text editor that supports Arabic and can easily handle large texts. Annotators start by collating each machine-readable file with a printed version of the text (ideally using a PDF from the internet, but alternatively, the physical object in a library).To briefly review the annotating of a text and some of the routine difficulties this involves, let’s have a glance at tagging the first few pages of a typical text in our corpus. Fortunately, the edition of the text in question here – the ‘Iqd al-Farid, by the author/compiler Ibn ʿAbd Rabbih (d. 328/940) – is both of high-quality and is accessible online (when it is not possible to find the same edition, annotators can use a different edition for collation; however, this needs to be done with care since two editions of the same text may well have a lot of differences). Although at this stage of preparing the text, it is only necessary to tag the structural elements, this process presents its own difficulties and is not as simple as it might seem. For example, in most cases, annotators cannot rely on the books’ table of contents (TOC). This is partly because some structural elements (like individual biographies) do not appear in the TOC. It is also because many published books do not have a TOC. Even when one is included, it may be practically useless for annotation. For example, by comparing the book’s TOC and the human-annotated digital text in figures 1 and 2, it is clear that some of the headings in the text are missing in the book’s TOC. Moreover, the book’s TOC does not accurately reflect the way that headings and subheadings are nested within the book itself. The heading titles are all presented as if the logic is parallel (except Kitab al-Lu’lu’a which is bold), whereas some of them are obviously subordinated to others. In addition, some empty header tags should ideally be added to make the structure coherent. As is evident in figure 3, the author jumps to mentioning the holy wars (ghazawat) of one of the Umayyad caliphs in Andalusia without any heading specifying this shift.Figure 1: The book’s table of contents.Figure 2: The human-annotated text. The level of headings are shown by the number of pipe symbols (|) in EditPad Pro, and the colors change accordingly.Figure 3: Empty header tags should be added in appropriate locations to make the structure of the text coherentSo, to present a useful annotation, annotators need to collate each page with a printed version in order to avoid missing headings, while at the same time exercising judgement about the relationship between headings and subheadings. When you consider that there are on average 2 headings per page in this text, for example, it is clear that the process of tagging can be extremely tedious, while at the same time more intellectually challenging than the mechanical task it may initially appear to be. This is particularly in cases where the annotator has to deal with editions where the structure is poorly marked out or work on dictionaries or biographical collections which include thousands of entries or names all of which need to be tagged (figure 4).Figure 4: A biographical collection including more than 4000 name entries of men and women tagged separately.Each digital text is accompanied with a series of yml files. Figure 5 shows a yml file in which annotators keep track of their annotation by recording all relevant information. This includes providing a link to the PDF, links to both the edition of the digital text and the edition of the collated text in Worldcat library, and any other explanation that is necessary for reviewers. All issues of the digital version (pagination problems, entering HTML tags into the text, redundant or missing parts, etc.) must also be reported in this file so that they can be fixed at a later stage. We also log the contents of the yml files as ‘issues’ on Github so that reviewers double-check the texts at the next step. After vetting, these issues will be closed (click here to see the latest issues for annotated texts on our project).Figure 5: A yml FileTo summarise, annotators must face the probable shortcomings caused by the actors in the text production circle. This circle consists of two groups: one, the producers of the digital texts, and two, the producers of the printed versions including the publishers, editors, and medieval writers. On one side, there might be some problems in the digital texts because they are produced by various research institutions and for a variety of different purposes. These institutions may either intentionally change the structure of the texts by adding or deleting the headings (to adapt the structure to their intended purposes), or unintentionally make mistakes. And on the other side, lacking TOC, faulty TOCs, or the inability to find and present the correct structure of the text are some of the problems related to publishers and editors. Even medieval writers can sometimes be another bugbear as in many of their writings the thematic classification is so haphazard that annotators must spend a lot of time to understand the structure of a text they are working with. Each text usually brings unique difficulties that must be dealt with in a different way and our team is working hard to present the most accurate form as possible for these texts. To date, 550 texts have been tagged and more are in progress. Everything is open access on our corpus and we have a search engine to help you browse through all the texts in the corpus (both annotated and not-yet-annotated). Click here to start browsing!">
+    <meta itemprop="datePublished" content="June 12, 2020">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 class="page__title" itemprop="headline">Tagging the Structure of Texts in the OPENITI Corpus
+</h1>
+          
+            <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+
+
+  5 minute read
+ :: <i>Posted on June 12, 2020</i></p>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        <p>With currently more than 7,000 titles, collected from a number of huge digital Arabic libraries (al-Jami al-Kabir, <a href="http://www.shamela.ws/">al-Maktaba al-Shamila</a>, <a href="http://shiaonlinelibrary.com/">Shia Online Library</a>, etc.), the <a href="https://github.com/OpenITI">OPENITI corpus</a> is recognised as one of the most comprehensive Arabic corpora online.</p>
+
+<p>The <a href="http://kitab-project.org/about/">KITAB project</a> relies on this corpus in its work on text reuse detection (through which the project aims to discover relationships among texts by aligning parts of them that share common wording). In the project’s workflow, a first step is manual tagging of the structural elements of the texts (headings and subheadings, or, for example, the names that order biographical dictionaries). For a complete description of the tags, click <a href="https://alraqmiyyat.github.io/mARkdown/">here</a>. To annotate the texts, we use <a href="https://www.editpadpro.com/">EditPad Pro</a>, a powerful text editor that supports Arabic and can easily handle large texts. Annotators start by collating each machine-readable file with a printed version of the text (ideally using a PDF from the internet, but alternatively, the physical object in a library).</p>
+
+<p>To briefly review the annotating of a text and some of the routine difficulties this involves, let’s have a glance at tagging the first few pages of a typical text in our corpus. Fortunately, the edition of the text in question here – the <em>‘Iqd al-Farid</em>, by the author/compiler Ibn ʿAbd Rabbih (d. 328/940) – is both of high-quality and is accessible <a href="https://archive.org/details/WAQ82391">online</a> (when it is not possible to find the same edition, annotators can use a different edition for collation; however, this needs to be done with care since two editions of the same text may well have a lot of differences). Although at this stage of preparing the text, it is only necessary to tag the structural elements, this process presents its own difficulties and is not as simple as it might seem. For example, in most cases, annotators cannot rely on the books’ table of contents (TOC). This is partly because some structural elements (like individual biographies) do not appear in the TOC. It is also because many published books do not have a TOC. Even when one is included, it may be practically useless for annotation. For example, by comparing the book’s TOC and the human-annotated digital text in figures 1 and 2, it is clear that some of the headings in the text are missing in the book’s TOC. Moreover, the book’s TOC does not accurately reflect the way that headings and subheadings are nested within the book itself. The heading titles are all presented as if the logic is parallel (except <em>Kitab al-Lu’lu’a</em> which is bold), whereas some of them are obviously subordinated to others. In addition, some empty header tags should ideally be added to make the structure coherent. As is evident in figure 3, the author jumps to mentioning the holy wars (<em>ghazawat</em>) of one of the Umayyad caliphs in Andalusia without any heading specifying this shift.</p>
+
+<p><img src="/images/old_posts/HR-1.png" alt="Image" /></p>
+
+<p><strong>Figure 1</strong>: The book’s table of contents.</p>
+
+<p><img src="/images/old_posts/HR-2.png" alt="Image" /></p>
+
+<p><strong>Figure 2</strong>: The human-annotated text. The level of headings are shown by the number of pipe symbols (|) in EditPad Pro, and the colors change accordingly.</p>
+
+<p><img src="/images/old_posts/HR-3.png" alt="Image" /></p>
+
+<p><strong>Figure 3</strong>: Empty header tags should be added in appropriate locations to make the structure of the text coherent</p>
+
+<p>So, to present a useful annotation, annotators need to collate each page with a printed version in order to avoid missing headings, while at the same time exercising judgement about the relationship between headings and subheadings. When you consider that there are on average 2 headings per page in this text, for example, it is clear that the process of tagging can be extremely tedious, while at the same time more intellectually challenging than the mechanical task it may initially appear to be. This is particularly in cases where the annotator has to deal with editions where the structure is poorly marked out or work on dictionaries or biographical collections which include thousands of entries or names all of which need to be tagged (figure 4).</p>
+
+<p><img src="/images/old_posts/HR-4.png" alt="Image" /></p>
+
+<p><strong>Figure 4</strong>: A biographical collection including more than 4000 name entries of men and women tagged separately.</p>
+
+<p>Each digital text is accompanied with a series of yml files. Figure 5 shows a yml file in which annotators keep track of their annotation by recording all relevant information. This includes providing a link to the PDF, links to both the edition of the digital text and the edition of the collated text in <a href="https://www.worldcat.org/">Worldcat library</a>, and any other explanation that is necessary for reviewers. All issues of the digital version (pagination problems, entering HTML tags into the text, redundant or missing parts, etc.) must also be reported in this file so that they can be fixed at a later stage. We also log the contents of the yml files as ‘issues’ on Github so that reviewers double-check the texts at the next step. After vetting, these issues will be closed (click <a href="https://github.com/OpenITI/Annotation/issues">here</a> to see the latest issues for annotated texts on our project).</p>
+
+<p><img src="/images/old_posts/HR-5.png" alt="Image" /></p>
+
+<p><strong>Figure 5</strong>: A yml File</p>
+
+<p>To summarise, annotators must face the probable shortcomings caused by the actors in the text production circle. This circle consists of two groups: one, the producers of the digital texts, and two, the producers of the printed versions including the publishers, editors, and medieval writers. On one side, there might be some problems in the digital texts because they are produced by various research institutions and for a variety of different purposes. These institutions may either intentionally change the structure of the texts by adding or deleting the headings (to adapt the structure to their intended purposes), or unintentionally make mistakes. And on the other side, lacking TOC, faulty TOCs, or the inability to find and present the correct structure of the text are some of the problems related to publishers and editors. Even medieval writers can sometimes be another bugbear as in many of their writings the thematic classification is so haphazard that annotators must spend a lot of time to understand the structure of a text they are working with. Each text usually brings unique difficulties that must be dealt with in a different way and our team is working hard to present the most accurate form as possible for these texts. To date, 550 texts have been tagged and more are in progress. Everything is open access on our corpus and we have a search engine to help you browse through all the texts in the corpus (both annotated and not-yet-annotated). Click <a href="https://kitab-corpus-metadata.azurewebsites.net/">here</a> to start browsing!</p>
+
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+        
+          <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Updated:</strong> <time datetime="2020-06-12T00:00:00+01:00">June 12, 2020</time></p>
+        
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=Tagging the Structure of Texts in the OPENITI Corpus http://localhost:4000/2020/06-12.html" class="btn btn--twitter" title="Share on Twitter"><i class="fa fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/2020/06-12.html" class="btn btn--facebook" title="Share on Facebook"><i class="fa fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://plus.google.com/share?url=http://localhost:4000/2020/06-12.html" class="btn btn--google-plus" title="Share on Google Plus"><i class="fa fa-fw fa-google-plus" aria-hidden="true"></i><span> Google+</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http://localhost:4000/2020/06-12.html" class="btn btn--linkedin" title="Share on LinkedIn"><i class="fa fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="http://localhost:4000/2020/04-22.html" class="pagination--pager" title="Contagion in the Corpus: The Black Death and Where to Find It
+">Previous</a>
+    
+    
+      <a href="http://localhost:4000/2020/06-17.html" class="pagination--pager" title="New Release of Our Open Access Arabic Corpus, OpenITI, version 2020.1.2
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+      <div class="page__comments">
+  
+  
+    <h4 class="page__comments-title">Leave a Comment</h4>
+    <section id="disqus_thread"></section>
+  
+</div>
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      
+        <h4 class="page__related-title">You May Also Enjoy</h4>
+      
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="http://localhost:4000/2021/01-21.html" rel="permalink">Diversifying the OpenITI corpus, One Text at a Time
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+
+
+  9 minute read
+ :: <i>Posted on January 21, 2021</i></p>
+    
+    <p class="archive__item-excerpt" itemprop="description">The vast majority of texts in the OpenITI corpus were sourced from three major collections of digital texts originally prepared by organisations based in the Middle East (see Peter Verkinderen’s excellent blog on the largest of them, Shamela). These collections have proven invaluable to researchers, not in the least...</p>
+  </article>
+</div>
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="http://localhost:4000/2020/12-11.html" rel="permalink">Tracing the origins of a historical fragment focused on the Sāmānids
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+
+
+  2 minute read
+ :: <i>Posted on December 11, 2020</i></p>
+    
+    <p class="archive__item-excerpt" itemprop="description">At the Arabic Pasts conference this year, Hugh Kennedy and I presented a paper in the panel dedicated to the Invisible East program, chaired by the program’s PI Arezou Azad. The paper focused on a fragment from an as-yet-unknown Arabic historical text, focused on the Sāmānid dynasty of the 4th/10th century. The frag...</p>
+  </article>
+</div>
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="http://localhost:4000/2020/12-03.html" rel="permalink">Al-Maktaba al-Shāmila: a short history
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+
+
+  10 minute read
+ :: <i>Posted on December 3, 2020</i></p>
+    
+    <p class="archive__item-excerpt" itemprop="description">(This is the first blog post in a longer series of posts about the sources of OpenITI)
+
+Al-Maktaba al-Shāmila (“The comprehensive library”, often referred to simply as Shamela) is a free software that aims at providing a digital research environment for Islamic scholars, and comes with a large collection of Arabic p...</p>
+  </article>
+</div>
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="http://localhost:4000/2020/11-19.html" rel="permalink">KITAB postdoc Gowaart Van Den Bossche wins BRAIS-De Gruyter dissertation prize – 2020
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+
+
+  less than 1 minute read
+ :: <i>Posted on November 19, 2020</i></p>
+    
+    <p class="archive__item-excerpt" itemprop="description">The British Association for Islamic Studies (BRAIS) and De Gruyter have announced the outcome of the fifth (2020) round of the BRAIS – De Gruyter Prize in the Study of Islam and the Muslim World. The winning submission is Gowaart Van Den Bossche’s PhD thesis, which he defended in 2019 at Ghent University, right befo...</p>
+  </article>
+</div>
+        
+      </div>
+    </div>
+  
+</div>
+
+    <div class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+    
+    
+    
+      <li><a href="http://github.com/https://github.com/kitab-project-org/"><i class="fa fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+    
+    
+    <li><a href="http://localhost:4000/feed.xml"><i class="fa fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2021 Knowledge, Information Technology, and the Arabic Book. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+      </footer>
+    </div>
+
+    <script src="http://localhost:4000/assets/js/main.min.js"></script>
+
+
+
+
+
+  
+
+
+
+
+
+  </body>
+</html>

@@ -1,0 +1,510 @@
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin SEO -->
+
+
+
+
+
+
+
+
+
+<title>A First Look at KITAB’s Data - KITAB Project</title>
+
+
+
+
+<meta name="description" content="The digital revolution is arriving rather late to Middle Eastern Studies, but it is coming fast.Now, we can see the written tradition at a distance with KITAB’s first dataset. Spoiler: it is hugely intertexual.There are important caveats: we need to build a more representative corpus; the text reuse software that we use needs further optimization. Still, I would propose that we can already learn a lot.Let me describe this dataset, and some of what we can see at first glance. I base my comments on statistics that the KITAB team assembled this summer and which we are studying with Microsoft PowerBi (a suite of analytics tools).Bear with me as what follows will necessarily be a bit granular.We ran passim — text reuse software developed by David Smith — on the entirety of KITAB’s corpus, comparing the words of each of 4,260 books to the words of every other text (~18 million book comparisons). This process – including a 5-gram “shingling” method – involves a few simple steps repeated trillions of times as passim searches for, and aligns, common passages. Every time it found a common passage including at least 10 but up to 300 words, it created a record of the match within a file dedicated to the relationship between the two books (so, potentially ~18 million files containing billions of records).In total, passim generated 1.03 million such files, containing ~23 billion records (or instances of reuse) made up of 983 billion words. This means that 5.7% of the time, in comparing any book in the corpus to any other book in the corpus, it found at least one instance of common wording. This might seem remarkable. These books were comprehensively paired – the equivalent of comparing Wuthering Heights and King Lear – and 5.7% of the time passim found a common passage between such pairs. But, as with English greats, there are accidents of language, especially given the frequency of many Arabic names, words, and phrases.Figure 1: The above comparison represents an insignificant record of reuse. On the left is a passage from the Musnad of Aḥmad b. Ḥanbal (d. 241/855), and on the right, a passage from the Kitāb al-Tawḥīd by Ibn Bābawayh (d. 381/991-2).  Passim detects this single instance of reuse, whereas the Musnad totals ~1.7 million words and the Kitāb al-Tawḥīd 140 thousand.So where between two books, there is only one such instance of reuse recorded, the substance of reuse is virtually always of no interest and documents no meaningful relationship between the books (e.g., no direct use, no major common source). Similarly, 2 or 3 records of reuse are (most) often matters of pure accident. Of the ~1 million files, approximately 600,000 have only 3 or fewer records.The graph here shows how much the data is dominated by files documenting, frankly, meaningless relationships. The y-axis shows the number of files, and the x-axis the number of records for a pair of compared books (specifically, 1 = at least one record in a file; 2 = at least two records, and so on). The number of files drops steeply as the number of records increases. There were ~18 million possible matches, and ~1 million times books match with at least 1 record. By comparison, as the far right of the graph shows, there are about ~32,000 files with at least 100 such matches.We do not know, yet, at what point we can assume two texts to start having a historically meaningful relationship based on counting such instances – and there was likely no specific tipping point, say 4 or 5. But what is much more interesting is that most books in our corpus do have a much more substantial relationship with at least one other book, and that a very large number of them have very substantial ones. In in other words, it is uncommon to find a book that is independent of all others. This is another way of slicing the same data.The above graph shows that many of our works have very much in common with other works. The y-axis shows the number of books, and the x-axis the number of records (specifically, 1 = at least one record in a file; 2 = at least two records, and so on). Of the 4,260 books analysed, 3,606 – or 85% – have at least 20 common passages with another book. As you can see at the far right of the graph, of the 4,260 books, just over half (2,332) contain at least 100 records of common passages with another book.So, whereas many relationships are meaningless, we do have many meaningful ones. And most books are meaningfully linked to other books.What is perhaps more interesting, and ready for our analysis now, is the outliers – the cases where reuse is enormous. Filtering our data shows the following, for example:      For 25% of our 4,260 books, more than 50% of the book matches with at least one other book in the corpus (reckoned by word count); similarly, for 18% of our corpus, or 757 books, our approach identified1,000 or more instances of text reuse with another book;        Works typically classified as pertaining to Hadith are massively intertextual. For example, despite the example of meaningless reuse cited above, the Musnad of Aḥmad b. Ḥanbal (d. 241/855) shares hundreds of thousands of words with other individual books;        Many authors substantially repeat themselves.  This high degree of reuse should make us reconsider many assumptions we have about the textual tradition as a whole – including, for example, how people who produced such works conceived of what they were doing.In the coming weeks and months, stay tuned as we report more overviews and details from this dataset and other sets that we are working on now.Up next: Taking the Measure of “Self Reuse”">
+
+
+
+
+<meta property="og:locale" content="en">
+<meta property="og:site_name" content="KITAB Project">
+<meta property="og:title" content="A First Look at KITAB’s Data">
+
+
+  <link rel="canonical" href="http://localhost:4000/2018/09-07.html">
+  <meta property="og:url" content="http://localhost:4000/2018/09-07.html">
+
+
+
+  <meta property="og:description" content="The digital revolution is arriving rather late to Middle Eastern Studies, but it is coming fast.Now, we can see the written tradition at a distance with KITAB’s first dataset. Spoiler: it is hugely intertexual.There are important caveats: we need to build a more representative corpus; the text reuse software that we use needs further optimization. Still, I would propose that we can already learn a lot.Let me describe this dataset, and some of what we can see at first glance. I base my comments on statistics that the KITAB team assembled this summer and which we are studying with Microsoft PowerBi (a suite of analytics tools).Bear with me as what follows will necessarily be a bit granular.We ran passim — text reuse software developed by David Smith — on the entirety of KITAB’s corpus, comparing the words of each of 4,260 books to the words of every other text (~18 million book comparisons). This process – including a 5-gram “shingling” method – involves a few simple steps repeated trillions of times as passim searches for, and aligns, common passages. Every time it found a common passage including at least 10 but up to 300 words, it created a record of the match within a file dedicated to the relationship between the two books (so, potentially ~18 million files containing billions of records).In total, passim generated 1.03 million such files, containing ~23 billion records (or instances of reuse) made up of 983 billion words. This means that 5.7% of the time, in comparing any book in the corpus to any other book in the corpus, it found at least one instance of common wording. This might seem remarkable. These books were comprehensively paired – the equivalent of comparing Wuthering Heights and King Lear – and 5.7% of the time passim found a common passage between such pairs. But, as with English greats, there are accidents of language, especially given the frequency of many Arabic names, words, and phrases.Figure 1: The above comparison represents an insignificant record of reuse. On the left is a passage from the Musnad of Aḥmad b. Ḥanbal (d. 241/855), and on the right, a passage from the Kitāb al-Tawḥīd by Ibn Bābawayh (d. 381/991-2).  Passim detects this single instance of reuse, whereas the Musnad totals ~1.7 million words and the Kitāb al-Tawḥīd 140 thousand.So where between two books, there is only one such instance of reuse recorded, the substance of reuse is virtually always of no interest and documents no meaningful relationship between the books (e.g., no direct use, no major common source). Similarly, 2 or 3 records of reuse are (most) often matters of pure accident. Of the ~1 million files, approximately 600,000 have only 3 or fewer records.The graph here shows how much the data is dominated by files documenting, frankly, meaningless relationships. The y-axis shows the number of files, and the x-axis the number of records for a pair of compared books (specifically, 1 = at least one record in a file; 2 = at least two records, and so on). The number of files drops steeply as the number of records increases. There were ~18 million possible matches, and ~1 million times books match with at least 1 record. By comparison, as the far right of the graph shows, there are about ~32,000 files with at least 100 such matches.We do not know, yet, at what point we can assume two texts to start having a historically meaningful relationship based on counting such instances – and there was likely no specific tipping point, say 4 or 5. But what is much more interesting is that most books in our corpus do have a much more substantial relationship with at least one other book, and that a very large number of them have very substantial ones. In in other words, it is uncommon to find a book that is independent of all others. This is another way of slicing the same data.The above graph shows that many of our works have very much in common with other works. The y-axis shows the number of books, and the x-axis the number of records (specifically, 1 = at least one record in a file; 2 = at least two records, and so on). Of the 4,260 books analysed, 3,606 – or 85% – have at least 20 common passages with another book. As you can see at the far right of the graph, of the 4,260 books, just over half (2,332) contain at least 100 records of common passages with another book.So, whereas many relationships are meaningless, we do have many meaningful ones. And most books are meaningfully linked to other books.What is perhaps more interesting, and ready for our analysis now, is the outliers – the cases where reuse is enormous. Filtering our data shows the following, for example:      For 25% of our 4,260 books, more than 50% of the book matches with at least one other book in the corpus (reckoned by word count); similarly, for 18% of our corpus, or 757 books, our approach identified1,000 or more instances of text reuse with another book;        Works typically classified as pertaining to Hadith are massively intertextual. For example, despite the example of meaningless reuse cited above, the Musnad of Aḥmad b. Ḥanbal (d. 241/855) shares hundreds of thousands of words with other individual books;        Many authors substantially repeat themselves.  This high degree of reuse should make us reconsider many assumptions we have about the textual tradition as a whole – including, for example, how people who produced such works conceived of what they were doing.In the coming weeks and months, stay tuned as we report more overviews and details from this dataset and other sets that we are working on now.Up next: Taking the Measure of “Self Reuse”">
+
+
+
+
+
+  
+
+  
+
+
+
+
+
+  <meta property="og:type" content="article">
+  <meta property="article:published_time" content="2018-09-07T00:00:00+01:00">
+
+
+
+
+
+
+
+
+  <script type="application/ld+json">
+    {
+      "@context" : "http://schema.org",
+      "@type" : "Person",
+      "name" : "Knowledge, Information Technology, and the Arabic Book",
+      "url" : "http://localhost:4000",
+      "sameAs" : null
+    }
+  </script>
+
+
+
+
+
+
+<!-- end SEO -->
+
+
+<link href="http://localhost:4000/feed.xml" type="application/atom+xml" rel="alternate" title="KITAB Project Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://localhost:4000/assets/css/main.css">
+
+<meta http-equiv="cleartype" content="on">
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use http://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+  </head>
+
+  <body class="layout--single">
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+    <div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        <button><div class="navicon"></div></button>
+        <ul class="visible-links">
+          <li class="masthead__menu-item masthead__menu-item--lg"><a href="http://localhost:4000/">KITAB Project</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000">Blog</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/pilot/">Our Pilot</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/corpus/">Corpus (OpenITI)</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/methods/">Text Reuse Methods</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/about/">About the Project</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/about-passim/">About passim</a></li>
+          
+        </ul>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+    
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+<div itemscope itemtype="http://schema.org/Person">
+
+  
+
+  <div class="author__content">
+    <h3 class="author__name" itemprop="name">Sarah Savant</h3>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs">
+      <i class="fa fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+  <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
+    <meta itemprop="headline" content="A First Look at KITAB’s Data">
+    <meta itemprop="description" content="The digital revolution is arriving rather late to Middle Eastern Studies, but it is coming fast.Now, we can see the written tradition at a distance with KITAB’s first dataset. Spoiler: it is hugely intertexual.There are important caveats: we need to build a more representative corpus; the text reuse software that we use needs further optimization. Still, I would propose that we can already learn a lot.Let me describe this dataset, and some of what we can see at first glance. I base my comments on statistics that the KITAB team assembled this summer and which we are studying with Microsoft PowerBi (a suite of analytics tools).Bear with me as what follows will necessarily be a bit granular.We ran passim — text reuse software developed by David Smith — on the entirety of KITAB’s corpus, comparing the words of each of 4,260 books to the words of every other text (~18 million book comparisons). This process – including a 5-gram “shingling” method – involves a few simple steps repeated trillions of times as passim searches for, and aligns, common passages. Every time it found a common passage including at least 10 but up to 300 words, it created a record of the match within a file dedicated to the relationship between the two books (so, potentially ~18 million files containing billions of records).In total, passim generated 1.03 million such files, containing ~23 billion records (or instances of reuse) made up of 983 billion words. This means that 5.7% of the time, in comparing any book in the corpus to any other book in the corpus, it found at least one instance of common wording. This might seem remarkable. These books were comprehensively paired – the equivalent of comparing Wuthering Heights and King Lear – and 5.7% of the time passim found a common passage between such pairs. But, as with English greats, there are accidents of language, especially given the frequency of many Arabic names, words, and phrases.Figure 1: The above comparison represents an insignificant record of reuse. On the left is a passage from the Musnad of Aḥmad b. Ḥanbal (d. 241/855), and on the right, a passage from the Kitāb al-Tawḥīd by Ibn Bābawayh (d. 381/991-2).  Passim detects this single instance of reuse, whereas the Musnad totals ~1.7 million words and the Kitāb al-Tawḥīd 140 thousand.So where between two books, there is only one such instance of reuse recorded, the substance of reuse is virtually always of no interest and documents no meaningful relationship between the books (e.g., no direct use, no major common source). Similarly, 2 or 3 records of reuse are (most) often matters of pure accident. Of the ~1 million files, approximately 600,000 have only 3 or fewer records.The graph here shows how much the data is dominated by files documenting, frankly, meaningless relationships. The y-axis shows the number of files, and the x-axis the number of records for a pair of compared books (specifically, 1 = at least one record in a file; 2 = at least two records, and so on). The number of files drops steeply as the number of records increases. There were ~18 million possible matches, and ~1 million times books match with at least 1 record. By comparison, as the far right of the graph shows, there are about ~32,000 files with at least 100 such matches.We do not know, yet, at what point we can assume two texts to start having a historically meaningful relationship based on counting such instances – and there was likely no specific tipping point, say 4 or 5. But what is much more interesting is that most books in our corpus do have a much more substantial relationship with at least one other book, and that a very large number of them have very substantial ones. In in other words, it is uncommon to find a book that is independent of all others. This is another way of slicing the same data.The above graph shows that many of our works have very much in common with other works. The y-axis shows the number of books, and the x-axis the number of records (specifically, 1 = at least one record in a file; 2 = at least two records, and so on). Of the 4,260 books analysed, 3,606 – or 85% – have at least 20 common passages with another book. As you can see at the far right of the graph, of the 4,260 books, just over half (2,332) contain at least 100 records of common passages with another book.So, whereas many relationships are meaningless, we do have many meaningful ones. And most books are meaningfully linked to other books.What is perhaps more interesting, and ready for our analysis now, is the outliers – the cases where reuse is enormous. Filtering our data shows the following, for example:      For 25% of our 4,260 books, more than 50% of the book matches with at least one other book in the corpus (reckoned by word count); similarly, for 18% of our corpus, or 757 books, our approach identified1,000 or more instances of text reuse with another book;        Works typically classified as pertaining to Hadith are massively intertextual. For example, despite the example of meaningless reuse cited above, the Musnad of Aḥmad b. Ḥanbal (d. 241/855) shares hundreds of thousands of words with other individual books;        Many authors substantially repeat themselves.  This high degree of reuse should make us reconsider many assumptions we have about the textual tradition as a whole – including, for example, how people who produced such works conceived of what they were doing.In the coming weeks and months, stay tuned as we report more overviews and details from this dataset and other sets that we are working on now.Up next: Taking the Measure of “Self Reuse”">
+    <meta itemprop="datePublished" content="September 07, 2018">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 class="page__title" itemprop="headline">A First Look at KITAB’s Data
+</h1>
+          
+            <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+
+
+  4 minute read
+ :: <i>Posted on September 7, 2018</i></p>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        <p>The digital revolution is arriving rather late to Middle Eastern Studies, but it is coming fast.</p>
+
+<p>Now, we can see the written tradition at a distance with KITAB’s first dataset. Spoiler: it is hugely intertexual.</p>
+
+<p>There are important caveats: we need to build a more representative corpus; the text reuse software that we use needs further optimization. Still, I would propose that we can already learn a lot.</p>
+
+<p>Let me describe this dataset, and some of what we can see at first glance. I base my comments on statistics that the KITAB team assembled this summer and which we are studying with Microsoft PowerBi (a suite of analytics tools).</p>
+
+<p>Bear with me as what follows will necessarily be a bit granular.</p>
+
+<p>We ran <a href="/about-passim/">passim</a> — text reuse software developed by <a href="/about/">David Smith</a> — on the entirety of <a href="https://github.com/OpenITI/">KITAB’s corpus</a>, comparing the words of each of 4,260 books to the words of every other text (~18 million book comparisons). This process – including a 5-gram “shingling” method – involves a few simple steps repeated trillions of times as passim searches for, and aligns, common passages. Every time it found a common passage including at least 10 but up to 300 words, it created a record of the match within a file dedicated to the relationship between the two books (so, potentially ~18 million files containing billions of records).</p>
+
+<p>In total, passim generated 1.03 million such files, containing ~23 billion records (or instances of reuse) made up of 983 billion words. This means that 5.7% of the time, in comparing any book in the corpus to any other book in the corpus, it found at least one instance of common wording. This might seem remarkable. These books were comprehensively paired – the equivalent of comparing Wuthering Heights and King Lear – and 5.7% of the time passim found a common passage between such pairs. But, as with English greats, there are accidents of language, especially given the frequency of many Arabic names, words, and phrases.</p>
+
+<p><img src="/images/old_posts/Musnad_Tawhid.jpg" alt="Image" /></p>
+
+<p><strong>Figure 1</strong>: The above comparison represents an insignificant record of reuse. On the left is a passage from the <a href="https://github.com/OpenITI/0250AH/blob/master/data/0241IbnHanbal/0241IbnHanbal.Musnad/0241IbnHanbal.Musnad.JK000145-ara1"><em>Musnad</em></a> of Aḥmad b. Ḥanbal (d. 241/855), and on the right, a passage from the <a href="https://github.com/OpenITI/0400AH/blob/master/data/0381IbnBabawayh/0381IbnBabawayh.Tawhid/0381IbnBabawayh.Tawhid.Shia001136-ara1"><em>Kitāb al-Tawḥīd</em></a> by Ibn Bābawayh (d. 381/991-2).  Passim detects this single instance of reuse, whereas the <em>Musnad</em> totals ~1.7 million words and the <em>Kitāb al-Tawḥīd</em> 140 thousand.</p>
+
+<p>So where between two books, there is only one such instance of reuse recorded, the substance of reuse is virtually always of no interest and documents no meaningful relationship between the books (e.g., no direct use, no major common source). Similarly, 2 or 3 records of reuse are (most) often matters of pure accident. Of the ~1 million files, approximately 600,000 have only 3 or fewer records.</p>
+
+<p><img src="/images/old_posts/srtfilesByinstances-1024x432.png" alt="Image" /></p>
+
+<p>The graph here shows how much the data is dominated by files documenting, frankly, meaningless relationships. The y-axis shows the number of files, and the x-axis the number of records for a pair of compared books (specifically, 1 = at least one record in a file; 2 = at least two records, and so on). The number of files drops steeply as the number of records increases. There were ~18 million possible matches, and ~1 million times books match with at least 1 record. By comparison, as the far right of the graph shows, there are about ~32,000 files with at least 100 such matches.</p>
+
+<p>We do not know, yet, at what point we can assume two texts to start having a historically meaningful relationship based on counting such instances – and there was likely no specific tipping point, say 4 or 5. But what is much more interesting is that most books in our corpus do have a much more substantial relationship with at least one other book, and that a very large number of them have very substantial ones. In in other words, it is uncommon to find a book that is independent of all others. This is another way of slicing the same data.</p>
+
+<p><img src="/images/old_posts/bookbyinstances-2-1024x491.png" alt="Image" /></p>
+
+<p>The above graph shows that many of our works have very much in common with other works. The y-axis shows the number of books, and the x-axis the number of records (specifically, 1 = at least one record in a file; 2 = at least two records, and so on). Of the 4,260 books analysed, 3,606 – or 85% – have at least 20 common passages with another book. As you can see at the far right of the graph, of the 4,260 books, just over half (2,332) contain at least 100 records of common passages with another book.</p>
+
+<p>So, whereas many relationships are meaningless, we do have many meaningful ones. And most books are meaningfully linked to other books.</p>
+
+<p>What is perhaps more interesting, and ready for our analysis now, is the outliers – the cases where reuse is enormous. Filtering our data shows the following, for example:</p>
+
+<ul>
+  <li>
+    <p>For 25% of our 4,260 books, more than 50% of the book matches with at least one other book in the corpus (reckoned by word count); similarly, for 18% of our corpus, or 757 books, our approach identified1,000 or more instances of text reuse with another book;</p>
+  </li>
+  <li>
+    <p>Works typically classified as pertaining to Hadith are massively intertextual. For example, despite the example of meaningless reuse cited above, the <em>Musnad</em> of Aḥmad b. Ḥanbal (d. 241/855) shares hundreds of thousands of words with other individual books;</p>
+  </li>
+  <li>
+    <p>Many authors substantially repeat themselves.</p>
+  </li>
+</ul>
+
+<p>This high degree of reuse should make us reconsider many assumptions we have about the textual tradition as a whole – including, for example, how people who produced such works conceived of what they were doing.</p>
+
+<p>In the coming weeks and months, stay tuned as we report more overviews and details from this dataset and other sets that we are working on now.</p>
+
+<p>Up next: Taking the Measure of “Self Reuse”</p>
+
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+        
+          <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Updated:</strong> <time datetime="2018-09-07T00:00:00+01:00">September 07, 2018</time></p>
+        
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=A First Look at KITAB’s Data http://localhost:4000/2018/09-07.html" class="btn btn--twitter" title="Share on Twitter"><i class="fa fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/2018/09-07.html" class="btn btn--facebook" title="Share on Facebook"><i class="fa fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://plus.google.com/share?url=http://localhost:4000/2018/09-07.html" class="btn btn--google-plus" title="Share on Google Plus"><i class="fa fa-fw fa-google-plus" aria-hidden="true"></i><span> Google+</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http://localhost:4000/2018/09-07.html" class="btn btn--linkedin" title="Share on LinkedIn"><i class="fa fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="http://localhost:4000/2018/09-02.html" class="pagination--pager" title="KITAB is welcoming a new member!
+">Previous</a>
+    
+    
+      <a href="http://localhost:4000/2018/09-08.html" class="pagination--pager" title="We are hiring
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+      <div class="page__comments">
+  
+  
+    <h4 class="page__comments-title">Leave a Comment</h4>
+    <section id="disqus_thread"></section>
+  
+</div>
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      
+        <h4 class="page__related-title">You May Also Enjoy</h4>
+      
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="http://localhost:4000/2021/01-21.html" rel="permalink">Diversifying the OpenITI corpus, One Text at a Time
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+
+
+  9 minute read
+ :: <i>Posted on January 21, 2021</i></p>
+    
+    <p class="archive__item-excerpt" itemprop="description">The vast majority of texts in the OpenITI corpus were sourced from three major collections of digital texts originally prepared by organisations based in the Middle East (see Peter Verkinderen’s excellent blog on the largest of them, Shamela). These collections have proven invaluable to researchers, not in the least...</p>
+  </article>
+</div>
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="http://localhost:4000/2020/12-11.html" rel="permalink">Tracing the origins of a historical fragment focused on the Sāmānids
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+
+
+  2 minute read
+ :: <i>Posted on December 11, 2020</i></p>
+    
+    <p class="archive__item-excerpt" itemprop="description">At the Arabic Pasts conference this year, Hugh Kennedy and I presented a paper in the panel dedicated to the Invisible East program, chaired by the program’s PI Arezou Azad. The paper focused on a fragment from an as-yet-unknown Arabic historical text, focused on the Sāmānid dynasty of the 4th/10th century. The frag...</p>
+  </article>
+</div>
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="http://localhost:4000/2020/12-03.html" rel="permalink">Al-Maktaba al-Shāmila: a short history
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+
+
+  10 minute read
+ :: <i>Posted on December 3, 2020</i></p>
+    
+    <p class="archive__item-excerpt" itemprop="description">(This is the first blog post in a longer series of posts about the sources of OpenITI)
+
+Al-Maktaba al-Shāmila (“The comprehensive library”, often referred to simply as Shamela) is a free software that aims at providing a digital research environment for Islamic scholars, and comes with a large collection of Arabic p...</p>
+  </article>
+</div>
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="http://localhost:4000/2020/11-19.html" rel="permalink">KITAB postdoc Gowaart Van Den Bossche wins BRAIS-De Gruyter dissertation prize – 2020
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+
+
+  less than 1 minute read
+ :: <i>Posted on November 19, 2020</i></p>
+    
+    <p class="archive__item-excerpt" itemprop="description">The British Association for Islamic Studies (BRAIS) and De Gruyter have announced the outcome of the fifth (2020) round of the BRAIS – De Gruyter Prize in the Study of Islam and the Muslim World. The winning submission is Gowaart Van Den Bossche’s PhD thesis, which he defended in 2019 at Ghent University, right befo...</p>
+  </article>
+</div>
+        
+      </div>
+    </div>
+  
+</div>
+
+    <div class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+    
+    
+    
+      <li><a href="http://github.com/https://github.com/kitab-project-org/"><i class="fa fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+    
+    
+    <li><a href="http://localhost:4000/feed.xml"><i class="fa fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2021 Knowledge, Information Technology, and the Arabic Book. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+      </footer>
+    </div>
+
+    <script src="http://localhost:4000/assets/js/main.min.js"></script>
+
+
+
+
+
+  
+
+
+
+
+
+  </body>
+</html>

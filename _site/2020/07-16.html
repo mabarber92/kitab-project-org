@@ -1,0 +1,487 @@
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin SEO -->
+
+
+
+
+
+
+
+
+
+<title>OpenITI, OCR, and Textual Criticism - KITAB Project</title>
+
+
+
+
+<meta name="description" content="In previous posts, other members of the KITAB team have talked about building the OpenITI corpus of Arabic and Persian sources. Many members of the team are also working to build better optical character recognition (OCR) systems in the Arabic-script OCR Catalyst Project (AOCP). The better we can automatically turn images of printed Arabic into machine-readable texts, the better we can help readers and researchers find and engage with these texts. OpenITI and AOCP, we shall see, are complementary in several ways. Under different guises, they are also both examples of that oldest of undertakings of the humanities: textual criticism.What do we need to build an OCR system?  Most of today’s systems use supervised learning. When building the OCR system, we compile pairs of images and the text contained in those images and then use a machine learning algorithm to adjust the system’s parameters in response to these desired input-output pairs. In general, these algorithms work by adjusting the parameters more drastically on those examples where the system performs particularly poorly.What kinds of images should we use for training OCR? For many languages and applications, the answer was to employ isolated characters, as in the MNIST database of images for handwritten digit recognition, a widely-used benchmark in computer vision. For ten numerals, or writing systems with a few hundred letters and special characters, this might be an attractive strategy. For connected scripts like Arabic, however, training systems with isolated characters has some drawbacks. Even if we catalog variant initial, medial, and final forms in one typeface or manuscript hand, we would need to segment the images, as well, which is much more time consuming. Similar issues arise in speech recognition, where the distinct “phonemic” sounds of a language change their sound depending on surrounding sounds and our lips might be forming the next sound when our tongue is still tapping our teeth for the last.Instead, OCR (and speech recognition) systems can take advantage of algorithms that align complete lines of writing with transcriptions of those lines. It is much easier to ask human annotators (and computer vision models) to mark full lines than to delimit where one cursive letter ends and the next begins. This is even more true in writing systems such as Arabic, where characters also overlap in the vertical dimension, as in this manuscript example:In the eScriptorium annotation tool, the upper image highlights one line of the manuscript, which the user has transcribed in the lower panel. We can send this selected image region and transcribed text to the Kraken OCR engine to train a new system.It’s convenient that we can avoid the tedium of segmenting one Arabic letter from the next—or even each word from the next—on a line of type. And it’s especially convenient that automatic line-segmentation models can break a page image into lines without much need for user correction. (The blue underlines in the image below show some of Ben Kiessling’s recent work on Kraken.) But what about the remaining task? It still sounds like a lot of work to type the contents of each line to tell the OCR system what output it should get from each input line image. This is where our ongoing work on the OpenITI corpus can help. Rather than asking, What is the transcription for this image?, we can ask, Are there any images that correspond to this text we’ve already transcribed? As in many machine learning scenarios, there is a bit of a chicken-and-egg problem here. In order to find images that correspond to OpenITI texts, we need some information about those images. As it happens, for many typefaces, we can train an OCR model that transcribes 50% or 60% of a book’s characters correctly using only a few thousand lines of cleanly-transcribed training data. We can then apply this model to images to produce approximate transcriptions, or use already existing noisy OCR output from sources such as the HathiTrust library of scanned books. We then employ the same passim software we use elsewhere in the KITAB project to identify text reuse among books. This gives us an alignment between the clean transcription in OpenITI and the noisy transcription from the OCR. Importantly, the OCR output tells us where on the page each line is. We can thus infer that clean, OpenITI text that aligns to dirty OCR is an approximate transcription for that line. Such pairs of clean transcriptions and line images are precisely what we need to train better OCR systems. I’ll leave aside for now some other aspects of our OCR work, such as locating different page regions, from notes to marginalia, to running headers, on the basis of OpenITI annotations.I’ll close by considering how OCR and other technologies relate to more traditional methods of producing editions of ancient texts for us to read. When we read, in print or on the screen, texts that were written before the age of mechanical reproduction, we know that someone, perhaps centuries after the original manuscript, made choices about what to print. Even before the advent of systematic textual editing, let alone editing with computer models, enthusiasts like Petrarch hunted for manuscripts of ancient texts so they could read them. Copies made by enthusiastic amateurs sometimes provide our only evidence for some ancient works. While it’s not the case that Shamela and other community archives preserve texts found nowhere else, it is helpful, I think, to consider them as manuscript sources. OCR transcriptions of digital page images, for all their flaws, can also be considered “editions” (as my colleague Ryan Cordell argues) or again, as I would argue, the source material for editions in the OpenITI. The process described above of aligning texts in the OpenITI corpus with noisy transcriptions produced by OCR is thus a form of textual collation, the system by which textual critics organize the evidence of their sources in order to produce an edition.Like textual criticism, therefore, OCR is a technology that helps us go from less accessible source materials to texts searchable, readable, and usable by a wider audience. This work, for printed books and manuscripts, is still ongoing, and we hope to share more in the future.">
+
+
+
+
+<meta property="og:locale" content="en">
+<meta property="og:site_name" content="KITAB Project">
+<meta property="og:title" content="OpenITI, OCR, and Textual Criticism">
+
+
+  <link rel="canonical" href="http://localhost:4000/2020/07-16.html">
+  <meta property="og:url" content="http://localhost:4000/2020/07-16.html">
+
+
+
+  <meta property="og:description" content="In previous posts, other members of the KITAB team have talked about building the OpenITI corpus of Arabic and Persian sources. Many members of the team are also working to build better optical character recognition (OCR) systems in the Arabic-script OCR Catalyst Project (AOCP). The better we can automatically turn images of printed Arabic into machine-readable texts, the better we can help readers and researchers find and engage with these texts. OpenITI and AOCP, we shall see, are complementary in several ways. Under different guises, they are also both examples of that oldest of undertakings of the humanities: textual criticism.What do we need to build an OCR system?  Most of today’s systems use supervised learning. When building the OCR system, we compile pairs of images and the text contained in those images and then use a machine learning algorithm to adjust the system’s parameters in response to these desired input-output pairs. In general, these algorithms work by adjusting the parameters more drastically on those examples where the system performs particularly poorly.What kinds of images should we use for training OCR? For many languages and applications, the answer was to employ isolated characters, as in the MNIST database of images for handwritten digit recognition, a widely-used benchmark in computer vision. For ten numerals, or writing systems with a few hundred letters and special characters, this might be an attractive strategy. For connected scripts like Arabic, however, training systems with isolated characters has some drawbacks. Even if we catalog variant initial, medial, and final forms in one typeface or manuscript hand, we would need to segment the images, as well, which is much more time consuming. Similar issues arise in speech recognition, where the distinct “phonemic” sounds of a language change their sound depending on surrounding sounds and our lips might be forming the next sound when our tongue is still tapping our teeth for the last.Instead, OCR (and speech recognition) systems can take advantage of algorithms that align complete lines of writing with transcriptions of those lines. It is much easier to ask human annotators (and computer vision models) to mark full lines than to delimit where one cursive letter ends and the next begins. This is even more true in writing systems such as Arabic, where characters also overlap in the vertical dimension, as in this manuscript example:In the eScriptorium annotation tool, the upper image highlights one line of the manuscript, which the user has transcribed in the lower panel. We can send this selected image region and transcribed text to the Kraken OCR engine to train a new system.It’s convenient that we can avoid the tedium of segmenting one Arabic letter from the next—or even each word from the next—on a line of type. And it’s especially convenient that automatic line-segmentation models can break a page image into lines without much need for user correction. (The blue underlines in the image below show some of Ben Kiessling’s recent work on Kraken.) But what about the remaining task? It still sounds like a lot of work to type the contents of each line to tell the OCR system what output it should get from each input line image. This is where our ongoing work on the OpenITI corpus can help. Rather than asking, What is the transcription for this image?, we can ask, Are there any images that correspond to this text we’ve already transcribed? As in many machine learning scenarios, there is a bit of a chicken-and-egg problem here. In order to find images that correspond to OpenITI texts, we need some information about those images. As it happens, for many typefaces, we can train an OCR model that transcribes 50% or 60% of a book’s characters correctly using only a few thousand lines of cleanly-transcribed training data. We can then apply this model to images to produce approximate transcriptions, or use already existing noisy OCR output from sources such as the HathiTrust library of scanned books. We then employ the same passim software we use elsewhere in the KITAB project to identify text reuse among books. This gives us an alignment between the clean transcription in OpenITI and the noisy transcription from the OCR. Importantly, the OCR output tells us where on the page each line is. We can thus infer that clean, OpenITI text that aligns to dirty OCR is an approximate transcription for that line. Such pairs of clean transcriptions and line images are precisely what we need to train better OCR systems. I’ll leave aside for now some other aspects of our OCR work, such as locating different page regions, from notes to marginalia, to running headers, on the basis of OpenITI annotations.I’ll close by considering how OCR and other technologies relate to more traditional methods of producing editions of ancient texts for us to read. When we read, in print or on the screen, texts that were written before the age of mechanical reproduction, we know that someone, perhaps centuries after the original manuscript, made choices about what to print. Even before the advent of systematic textual editing, let alone editing with computer models, enthusiasts like Petrarch hunted for manuscripts of ancient texts so they could read them. Copies made by enthusiastic amateurs sometimes provide our only evidence for some ancient works. While it’s not the case that Shamela and other community archives preserve texts found nowhere else, it is helpful, I think, to consider them as manuscript sources. OCR transcriptions of digital page images, for all their flaws, can also be considered “editions” (as my colleague Ryan Cordell argues) or again, as I would argue, the source material for editions in the OpenITI. The process described above of aligning texts in the OpenITI corpus with noisy transcriptions produced by OCR is thus a form of textual collation, the system by which textual critics organize the evidence of their sources in order to produce an edition.Like textual criticism, therefore, OCR is a technology that helps us go from less accessible source materials to texts searchable, readable, and usable by a wider audience. This work, for printed books and manuscripts, is still ongoing, and we hope to share more in the future.">
+
+
+
+
+
+  
+
+  
+
+
+
+
+
+  <meta property="og:type" content="article">
+  <meta property="article:published_time" content="2020-07-16T00:00:00+01:00">
+
+
+
+
+
+
+
+
+  <script type="application/ld+json">
+    {
+      "@context" : "http://schema.org",
+      "@type" : "Person",
+      "name" : "Knowledge, Information Technology, and the Arabic Book",
+      "url" : "http://localhost:4000",
+      "sameAs" : null
+    }
+  </script>
+
+
+
+
+
+
+<!-- end SEO -->
+
+
+<link href="http://localhost:4000/feed.xml" type="application/atom+xml" rel="alternate" title="KITAB Project Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://localhost:4000/assets/css/main.css">
+
+<meta http-equiv="cleartype" content="on">
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use http://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+  </head>
+
+  <body class="layout--single">
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+    <div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        <button><div class="navicon"></div></button>
+        <ul class="visible-links">
+          <li class="masthead__menu-item masthead__menu-item--lg"><a href="http://localhost:4000/">KITAB Project</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000">Blog</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/pilot/">Our Pilot</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/corpus/">Corpus (OpenITI)</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/methods/">Text Reuse Methods</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/about/">About the Project</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/about-passim/">About passim</a></li>
+          
+        </ul>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+    
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+<div itemscope itemtype="http://schema.org/Person">
+
+  
+
+  <div class="author__content">
+    <h3 class="author__name" itemprop="name">David Smith</h3>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs">
+      <i class="fa fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+  <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
+    <meta itemprop="headline" content="OpenITI, OCR, and Textual Criticism">
+    <meta itemprop="description" content="In previous posts, other members of the KITAB team have talked about building the OpenITI corpus of Arabic and Persian sources. Many members of the team are also working to build better optical character recognition (OCR) systems in the Arabic-script OCR Catalyst Project (AOCP). The better we can automatically turn images of printed Arabic into machine-readable texts, the better we can help readers and researchers find and engage with these texts. OpenITI and AOCP, we shall see, are complementary in several ways. Under different guises, they are also both examples of that oldest of undertakings of the humanities: textual criticism.What do we need to build an OCR system?  Most of today’s systems use supervised learning. When building the OCR system, we compile pairs of images and the text contained in those images and then use a machine learning algorithm to adjust the system’s parameters in response to these desired input-output pairs. In general, these algorithms work by adjusting the parameters more drastically on those examples where the system performs particularly poorly.What kinds of images should we use for training OCR? For many languages and applications, the answer was to employ isolated characters, as in the MNIST database of images for handwritten digit recognition, a widely-used benchmark in computer vision. For ten numerals, or writing systems with a few hundred letters and special characters, this might be an attractive strategy. For connected scripts like Arabic, however, training systems with isolated characters has some drawbacks. Even if we catalog variant initial, medial, and final forms in one typeface or manuscript hand, we would need to segment the images, as well, which is much more time consuming. Similar issues arise in speech recognition, where the distinct “phonemic” sounds of a language change their sound depending on surrounding sounds and our lips might be forming the next sound when our tongue is still tapping our teeth for the last.Instead, OCR (and speech recognition) systems can take advantage of algorithms that align complete lines of writing with transcriptions of those lines. It is much easier to ask human annotators (and computer vision models) to mark full lines than to delimit where one cursive letter ends and the next begins. This is even more true in writing systems such as Arabic, where characters also overlap in the vertical dimension, as in this manuscript example:In the eScriptorium annotation tool, the upper image highlights one line of the manuscript, which the user has transcribed in the lower panel. We can send this selected image region and transcribed text to the Kraken OCR engine to train a new system.It’s convenient that we can avoid the tedium of segmenting one Arabic letter from the next—or even each word from the next—on a line of type. And it’s especially convenient that automatic line-segmentation models can break a page image into lines without much need for user correction. (The blue underlines in the image below show some of Ben Kiessling’s recent work on Kraken.) But what about the remaining task? It still sounds like a lot of work to type the contents of each line to tell the OCR system what output it should get from each input line image. This is where our ongoing work on the OpenITI corpus can help. Rather than asking, What is the transcription for this image?, we can ask, Are there any images that correspond to this text we’ve already transcribed? As in many machine learning scenarios, there is a bit of a chicken-and-egg problem here. In order to find images that correspond to OpenITI texts, we need some information about those images. As it happens, for many typefaces, we can train an OCR model that transcribes 50% or 60% of a book’s characters correctly using only a few thousand lines of cleanly-transcribed training data. We can then apply this model to images to produce approximate transcriptions, or use already existing noisy OCR output from sources such as the HathiTrust library of scanned books. We then employ the same passim software we use elsewhere in the KITAB project to identify text reuse among books. This gives us an alignment between the clean transcription in OpenITI and the noisy transcription from the OCR. Importantly, the OCR output tells us where on the page each line is. We can thus infer that clean, OpenITI text that aligns to dirty OCR is an approximate transcription for that line. Such pairs of clean transcriptions and line images are precisely what we need to train better OCR systems. I’ll leave aside for now some other aspects of our OCR work, such as locating different page regions, from notes to marginalia, to running headers, on the basis of OpenITI annotations.I’ll close by considering how OCR and other technologies relate to more traditional methods of producing editions of ancient texts for us to read. When we read, in print or on the screen, texts that were written before the age of mechanical reproduction, we know that someone, perhaps centuries after the original manuscript, made choices about what to print. Even before the advent of systematic textual editing, let alone editing with computer models, enthusiasts like Petrarch hunted for manuscripts of ancient texts so they could read them. Copies made by enthusiastic amateurs sometimes provide our only evidence for some ancient works. While it’s not the case that Shamela and other community archives preserve texts found nowhere else, it is helpful, I think, to consider them as manuscript sources. OCR transcriptions of digital page images, for all their flaws, can also be considered “editions” (as my colleague Ryan Cordell argues) or again, as I would argue, the source material for editions in the OpenITI. The process described above of aligning texts in the OpenITI corpus with noisy transcriptions produced by OCR is thus a form of textual collation, the system by which textual critics organize the evidence of their sources in order to produce an edition.Like textual criticism, therefore, OCR is a technology that helps us go from less accessible source materials to texts searchable, readable, and usable by a wider audience. This work, for printed books and manuscripts, is still ongoing, and we hope to share more in the future.">
+    <meta itemprop="datePublished" content="July 16, 2020">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 class="page__title" itemprop="headline">OpenITI, OCR, and Textual Criticism
+</h1>
+          
+            <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+
+
+  5 minute read
+ :: <i>Posted on July 16, 2020</i></p>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        <p>In previous posts, other members of the KITAB team have talked about <a href="/2020/06-12.html}">building the OpenITI corpus of Arabic and Persian sources</a>. Many members of the team are also working <a href="https://medium.com/@openiti/openiti-aocp-9802865a6586">to build better optical character recognition (OCR) systems in the Arabic-script OCR Catalyst Project (AOCP)</a>. The better we can automatically turn images of printed Arabic into machine-readable texts, the better we can help readers and researchers find and engage with these texts. OpenITI and AOCP, we shall see, are complementary in several ways. Under different guises, they are also both examples of that oldest of undertakings of the humanities: <strong>textual criticism</strong>.</p>
+
+<p>What do we need to build an OCR system?  Most of today’s systems use <strong>supervised learning</strong>. When building the OCR system, we compile pairs of images and the text contained in those images and then use a machine learning algorithm to adjust the system’s parameters in response to these desired input-output pairs. In general, these algorithms work by adjusting the parameters more drastically on those examples where the system performs particularly poorly.</p>
+
+<p>What kinds of images should we use for training OCR? For many languages and applications, the answer was to employ isolated characters, as in the <a href="https://en.wikipedia.org/wiki/MNIST_database">MNIST database</a> of images for handwritten digit recognition, a widely-used benchmark in computer vision.
+ </p>
+
+<p><img src="/images/old_posts/David1.png" alt="Image" /></p>
+
+<p>For ten numerals, or writing systems with a few hundred letters and special characters, this might be an attractive strategy. For connected scripts like Arabic, however, training systems with isolated characters has some drawbacks. Even if we catalog variant initial, medial, and final forms in one typeface or manuscript hand, we would need to segment the images, as well, which is much more time consuming. Similar issues arise in speech recognition, where the distinct “phonemic” sounds of a language <a href="https://en.wikipedia.org/wiki/Sandhi">change their sound depending on surrounding sounds</a> and our lips might be forming the next sound when our tongue is still tapping our teeth for the last.</p>
+
+<p>Instead, OCR (and speech recognition) systems can take advantage of algorithms that <a href="https://distill.pub/2017/ctc/">align complete lines of writing with transcriptions of those lines</a>. It is much easier to ask human annotators (and computer vision models) to mark full lines than to delimit where one cursive letter ends and the next begins. This is even more true in writing systems such as Arabic, where characters also overlap in the vertical dimension, as in this manuscript example:</p>
+
+<p><img src="/images/old_posts/David2.jpg" alt="Image" /></p>
+
+<p>In the <a href="https://escripta.hypotheses.org/tag/escriptorium">eScriptorium annotation tool</a>, the upper image highlights one line of the manuscript, which the user has transcribed in the lower panel. We can send this selected image region and transcribed text to the <a href="http://kraken.re/">Kraken OCR engine</a> to train a new system.</p>
+
+<p>It’s convenient that we can avoid the tedium of segmenting one Arabic letter from the next—or even each word from the next—on a line of type. And it’s especially convenient that automatic line-segmentation models can break a page image into lines without much need for user correction. (The blue underlines in the image below show some of Ben Kiessling’s recent work on Kraken.) But what about the remaining task? It still sounds like a lot of work to type the contents of each line to tell the OCR system what output it should get from each input line image.</p>
+
+<p><img src="/images/old_posts/David3.jpg" alt="Image" /></p>
+
+<p> </p>
+
+<p>This is where our ongoing work on the OpenITI corpus can help. Rather than asking, <em>What is the transcription for this image?</em>, we can ask, <em>Are there any images that correspond to this text we’ve already transcribed?</em> As in many machine learning scenarios, there is a bit of a chicken-and-egg problem here. In order to find images that correspond to OpenITI texts, we need some information about those images. As it happens, for many typefaces, we can train an OCR model that transcribes 50% or 60% of a book’s characters correctly using only a few thousand lines of cleanly-transcribed training data. We can then apply this model to images to produce approximate transcriptions, or use <a href="https://www.hathitrust.org/htrc-awards-three-acs-projects">already existing noisy OCR output from sources such as the HathiTrust library of scanned books</a>. We then employ the same <a href="https://viraltexts.org/2015/05/22/computational-methods-for-uncovering-reprinted-texts-in-antebellum-newspapers/"><em>passim</em> software</a> we use elsewhere in the KITAB project to identify text reuse among books. This gives us an alignment between the clean transcription in OpenITI and the noisy transcription from the OCR. Importantly, the OCR output tells us <em>where on the page</em> each line is. We can thus infer that clean, OpenITI text that aligns to dirty OCR is an approximate transcription for that line. Such pairs of clean transcriptions and line images are precisely what we need to train better OCR systems. I’ll leave aside for now some other aspects of our OCR work, such as locating different page regions, from notes to marginalia, to running headers, on the basis of OpenITI annotations.</p>
+
+<p>I’ll close by considering how OCR and other technologies relate to more traditional methods of producing editions of ancient texts for us to read. When we read, in print or on the screen, texts that were written before the age of mechanical reproduction, we know that someone, perhaps centuries after the original manuscript, made choices about what to print. Even before the advent of systematic textual editing, let alone editing with computer models, enthusiasts like <a href="https://en.wikipedia.org/wiki/Petrarch">Petrarch</a> hunted for manuscripts of ancient texts so they could read them. Copies made by enthusiastic amateurs sometimes provide <a href="https://en.wikipedia.org/wiki/Agricola_(book)">our only evidence for some ancient works</a>. While it’s not the case that <a href="https://www.shamela.ws/">Shamela</a> and other community archives preserve texts found nowhere else, it is helpful, I think, to consider them as manuscript sources. OCR transcriptions of digital page images, for all their flaws, can also be considered “editions” (<a href="https://ryancordell.org/research/qijtb-the-raven/">as my colleague Ryan Cordell argues</a>) or again, as I would argue, the source material for editions in the OpenITI. The process described above of aligning texts in the OpenITI corpus with noisy transcriptions produced by OCR is thus a form of <strong>textual collation</strong>, the system by which textual critics organize the evidence of their sources in order to produce an edition.</p>
+
+<p>Like textual criticism, therefore, OCR is a technology that helps us go from less accessible source materials to texts searchable, readable, and usable by a wider audience. This work, for printed books and manuscripts, is still ongoing, and we hope to share more in the future.</p>
+
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+        
+          <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Updated:</strong> <time datetime="2020-07-16T00:00:00+01:00">July 16, 2020</time></p>
+        
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=OpenITI, OCR, and Textual Criticism http://localhost:4000/2020/07-16.html" class="btn btn--twitter" title="Share on Twitter"><i class="fa fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/2020/07-16.html" class="btn btn--facebook" title="Share on Facebook"><i class="fa fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://plus.google.com/share?url=http://localhost:4000/2020/07-16.html" class="btn btn--google-plus" title="Share on Google Plus"><i class="fa fa-fw fa-google-plus" aria-hidden="true"></i><span> Google+</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http://localhost:4000/2020/07-16.html" class="btn btn--linkedin" title="Share on LinkedIn"><i class="fa fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="http://localhost:4000/2020/06-22.html" class="pagination--pager" title="Algorithmic Reading of Shiʿi Hadith Collections: Direct Borrowing and Common Sources
+">Previous</a>
+    
+    
+      <a href="http://localhost:4000/2020/07-24.html" class="pagination--pager" title="Call for Participation in KITAB (Knowledge, Information Technology, and the Arabic Book)
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+      <div class="page__comments">
+  
+  
+    <h4 class="page__comments-title">Leave a Comment</h4>
+    <section id="disqus_thread"></section>
+  
+</div>
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      
+        <h4 class="page__related-title">You May Also Enjoy</h4>
+      
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="http://localhost:4000/2021/01-21.html" rel="permalink">Diversifying the OpenITI corpus, One Text at a Time
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+
+
+  9 minute read
+ :: <i>Posted on January 21, 2021</i></p>
+    
+    <p class="archive__item-excerpt" itemprop="description">The vast majority of texts in the OpenITI corpus were sourced from three major collections of digital texts originally prepared by organisations based in the Middle East (see Peter Verkinderen’s excellent blog on the largest of them, Shamela). These collections have proven invaluable to researchers, not in the least...</p>
+  </article>
+</div>
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="http://localhost:4000/2020/12-11.html" rel="permalink">Tracing the origins of a historical fragment focused on the Sāmānids
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+
+
+  2 minute read
+ :: <i>Posted on December 11, 2020</i></p>
+    
+    <p class="archive__item-excerpt" itemprop="description">At the Arabic Pasts conference this year, Hugh Kennedy and I presented a paper in the panel dedicated to the Invisible East program, chaired by the program’s PI Arezou Azad. The paper focused on a fragment from an as-yet-unknown Arabic historical text, focused on the Sāmānid dynasty of the 4th/10th century. The frag...</p>
+  </article>
+</div>
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="http://localhost:4000/2020/12-03.html" rel="permalink">Al-Maktaba al-Shāmila: a short history
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+
+
+  10 minute read
+ :: <i>Posted on December 3, 2020</i></p>
+    
+    <p class="archive__item-excerpt" itemprop="description">(This is the first blog post in a longer series of posts about the sources of OpenITI)
+
+Al-Maktaba al-Shāmila (“The comprehensive library”, often referred to simply as Shamela) is a free software that aims at providing a digital research environment for Islamic scholars, and comes with a large collection of Arabic p...</p>
+  </article>
+</div>
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="http://localhost:4000/2020/11-19.html" rel="permalink">KITAB postdoc Gowaart Van Den Bossche wins BRAIS-De Gruyter dissertation prize – 2020
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+
+
+  less than 1 minute read
+ :: <i>Posted on November 19, 2020</i></p>
+    
+    <p class="archive__item-excerpt" itemprop="description">The British Association for Islamic Studies (BRAIS) and De Gruyter have announced the outcome of the fifth (2020) round of the BRAIS – De Gruyter Prize in the Study of Islam and the Muslim World. The winning submission is Gowaart Van Den Bossche’s PhD thesis, which he defended in 2019 at Ghent University, right befo...</p>
+  </article>
+</div>
+        
+      </div>
+    </div>
+  
+</div>
+
+    <div class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+    
+    
+    
+      <li><a href="http://github.com/https://github.com/kitab-project-org/"><i class="fa fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+    
+    
+    <li><a href="http://localhost:4000/feed.xml"><i class="fa fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2021 Knowledge, Information Technology, and the Arabic Book. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+      </footer>
+    </div>
+
+    <script src="http://localhost:4000/assets/js/main.min.js"></script>
+
+
+
+
+
+  
+
+
+
+
+
+  </body>
+</html>

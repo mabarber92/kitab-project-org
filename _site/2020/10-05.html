@@ -1,0 +1,590 @@
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin SEO -->
+
+
+
+
+
+
+
+
+
+<title>Mapping Who’s Who in Isnads – First Steps - KITAB Project</title>
+
+
+
+
+<meta name="description" content="One of the major challenges for those working with historical Arabic texts is the names, and the variety of ways that authors might refer to the same person. An author might, for example, refer to someone as ‘Hisham’, or as ‘the father of ʿUmar’, or as ‘the son of ʿAbbas’. These names might also be joined up when an author quotes ‘Hisham, the father of ʿUmar’, or when he writes about ‘the father of ʿUmar, Hisham’.Identifying the person in question matters for many reasons. To name but a few: We want to make texts in the OpenITI corpus searchable, and need to be able to pinpoint persons, whatever variation of the name is used (and also to distinguish between the different Hishams). For studying transmission and book history, we also want to know who’s who. Ryan Muther is working on a method that automatically locates isnads within texts. Who are these people? Likewise, we have much data aligning later works with earlier sources. We want to be able to read citations. Who precisely is being cited?We (Sarah Savant and Masoumeh Seydi) have been working on a way to link people to varieties of names and chose as a case study the Taʾrikh Madinat Dimashq (TMD) by Ibn ʿAsakir (d. 571/1176).1 It is one of the largest works in the OpenITI corpus, with 80 volumes in the Dar al-Fikr printed edition, and a word count of over 8 million. It consists of a first volume, treating the history of the city, including its ancient roots and seventh–century conquest and a second volume, treating the topography of the city. The remainder of the book comprises biographies of the elites who lived or passed through Damascus prior to Ibn ʿAsakir’s time. Based on Muther’s data, 39% of this massive work is made up of isnads, which is more than 3 million words worth of isnads. To put it mildly, that is a lot of names, and each is typically written in a variety of ways.Our text reuse data suggests that Ibn ʿAsakir, in creating his mammoth work, relied heavily upon earlier books, including the Kitab al-Tabaqat al-kabir of Ibn Saʿd (d. 235/830). We wanted to specifically see if we could work out the route – or routes – through which Ibn ʿAsakir accessed the Tabaqat. Did he have access to this book through a specific transmission line, as has been recently argued by specialists of Ibn ʿAsakir?2The MethodUsing a search pattern called ‘regular expressions’, we collected all transmission chains within the TMD that included Ibn Saʿd.3 We then trimmed the chains to include only names spanning between Ibn Saʿd and Ibn ʿAsakir. Relying on a transmissive term list prepared by Kevin Jaques, plus some editing, we removed non-name material. To deal with the variant ways of referring to the same person, we created an authorities list to map variations. The authorities list relied on a Latin-script name to unify variant Arabic-script names in the TMD isnads, as exemplified below:            Ibn Hayyawayh      أبو عمر بن حيوية              Ibn Hayyawayh      أبي عمر بن حيويه              Ibn Hayyawayh      أبو عمر ابن حيوية              Ibn Hayyawayh      أبو عمر محمد بن العباس بن حيوية              Ibn Hayyawayh      أبو عمر محمد ابن العباس              Ibn Hayyawayh      أبي عمر محمد بن العباس بن حيوية              Ibn Hayyawayh      ابن عباس              Ibn Hayyawayh      محمد بن العباس              Ibn Hayyawayh      محمد ابن العباس              Ibn Hayyawayh      محمد بن العباس بن حيويه الخزاز              Ibn Hayyawayh      أبو عمر محمد بن العباس              Ibn Hayyawayh      محمد بن العباس لخزاز      Table 1: Reconciling variations of names within isnads that feature Muḥammad b. Saʿd. The name of Abu ʿUmar b. Ḥayyawayh (d. 373/983-84) is written in many ways representing differences in orthography and name elements (e.g., whether a kunya such as ‘father of so-and-so’ is used). The data file from which this list is excerpted contains 427 such equations for names in Ibn Saʿd isnads.Masoumeh Seydi then used the Levenshtein distance algorithm to group together the most similar chains of names. Even with the reduction of the name variants to single versions, the data remained too extensive to see patterns. So, we filtered the total data set to look for only the most commonly occurring transmissive chains, and only those with 6 nodes, by far the most commonly occurring length.4Table 2: The most frequently occurring six-person isnads that run back to Muhammad b. Saʾd. Pruning the data to get these transmissive lines involved excluding 217 lines of other six-person isnads.Seydi then graphed the dramatically filtered data, which produced the following graph.Graph 1: This graph represents the small subset of lines of transmission running back to Ibn Saʿd in the table above.The graph features one coherent chain – in red – that runs back to Ibn Saʿd via Abu Bakr Muhammad b. Shujaʿ (d. 533/1138), Abu ʿAmr b. Manda (d. 475/1082-83), Abu Muhammad b. Yawh (n.d.), Ahmad b. Muhammad al-Lanbani (n.d.), and Ibn Abi Dunya (d. 281/894). The other chains, in the left part of the graph, involve 9 transmitters in the five generations prior to Ibn Saʿd. The transmissive lines cross one another and appear something like a map of the London underground. A key goal in designing the graph was to distinguish the actual transmission lines, whereas graphs of isnads might fail to distinguish potential from actual paths. A next step would be weighting the lines for how often they occur in our dataset.The effort required to create this data set is important. The isnads were not sitting there ready to be plucked from the TMD, but required many hours of painstaking disambiguation of names and pruning of data. We leave much on the cutting room floor, and the left of the graph does not yield a simple picture of transmission. This messiness suggests the vagaries of naming practices, and the deterioration of information through the transmission process. But it also suggests that the way that Ibn ʿAsakir accessed the wisdom of earlier centuries was likely quite complex. Different parts of Ibn Saʿd’s oeuvre may have passed through different of these lines. Or, the transmission may have been more mediated than that, with Ibn ʿAsakir accessing a more dispersed corpus of Ibn Saʿd materials. He may even have been judging the relative merits of different tradents for different pieces of information. It is hard to know whether his audience could track the varieties of names or the contents that mapped to lines (perhaps not), but the sheer number of them was part of their expectations of a book such as his.5 Giving them what they expected, Ibn ʿAsakir performed his role as a major scholar in the post-canonical era of Hadith transmission.Just the StartTracking these persons is just the start of understanding how Ibn ʿAsakir accessed transmissions from Ibn Saʿd. But three points are already evident and point the way for further areas of exploration.      Ibn ʿAsakir cites people for his knowledge from Ibn Saʿd, whereas he does not generally choose to cite a book. The choice to cite people rather than books reflects the knowledge environment in which Ibn ʿAsakir worked. The title al-Tabaqat al-kabir occurs in only two spots in the TMD, and once in direct proximity to a transmissive chain. The title al-Tabaqat al-saghir occurs twice, outside of an isnad (the relationship between the two Tabaqat works is a subject of some scholarly discussion). The simpler title, al-Tabaqat, is also attributed to Ibn ʿAsakir a handful of times (though more often to other authors who wrote such works). Meaning, that the vast number of times that Ibn ʿAsakir mentions Ibn Saʿd, he does so without direct reference to a work. This matters for both how Ibn ʿAsakir was working and for what he wanted his audience to know.        The choice to cite people rather than books notwithstanding, the isnads in Table 2 might be helpful for understanding the transmission history of Ibn Saʿd’s book. Scholars today commonly refer to recensions by al-Husayn b. Fahm (d. 289/902), al-Harith b. Abi Usama (d. 282/895), and possibly, Ibn Abi ’l-Dunya (though the latter perhaps only for al-Tabaqat al-saghir, as argued by Jens Scheiner).6 The roles of the other tradents in Table 2 and Graph 1 need exploring. In particular, the parts played by Abu Muhammad al-Jawhari (d. 454/1062), Abu Ishaq al-Barmaki (d. 445/1053), Abu Bakr Muhammad b. ʿAbd al-Baqi (d. 535/1140), and Abu Ghalib (d. 527/1132) might be studied by collecting their transmissions from Ibn Saʿd to see whether contents within them might represent distinct pieces of the Tabaqat al-kabir. Do citations from a particular chain always come from the same part of Ibn Saʿd’s work? Are Ibn Saʿd citations possibly pulled from the sort of hadith booklets studied by Konrad Hirschler? As Jaques has argued for Ibn Ishaq’s (d. 151/767) Sira, we should also keep our minds open to the possibility that there was not one al-Tabaqat al-kabir, but possibly different versions produced by Ibn Saʿd himself.        The citations of Ibn Saʿd, within the TMD, do not map easily to the reuse alignments we generate independently with passim.7 Why this might be the case is complicated, but seems to arise ultimately (and mostly) from a) the fact that Ibn ʿAsakir is working with various transmissions from Ibn Saʿd, and these might have been passed on in pieces through written notebooks or collations, as just mentioned (meaning, the transmission was highly mediated); b) the alignment data we have is based on a specific edition of Ibn Saʿd’s text held in the OpenITI. In other cases, when an author relied directly upon an earlier work, citations map much more easily to text reuse alignments.  These points suggest that we should be exploring the way that Ibn ʿAsakir cites his information more generally (including the role of transmission from people versus books) and the extent to which distinct transmission chains that include authors of well-known and surviving works might belong to distinct pieces of their books. Does he have at hand books themselves, even if he does not typically cite them directly?Our lines of enquiry will help us to understand both the reception of Ibn Saʿd’s book, and also how an author such as Ibn ʿAsakir, in producing his massive book, went about his work. Before we can get started, though, we need to work on the names that feature in citations, and that is why named entity recognition, and the ability to cluster related chains of transmission, are so important.For computer scientists, this sort of work is part of a new stock-in-trade of the digital humanities. For historians, it takes time and patience and iteration. Creating lists of name variants is frankly best done with music running in the background and plans for an evening outside. Working on manuscripts, scholars develop skills, including the ability to read and differentiate different scripts. Patience is required. For understanding books in their digital format, named entity recognition might just be a parallel to this sort of work, with rewards aplenty.Notes            The OpenITI file that we used for this chapter, 0571IbnCasakir.TarikhDimashq.JK000916-ara1, is based on the 80-volume, 1995-2001 Dar al-Fikr edition edited by ʿUmar al-ʿAmrawi and ʿAli Shiri, but excludes volumes 71-80. Volumes 71-74 represent a mustadrak, or amendment by the editors (including additional biographical entries); these volumes have now been added to the OpenITI file based on another file in the OpenITI containing the entire Dar al-Fikr work (0571IbnCasakir.TarikhDimashq.Shamela000071-ara1, containing 8.5 million words). Volumes 75-80 represent indices (not added). Gowaart Van Den Bossche and Hamid Reza Hakimi annotated the file for the KITAB project. &#8617;              See e.g., Jens Scheiner,  ‘Ibn ʿAsakir’s Virtual Library as Reflected in His TMD,’ in New Perspectives on Ibn ʿAsakir in Islamic Historiography, ed. Steven Judd and Scheiner (Leiden: Brill, 2017), pp. 156-257, esp. at pp. 179-82. &#8617;              ‘Regular expressions’ is the name of a formalized way of constructing search patterns, implemented in many computer languages and much text editing software. Regular expressions can be used, for example, to allow for intervening words or to locate passages that cross pages or other boundaries. See Jan Goyvaerts and Steven Levithan, Regular Expressions Cookbook, 2nd. rev. ed. (Farnham: O’Reilly, 2012). &#8617;              There were also isnads with between 7 and 12 transmitters within them, but 6 nodes was by far the most common. &#8617;              For reflections on varieties of names in another context, and challenges of pinning names to titles, see Konrad Hirschler, A Monument to Medieval Syrian Book Culture: The Library of Ibn ʻAbd al-Hadi (Edinburgh: Edinburgh University Press, 2020), pp. 177-78. &#8617;              Scheiner, ‘Ibn ʿAsakir’s Virtual Library,’ p. 181-82 and p. 269. I use death dates for tradents from Scheiner and from Ahmad Nazir Atassi, ‘The transmission of Ibn Saʿd’s biographical dictionary Kitab al-tabaqāt al-kabir,’ Journal of Arabic and Islamic Studies(2012), pp. 56–80. &#8617;              Atassi has noted that ‘expecting a verbatim match between the reports found in a consulted compilation and the corresponding report in the printed [al-Tabaqat al-kabir] is unrealistic.’ ‘The transmission of Ibn Saʿd’s biographical dictionary,’ p. 73. &#8617;      ">
+
+
+
+
+<meta property="og:locale" content="en">
+<meta property="og:site_name" content="KITAB Project">
+<meta property="og:title" content="Mapping Who’s Who in Isnads – First Steps">
+
+
+  <link rel="canonical" href="http://localhost:4000/2020/10-05.html">
+  <meta property="og:url" content="http://localhost:4000/2020/10-05.html">
+
+
+
+  <meta property="og:description" content="One of the major challenges for those working with historical Arabic texts is the names, and the variety of ways that authors might refer to the same person. An author might, for example, refer to someone as ‘Hisham’, or as ‘the father of ʿUmar’, or as ‘the son of ʿAbbas’. These names might also be joined up when an author quotes ‘Hisham, the father of ʿUmar’, or when he writes about ‘the father of ʿUmar, Hisham’.Identifying the person in question matters for many reasons. To name but a few: We want to make texts in the OpenITI corpus searchable, and need to be able to pinpoint persons, whatever variation of the name is used (and also to distinguish between the different Hishams). For studying transmission and book history, we also want to know who’s who. Ryan Muther is working on a method that automatically locates isnads within texts. Who are these people? Likewise, we have much data aligning later works with earlier sources. We want to be able to read citations. Who precisely is being cited?We (Sarah Savant and Masoumeh Seydi) have been working on a way to link people to varieties of names and chose as a case study the Taʾrikh Madinat Dimashq (TMD) by Ibn ʿAsakir (d. 571/1176).1 It is one of the largest works in the OpenITI corpus, with 80 volumes in the Dar al-Fikr printed edition, and a word count of over 8 million. It consists of a first volume, treating the history of the city, including its ancient roots and seventh–century conquest and a second volume, treating the topography of the city. The remainder of the book comprises biographies of the elites who lived or passed through Damascus prior to Ibn ʿAsakir’s time. Based on Muther’s data, 39% of this massive work is made up of isnads, which is more than 3 million words worth of isnads. To put it mildly, that is a lot of names, and each is typically written in a variety of ways.Our text reuse data suggests that Ibn ʿAsakir, in creating his mammoth work, relied heavily upon earlier books, including the Kitab al-Tabaqat al-kabir of Ibn Saʿd (d. 235/830). We wanted to specifically see if we could work out the route – or routes – through which Ibn ʿAsakir accessed the Tabaqat. Did he have access to this book through a specific transmission line, as has been recently argued by specialists of Ibn ʿAsakir?2The MethodUsing a search pattern called ‘regular expressions’, we collected all transmission chains within the TMD that included Ibn Saʿd.3 We then trimmed the chains to include only names spanning between Ibn Saʿd and Ibn ʿAsakir. Relying on a transmissive term list prepared by Kevin Jaques, plus some editing, we removed non-name material. To deal with the variant ways of referring to the same person, we created an authorities list to map variations. The authorities list relied on a Latin-script name to unify variant Arabic-script names in the TMD isnads, as exemplified below:            Ibn Hayyawayh      أبو عمر بن حيوية              Ibn Hayyawayh      أبي عمر بن حيويه              Ibn Hayyawayh      أبو عمر ابن حيوية              Ibn Hayyawayh      أبو عمر محمد بن العباس بن حيوية              Ibn Hayyawayh      أبو عمر محمد ابن العباس              Ibn Hayyawayh      أبي عمر محمد بن العباس بن حيوية              Ibn Hayyawayh      ابن عباس              Ibn Hayyawayh      محمد بن العباس              Ibn Hayyawayh      محمد ابن العباس              Ibn Hayyawayh      محمد بن العباس بن حيويه الخزاز              Ibn Hayyawayh      أبو عمر محمد بن العباس              Ibn Hayyawayh      محمد بن العباس لخزاز      Table 1: Reconciling variations of names within isnads that feature Muḥammad b. Saʿd. The name of Abu ʿUmar b. Ḥayyawayh (d. 373/983-84) is written in many ways representing differences in orthography and name elements (e.g., whether a kunya such as ‘father of so-and-so’ is used). The data file from which this list is excerpted contains 427 such equations for names in Ibn Saʿd isnads.Masoumeh Seydi then used the Levenshtein distance algorithm to group together the most similar chains of names. Even with the reduction of the name variants to single versions, the data remained too extensive to see patterns. So, we filtered the total data set to look for only the most commonly occurring transmissive chains, and only those with 6 nodes, by far the most commonly occurring length.4Table 2: The most frequently occurring six-person isnads that run back to Muhammad b. Saʾd. Pruning the data to get these transmissive lines involved excluding 217 lines of other six-person isnads.Seydi then graphed the dramatically filtered data, which produced the following graph.Graph 1: This graph represents the small subset of lines of transmission running back to Ibn Saʿd in the table above.The graph features one coherent chain – in red – that runs back to Ibn Saʿd via Abu Bakr Muhammad b. Shujaʿ (d. 533/1138), Abu ʿAmr b. Manda (d. 475/1082-83), Abu Muhammad b. Yawh (n.d.), Ahmad b. Muhammad al-Lanbani (n.d.), and Ibn Abi Dunya (d. 281/894). The other chains, in the left part of the graph, involve 9 transmitters in the five generations prior to Ibn Saʿd. The transmissive lines cross one another and appear something like a map of the London underground. A key goal in designing the graph was to distinguish the actual transmission lines, whereas graphs of isnads might fail to distinguish potential from actual paths. A next step would be weighting the lines for how often they occur in our dataset.The effort required to create this data set is important. The isnads were not sitting there ready to be plucked from the TMD, but required many hours of painstaking disambiguation of names and pruning of data. We leave much on the cutting room floor, and the left of the graph does not yield a simple picture of transmission. This messiness suggests the vagaries of naming practices, and the deterioration of information through the transmission process. But it also suggests that the way that Ibn ʿAsakir accessed the wisdom of earlier centuries was likely quite complex. Different parts of Ibn Saʿd’s oeuvre may have passed through different of these lines. Or, the transmission may have been more mediated than that, with Ibn ʿAsakir accessing a more dispersed corpus of Ibn Saʿd materials. He may even have been judging the relative merits of different tradents for different pieces of information. It is hard to know whether his audience could track the varieties of names or the contents that mapped to lines (perhaps not), but the sheer number of them was part of their expectations of a book such as his.5 Giving them what they expected, Ibn ʿAsakir performed his role as a major scholar in the post-canonical era of Hadith transmission.Just the StartTracking these persons is just the start of understanding how Ibn ʿAsakir accessed transmissions from Ibn Saʿd. But three points are already evident and point the way for further areas of exploration.      Ibn ʿAsakir cites people for his knowledge from Ibn Saʿd, whereas he does not generally choose to cite a book. The choice to cite people rather than books reflects the knowledge environment in which Ibn ʿAsakir worked. The title al-Tabaqat al-kabir occurs in only two spots in the TMD, and once in direct proximity to a transmissive chain. The title al-Tabaqat al-saghir occurs twice, outside of an isnad (the relationship between the two Tabaqat works is a subject of some scholarly discussion). The simpler title, al-Tabaqat, is also attributed to Ibn ʿAsakir a handful of times (though more often to other authors who wrote such works). Meaning, that the vast number of times that Ibn ʿAsakir mentions Ibn Saʿd, he does so without direct reference to a work. This matters for both how Ibn ʿAsakir was working and for what he wanted his audience to know.        The choice to cite people rather than books notwithstanding, the isnads in Table 2 might be helpful for understanding the transmission history of Ibn Saʿd’s book. Scholars today commonly refer to recensions by al-Husayn b. Fahm (d. 289/902), al-Harith b. Abi Usama (d. 282/895), and possibly, Ibn Abi ’l-Dunya (though the latter perhaps only for al-Tabaqat al-saghir, as argued by Jens Scheiner).6 The roles of the other tradents in Table 2 and Graph 1 need exploring. In particular, the parts played by Abu Muhammad al-Jawhari (d. 454/1062), Abu Ishaq al-Barmaki (d. 445/1053), Abu Bakr Muhammad b. ʿAbd al-Baqi (d. 535/1140), and Abu Ghalib (d. 527/1132) might be studied by collecting their transmissions from Ibn Saʿd to see whether contents within them might represent distinct pieces of the Tabaqat al-kabir. Do citations from a particular chain always come from the same part of Ibn Saʿd’s work? Are Ibn Saʿd citations possibly pulled from the sort of hadith booklets studied by Konrad Hirschler? As Jaques has argued for Ibn Ishaq’s (d. 151/767) Sira, we should also keep our minds open to the possibility that there was not one al-Tabaqat al-kabir, but possibly different versions produced by Ibn Saʿd himself.        The citations of Ibn Saʿd, within the TMD, do not map easily to the reuse alignments we generate independently with passim.7 Why this might be the case is complicated, but seems to arise ultimately (and mostly) from a) the fact that Ibn ʿAsakir is working with various transmissions from Ibn Saʿd, and these might have been passed on in pieces through written notebooks or collations, as just mentioned (meaning, the transmission was highly mediated); b) the alignment data we have is based on a specific edition of Ibn Saʿd’s text held in the OpenITI. In other cases, when an author relied directly upon an earlier work, citations map much more easily to text reuse alignments.  These points suggest that we should be exploring the way that Ibn ʿAsakir cites his information more generally (including the role of transmission from people versus books) and the extent to which distinct transmission chains that include authors of well-known and surviving works might belong to distinct pieces of their books. Does he have at hand books themselves, even if he does not typically cite them directly?Our lines of enquiry will help us to understand both the reception of Ibn Saʿd’s book, and also how an author such as Ibn ʿAsakir, in producing his massive book, went about his work. Before we can get started, though, we need to work on the names that feature in citations, and that is why named entity recognition, and the ability to cluster related chains of transmission, are so important.For computer scientists, this sort of work is part of a new stock-in-trade of the digital humanities. For historians, it takes time and patience and iteration. Creating lists of name variants is frankly best done with music running in the background and plans for an evening outside. Working on manuscripts, scholars develop skills, including the ability to read and differentiate different scripts. Patience is required. For understanding books in their digital format, named entity recognition might just be a parallel to this sort of work, with rewards aplenty.Notes            The OpenITI file that we used for this chapter, 0571IbnCasakir.TarikhDimashq.JK000916-ara1, is based on the 80-volume, 1995-2001 Dar al-Fikr edition edited by ʿUmar al-ʿAmrawi and ʿAli Shiri, but excludes volumes 71-80. Volumes 71-74 represent a mustadrak, or amendment by the editors (including additional biographical entries); these volumes have now been added to the OpenITI file based on another file in the OpenITI containing the entire Dar al-Fikr work (0571IbnCasakir.TarikhDimashq.Shamela000071-ara1, containing 8.5 million words). Volumes 75-80 represent indices (not added). Gowaart Van Den Bossche and Hamid Reza Hakimi annotated the file for the KITAB project. &#8617;              See e.g., Jens Scheiner,  ‘Ibn ʿAsakir’s Virtual Library as Reflected in His TMD,’ in New Perspectives on Ibn ʿAsakir in Islamic Historiography, ed. Steven Judd and Scheiner (Leiden: Brill, 2017), pp. 156-257, esp. at pp. 179-82. &#8617;              ‘Regular expressions’ is the name of a formalized way of constructing search patterns, implemented in many computer languages and much text editing software. Regular expressions can be used, for example, to allow for intervening words or to locate passages that cross pages or other boundaries. See Jan Goyvaerts and Steven Levithan, Regular Expressions Cookbook, 2nd. rev. ed. (Farnham: O’Reilly, 2012). &#8617;              There were also isnads with between 7 and 12 transmitters within them, but 6 nodes was by far the most common. &#8617;              For reflections on varieties of names in another context, and challenges of pinning names to titles, see Konrad Hirschler, A Monument to Medieval Syrian Book Culture: The Library of Ibn ʻAbd al-Hadi (Edinburgh: Edinburgh University Press, 2020), pp. 177-78. &#8617;              Scheiner, ‘Ibn ʿAsakir’s Virtual Library,’ p. 181-82 and p. 269. I use death dates for tradents from Scheiner and from Ahmad Nazir Atassi, ‘The transmission of Ibn Saʿd’s biographical dictionary Kitab al-tabaqāt al-kabir,’ Journal of Arabic and Islamic Studies(2012), pp. 56–80. &#8617;              Atassi has noted that ‘expecting a verbatim match between the reports found in a consulted compilation and the corresponding report in the printed [al-Tabaqat al-kabir] is unrealistic.’ ‘The transmission of Ibn Saʿd’s biographical dictionary,’ p. 73. &#8617;      ">
+
+
+
+
+
+  
+
+  
+
+
+
+
+
+  <meta property="og:type" content="article">
+  <meta property="article:published_time" content="2020-10-05T00:00:00+01:00">
+
+
+
+
+
+
+
+
+  <script type="application/ld+json">
+    {
+      "@context" : "http://schema.org",
+      "@type" : "Person",
+      "name" : "Knowledge, Information Technology, and the Arabic Book",
+      "url" : "http://localhost:4000",
+      "sameAs" : null
+    }
+  </script>
+
+
+
+
+
+
+<!-- end SEO -->
+
+
+<link href="http://localhost:4000/feed.xml" type="application/atom+xml" rel="alternate" title="KITAB Project Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://localhost:4000/assets/css/main.css">
+
+<meta http-equiv="cleartype" content="on">
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use http://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+  </head>
+
+  <body class="layout--single">
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+    <div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        <button><div class="navicon"></div></button>
+        <ul class="visible-links">
+          <li class="masthead__menu-item masthead__menu-item--lg"><a href="http://localhost:4000/">KITAB Project</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000">Blog</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/pilot/">Our Pilot</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/corpus/">Corpus (OpenITI)</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/methods/">Text Reuse Methods</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/about/">About the Project</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/about-passim/">About passim</a></li>
+          
+        </ul>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+    
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+<div itemscope itemtype="http://schema.org/Person">
+
+  
+
+  <div class="author__content">
+    <h3 class="author__name" itemprop="name">Sarah Savant and Masoumeh Seydi</h3>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs">
+      <i class="fa fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+  <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Mapping Who’s Who in Isnads – First Steps">
+    <meta itemprop="description" content="One of the major challenges for those working with historical Arabic texts is the names, and the variety of ways that authors might refer to the same person. An author might, for example, refer to someone as ‘Hisham’, or as ‘the father of ʿUmar’, or as ‘the son of ʿAbbas’. These names might also be joined up when an author quotes ‘Hisham, the father of ʿUmar’, or when he writes about ‘the father of ʿUmar, Hisham’.Identifying the person in question matters for many reasons. To name but a few: We want to make texts in the OpenITI corpus searchable, and need to be able to pinpoint persons, whatever variation of the name is used (and also to distinguish between the different Hishams). For studying transmission and book history, we also want to know who’s who. Ryan Muther is working on a method that automatically locates isnads within texts. Who are these people? Likewise, we have much data aligning later works with earlier sources. We want to be able to read citations. Who precisely is being cited?We (Sarah Savant and Masoumeh Seydi) have been working on a way to link people to varieties of names and chose as a case study the Taʾrikh Madinat Dimashq (TMD) by Ibn ʿAsakir (d. 571/1176).1 It is one of the largest works in the OpenITI corpus, with 80 volumes in the Dar al-Fikr printed edition, and a word count of over 8 million. It consists of a first volume, treating the history of the city, including its ancient roots and seventh–century conquest and a second volume, treating the topography of the city. The remainder of the book comprises biographies of the elites who lived or passed through Damascus prior to Ibn ʿAsakir’s time. Based on Muther’s data, 39% of this massive work is made up of isnads, which is more than 3 million words worth of isnads. To put it mildly, that is a lot of names, and each is typically written in a variety of ways.Our text reuse data suggests that Ibn ʿAsakir, in creating his mammoth work, relied heavily upon earlier books, including the Kitab al-Tabaqat al-kabir of Ibn Saʿd (d. 235/830). We wanted to specifically see if we could work out the route – or routes – through which Ibn ʿAsakir accessed the Tabaqat. Did he have access to this book through a specific transmission line, as has been recently argued by specialists of Ibn ʿAsakir?2The MethodUsing a search pattern called ‘regular expressions’, we collected all transmission chains within the TMD that included Ibn Saʿd.3 We then trimmed the chains to include only names spanning between Ibn Saʿd and Ibn ʿAsakir. Relying on a transmissive term list prepared by Kevin Jaques, plus some editing, we removed non-name material. To deal with the variant ways of referring to the same person, we created an authorities list to map variations. The authorities list relied on a Latin-script name to unify variant Arabic-script names in the TMD isnads, as exemplified below:            Ibn Hayyawayh      أبو عمر بن حيوية              Ibn Hayyawayh      أبي عمر بن حيويه              Ibn Hayyawayh      أبو عمر ابن حيوية              Ibn Hayyawayh      أبو عمر محمد بن العباس بن حيوية              Ibn Hayyawayh      أبو عمر محمد ابن العباس              Ibn Hayyawayh      أبي عمر محمد بن العباس بن حيوية              Ibn Hayyawayh      ابن عباس              Ibn Hayyawayh      محمد بن العباس              Ibn Hayyawayh      محمد ابن العباس              Ibn Hayyawayh      محمد بن العباس بن حيويه الخزاز              Ibn Hayyawayh      أبو عمر محمد بن العباس              Ibn Hayyawayh      محمد بن العباس لخزاز      Table 1: Reconciling variations of names within isnads that feature Muḥammad b. Saʿd. The name of Abu ʿUmar b. Ḥayyawayh (d. 373/983-84) is written in many ways representing differences in orthography and name elements (e.g., whether a kunya such as ‘father of so-and-so’ is used). The data file from which this list is excerpted contains 427 such equations for names in Ibn Saʿd isnads.Masoumeh Seydi then used the Levenshtein distance algorithm to group together the most similar chains of names. Even with the reduction of the name variants to single versions, the data remained too extensive to see patterns. So, we filtered the total data set to look for only the most commonly occurring transmissive chains, and only those with 6 nodes, by far the most commonly occurring length.4Table 2: The most frequently occurring six-person isnads that run back to Muhammad b. Saʾd. Pruning the data to get these transmissive lines involved excluding 217 lines of other six-person isnads.Seydi then graphed the dramatically filtered data, which produced the following graph.Graph 1: This graph represents the small subset of lines of transmission running back to Ibn Saʿd in the table above.The graph features one coherent chain – in red – that runs back to Ibn Saʿd via Abu Bakr Muhammad b. Shujaʿ (d. 533/1138), Abu ʿAmr b. Manda (d. 475/1082-83), Abu Muhammad b. Yawh (n.d.), Ahmad b. Muhammad al-Lanbani (n.d.), and Ibn Abi Dunya (d. 281/894). The other chains, in the left part of the graph, involve 9 transmitters in the five generations prior to Ibn Saʿd. The transmissive lines cross one another and appear something like a map of the London underground. A key goal in designing the graph was to distinguish the actual transmission lines, whereas graphs of isnads might fail to distinguish potential from actual paths. A next step would be weighting the lines for how often they occur in our dataset.The effort required to create this data set is important. The isnads were not sitting there ready to be plucked from the TMD, but required many hours of painstaking disambiguation of names and pruning of data. We leave much on the cutting room floor, and the left of the graph does not yield a simple picture of transmission. This messiness suggests the vagaries of naming practices, and the deterioration of information through the transmission process. But it also suggests that the way that Ibn ʿAsakir accessed the wisdom of earlier centuries was likely quite complex. Different parts of Ibn Saʿd’s oeuvre may have passed through different of these lines. Or, the transmission may have been more mediated than that, with Ibn ʿAsakir accessing a more dispersed corpus of Ibn Saʿd materials. He may even have been judging the relative merits of different tradents for different pieces of information. It is hard to know whether his audience could track the varieties of names or the contents that mapped to lines (perhaps not), but the sheer number of them was part of their expectations of a book such as his.5 Giving them what they expected, Ibn ʿAsakir performed his role as a major scholar in the post-canonical era of Hadith transmission.Just the StartTracking these persons is just the start of understanding how Ibn ʿAsakir accessed transmissions from Ibn Saʿd. But three points are already evident and point the way for further areas of exploration.      Ibn ʿAsakir cites people for his knowledge from Ibn Saʿd, whereas he does not generally choose to cite a book. The choice to cite people rather than books reflects the knowledge environment in which Ibn ʿAsakir worked. The title al-Tabaqat al-kabir occurs in only two spots in the TMD, and once in direct proximity to a transmissive chain. The title al-Tabaqat al-saghir occurs twice, outside of an isnad (the relationship between the two Tabaqat works is a subject of some scholarly discussion). The simpler title, al-Tabaqat, is also attributed to Ibn ʿAsakir a handful of times (though more often to other authors who wrote such works). Meaning, that the vast number of times that Ibn ʿAsakir mentions Ibn Saʿd, he does so without direct reference to a work. This matters for both how Ibn ʿAsakir was working and for what he wanted his audience to know.        The choice to cite people rather than books notwithstanding, the isnads in Table 2 might be helpful for understanding the transmission history of Ibn Saʿd’s book. Scholars today commonly refer to recensions by al-Husayn b. Fahm (d. 289/902), al-Harith b. Abi Usama (d. 282/895), and possibly, Ibn Abi ’l-Dunya (though the latter perhaps only for al-Tabaqat al-saghir, as argued by Jens Scheiner).6 The roles of the other tradents in Table 2 and Graph 1 need exploring. In particular, the parts played by Abu Muhammad al-Jawhari (d. 454/1062), Abu Ishaq al-Barmaki (d. 445/1053), Abu Bakr Muhammad b. ʿAbd al-Baqi (d. 535/1140), and Abu Ghalib (d. 527/1132) might be studied by collecting their transmissions from Ibn Saʿd to see whether contents within them might represent distinct pieces of the Tabaqat al-kabir. Do citations from a particular chain always come from the same part of Ibn Saʿd’s work? Are Ibn Saʿd citations possibly pulled from the sort of hadith booklets studied by Konrad Hirschler? As Jaques has argued for Ibn Ishaq’s (d. 151/767) Sira, we should also keep our minds open to the possibility that there was not one al-Tabaqat al-kabir, but possibly different versions produced by Ibn Saʿd himself.        The citations of Ibn Saʿd, within the TMD, do not map easily to the reuse alignments we generate independently with passim.7 Why this might be the case is complicated, but seems to arise ultimately (and mostly) from a) the fact that Ibn ʿAsakir is working with various transmissions from Ibn Saʿd, and these might have been passed on in pieces through written notebooks or collations, as just mentioned (meaning, the transmission was highly mediated); b) the alignment data we have is based on a specific edition of Ibn Saʿd’s text held in the OpenITI. In other cases, when an author relied directly upon an earlier work, citations map much more easily to text reuse alignments.  These points suggest that we should be exploring the way that Ibn ʿAsakir cites his information more generally (including the role of transmission from people versus books) and the extent to which distinct transmission chains that include authors of well-known and surviving works might belong to distinct pieces of their books. Does he have at hand books themselves, even if he does not typically cite them directly?Our lines of enquiry will help us to understand both the reception of Ibn Saʿd’s book, and also how an author such as Ibn ʿAsakir, in producing his massive book, went about his work. Before we can get started, though, we need to work on the names that feature in citations, and that is why named entity recognition, and the ability to cluster related chains of transmission, are so important.For computer scientists, this sort of work is part of a new stock-in-trade of the digital humanities. For historians, it takes time and patience and iteration. Creating lists of name variants is frankly best done with music running in the background and plans for an evening outside. Working on manuscripts, scholars develop skills, including the ability to read and differentiate different scripts. Patience is required. For understanding books in their digital format, named entity recognition might just be a parallel to this sort of work, with rewards aplenty.Notes            The OpenITI file that we used for this chapter, 0571IbnCasakir.TarikhDimashq.JK000916-ara1, is based on the 80-volume, 1995-2001 Dar al-Fikr edition edited by ʿUmar al-ʿAmrawi and ʿAli Shiri, but excludes volumes 71-80. Volumes 71-74 represent a mustadrak, or amendment by the editors (including additional biographical entries); these volumes have now been added to the OpenITI file based on another file in the OpenITI containing the entire Dar al-Fikr work (0571IbnCasakir.TarikhDimashq.Shamela000071-ara1, containing 8.5 million words). Volumes 75-80 represent indices (not added). Gowaart Van Den Bossche and Hamid Reza Hakimi annotated the file for the KITAB project. &#8617;              See e.g., Jens Scheiner,  ‘Ibn ʿAsakir’s Virtual Library as Reflected in His TMD,’ in New Perspectives on Ibn ʿAsakir in Islamic Historiography, ed. Steven Judd and Scheiner (Leiden: Brill, 2017), pp. 156-257, esp. at pp. 179-82. &#8617;              ‘Regular expressions’ is the name of a formalized way of constructing search patterns, implemented in many computer languages and much text editing software. Regular expressions can be used, for example, to allow for intervening words or to locate passages that cross pages or other boundaries. See Jan Goyvaerts and Steven Levithan, Regular Expressions Cookbook, 2nd. rev. ed. (Farnham: O’Reilly, 2012). &#8617;              There were also isnads with between 7 and 12 transmitters within them, but 6 nodes was by far the most common. &#8617;              For reflections on varieties of names in another context, and challenges of pinning names to titles, see Konrad Hirschler, A Monument to Medieval Syrian Book Culture: The Library of Ibn ʻAbd al-Hadi (Edinburgh: Edinburgh University Press, 2020), pp. 177-78. &#8617;              Scheiner, ‘Ibn ʿAsakir’s Virtual Library,’ p. 181-82 and p. 269. I use death dates for tradents from Scheiner and from Ahmad Nazir Atassi, ‘The transmission of Ibn Saʿd’s biographical dictionary Kitab al-tabaqāt al-kabir,’ Journal of Arabic and Islamic Studies(2012), pp. 56–80. &#8617;              Atassi has noted that ‘expecting a verbatim match between the reports found in a consulted compilation and the corresponding report in the printed [al-Tabaqat al-kabir] is unrealistic.’ ‘The transmission of Ibn Saʿd’s biographical dictionary,’ p. 73. &#8617;      ">
+    <meta itemprop="datePublished" content="October 05, 2020">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 class="page__title" itemprop="headline">Mapping Who’s Who in Isnads – First Steps
+</h1>
+          
+            <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+
+
+  10 minute read
+ :: <i>Posted on October 5, 2020</i></p>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        <p>One of the major challenges for those working with historical Arabic texts is the names, and the variety of ways that authors might refer to the same person. An author might, for example, refer to someone as ‘Hisham’, or as ‘the father of ʿUmar’, or as ‘the son of ʿAbbas’. These names might also be joined up when an author quotes ‘Hisham, the father of ʿUmar’, or when he writes about ‘the father of ʿUmar, Hisham’.</p>
+
+<p>Identifying the person in question matters for many reasons. To name but a few: We want to make texts in the OpenITI corpus searchable, and need to be able to pinpoint persons, whatever variation of the name is used (and also to distinguish between the different Hishams). For studying transmission and book history, we also want to know who’s who. <a href="/2020/02-03.html">Ryan Muther</a> is working on a method that automatically locates <em>isnad</em>s within texts. Who are these people? Likewise, we have much data aligning later works with earlier sources. We want to be able to read citations. Who precisely is being cited?</p>
+
+<p>We (Sarah Savant and Masoumeh Seydi) have been working on a way to link people to varieties of names and chose as a case study the <em>Taʾrikh Madinat Dimashq</em> (<em>TMD</em>) by Ibn ʿAsakir (d. 571/1176).<sup id="fnref:1" role="doc-noteref"><a href="#fn:1" class="footnote">1</a></sup> It is one of the largest works in the OpenITI corpus, with 80 volumes in the Dar al-Fikr printed edition, and a word count of over 8 million. It consists of a first volume, treating the history of the city, including its ancient roots and seventh–century conquest and a second volume, treating the topography of the city. The remainder of the book comprises biographies of the elites who lived or passed through Damascus prior to Ibn ʿAsakir’s time. Based on Muther’s data, 39% of this massive work is made up of <em>isnad</em>s, which is more than 3 million words worth of <em>isnad</em>s. To put it mildly, that is a lot of names, and each is typically written in a variety of ways.</p>
+
+<p>Our text reuse data suggests that Ibn ʿAsakir, in creating his mammoth work, relied heavily upon earlier books, including the <em>Kitab al-Tabaqat al-kabir</em> of Ibn Saʿd (d. 235/830). We wanted to specifically see if we could work out the route – or routes – through which Ibn ʿAsakir accessed the <em>Tabaqat</em>. Did he have access to this book through a specific transmission line, as has been recently argued by specialists of Ibn ʿAsakir?<sup id="fnref:2" role="doc-noteref"><a href="#fn:2" class="footnote">2</a></sup></p>
+
+<h2 id="the-method"><strong>The Method</strong></h2>
+
+<p>Using a search pattern called ‘regular expressions’, we collected all transmission chains within the <em>TMD</em> that included Ibn Saʿd.<sup id="fnref:3" role="doc-noteref"><a href="#fn:3" class="footnote">3</a></sup> We then trimmed the chains to include only names spanning between Ibn Saʿd and Ibn ʿAsakir. Relying on a transmissive term list prepared by Kevin Jaques, plus some editing, we removed non-name material. To deal with the variant ways of referring to the same person, we created an authorities list to map variations. The authorities list relied on a Latin-script name to unify variant Arabic-script names in the <em>TMD isnad</em>s, as exemplified below:</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>Ibn Hayyawayh</td>
+      <td>أبو عمر بن حيوية</td>
+    </tr>
+    <tr>
+      <td>Ibn Hayyawayh</td>
+      <td>أبي عمر بن حيويه</td>
+    </tr>
+    <tr>
+      <td>Ibn Hayyawayh</td>
+      <td>أبو عمر ابن حيوية</td>
+    </tr>
+    <tr>
+      <td>Ibn Hayyawayh</td>
+      <td>أبو عمر محمد بن العباس بن حيوية</td>
+    </tr>
+    <tr>
+      <td>Ibn Hayyawayh</td>
+      <td>أبو عمر محمد ابن العباس</td>
+    </tr>
+    <tr>
+      <td>Ibn Hayyawayh</td>
+      <td>أبي عمر محمد بن العباس بن حيوية</td>
+    </tr>
+    <tr>
+      <td>Ibn Hayyawayh</td>
+      <td>ابن عباس</td>
+    </tr>
+    <tr>
+      <td>Ibn Hayyawayh</td>
+      <td>محمد بن العباس</td>
+    </tr>
+    <tr>
+      <td>Ibn Hayyawayh</td>
+      <td>محمد ابن العباس</td>
+    </tr>
+    <tr>
+      <td>Ibn Hayyawayh</td>
+      <td>محمد بن العباس بن حيويه الخزاز</td>
+    </tr>
+    <tr>
+      <td>Ibn Hayyawayh</td>
+      <td>أبو عمر محمد بن العباس</td>
+    </tr>
+    <tr>
+      <td>Ibn Hayyawayh</td>
+      <td>محمد بن العباس لخزاز</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Table 1</strong>: Reconciling variations of names within <em>isnad</em>s that feature Muḥammad b. Saʿd. The name of Abu ʿUmar b. Ḥayyawayh (d. 373/983-84) is written in many ways representing differences in orthography and name elements (e.g., whether a <em>kunya</em> such as ‘father of so-and-so’ is used). The data file from which this list is excerpted contains 427 such equations for names in Ibn Saʿd <em>isnad</em>s.</p>
+
+<p>Masoumeh Seydi then used the Levenshtein distance algorithm to group together the most similar chains of names. Even with the reduction of the name variants to single versions, the data remained too extensive to see patterns. So, we filtered the total data set to look for only the most commonly occurring transmissive chains, and only those with 6 nodes, by far the most commonly occurring length.<sup id="fnref:4" role="doc-noteref"><a href="#fn:4" class="footnote">4</a></sup></p>
+
+<p><img src="/images/old_posts/table-2.jpg" alt="Image" /></p>
+
+<p><strong>Table 2</strong>: The most frequently occurring six-person <em>isnad</em>s that run back to Muhammad b. Saʾd. Pruning the data to get these transmissive lines involved excluding 217 lines of other six-person <em>isnad</em>s.</p>
+
+<p>Seydi then graphed the dramatically filtered data, which produced the following graph.</p>
+
+<p><img src="/images/old_posts/Image3.png" alt="Image" /></p>
+
+<p><strong>Graph 1</strong>: This graph represents the small subset of lines of transmission running back to Ibn Saʿd in the table above.</p>
+
+<p>The graph features one coherent chain – in red – that runs back to Ibn Saʿd via Abu Bakr Muhammad b. Shujaʿ (d. 533/1138), Abu ʿAmr b. Manda (d. 475/1082-83), Abu Muhammad b. Yawh (n.d.), Ahmad b. Muhammad al-Lanbani (n.d.), and Ibn Abi Dunya (d. 281/894). The other chains, in the left part of the graph, involve 9 transmitters in the five generations prior to Ibn Saʿd. The transmissive lines cross one another and appear something like a map of the London underground. A key goal in designing the graph was to distinguish the actual transmission lines, whereas graphs of <em>isnad</em>s might fail to distinguish potential from actual paths. A next step would be weighting the lines for how often they occur in our dataset.</p>
+
+<p>The effort required to create this data set is important. The <em>isnad</em>s were not sitting there ready to be plucked from the <em>TMD</em>, but required many hours of painstaking disambiguation of names and pruning of data. We leave much on the cutting room floor, and the left of the graph does not yield a simple picture of transmission. This messiness suggests the vagaries of naming practices, and the deterioration of information through the transmission process. But it also suggests that the way that Ibn ʿAsakir accessed the wisdom of earlier centuries was likely quite complex. Different parts of Ibn Saʿd’s oeuvre may have passed through different of these lines. Or, the transmission may have been more mediated than that, with Ibn ʿAsakir accessing a more dispersed corpus of Ibn Saʿd materials. He may even have been judging the relative merits of different tradents for different pieces of information. It is hard to know whether his audience could track the varieties of names or the contents that mapped to lines (perhaps not), but the sheer number of them was part of their expectations of a book such as his.<sup id="fnref:5" role="doc-noteref"><a href="#fn:5" class="footnote">5</a></sup> Giving them what they expected, Ibn ʿAsakir performed his role as a major scholar in the post-canonical era of Hadith transmission.</p>
+
+<h2 id="just-the-start"><strong>Just the Start</strong></h2>
+
+<p>Tracking these persons is just the start of understanding how Ibn ʿAsakir accessed transmissions from Ibn Saʿd. But three points are already evident and point the way for further areas of exploration.</p>
+
+<ol>
+  <li>
+    <p>Ibn ʿAsakir cites people for his knowledge from Ibn Saʿd, whereas he does not generally choose to cite a book. The choice to cite people rather than books reflects the knowledge environment in which Ibn ʿAsakir worked. The title <em>al-Tabaqat al-kabir</em> occurs in only two spots in the <em>TMD</em>, and once in direct proximity to a transmissive chain. The title <em>al-Tabaqat al-saghir</em> occurs twice, outside of an <em>isnad</em> (the relationship between the two <em>Tabaqat</em> works is a subject of some scholarly discussion). The simpler title, <em>al-Tabaqat</em>, is also attributed to Ibn ʿAsakir a handful of times (though more often to other authors who wrote such works). Meaning, that the vast number of times that Ibn ʿAsakir mentions Ibn Saʿd, he does so without direct reference to a work. This matters for both how Ibn ʿAsakir was working and for what he wanted his audience to know.</p>
+  </li>
+  <li>
+    <p>The choice to cite people rather than books notwithstanding, the <em>isnad</em>s in Table 2 might be helpful for understanding the transmission history of Ibn Saʿd’s book. Scholars today commonly refer to recensions by al-Husayn b. Fahm (d. 289/902), al-Harith b. Abi Usama (d. 282/895), and possibly, Ibn Abi ’l-Dunya (though the latter perhaps only for <em>al-Tabaqat al-saghir</em>, as argued by Jens Scheiner).<sup id="fnref:6" role="doc-noteref"><a href="#fn:6" class="footnote">6</a></sup> The roles of the other tradents in Table 2 and Graph 1 need exploring. In particular, the parts played by Abu Muhammad al-Jawhari (d. 454/1062), Abu Ishaq al-Barmaki (d. 445/1053), Abu Bakr Muhammad b. ʿAbd al-Baqi (d. 535/1140), and Abu Ghalib (d. 527/1132) might be studied by collecting their transmissions from Ibn Saʿd to see whether contents within them might represent distinct pieces of the <em>Tabaqat al-kabir</em>. Do citations from a particular chain always come from the same part of Ibn Saʿd’s work? Are Ibn Saʿd citations possibly pulled from the sort of hadith booklets studied by Konrad Hirschler? As Jaques has argued for Ibn Ishaq’s (d. 151/767) <em>Sira</em>, we should also keep our minds open to the possibility that there was not one <em>al-Tabaqat al-kabir</em>, but possibly different versions produced by Ibn Saʿd himself.</p>
+  </li>
+  <li>
+    <p>The citations of Ibn Saʿd, within the <em>TMD</em>, do not map easily to the reuse alignments we generate independently with <a href="/about-passim/">passim</a>.<sup id="fnref:7" role="doc-noteref"><a href="#fn:7" class="footnote">7</a></sup> Why this might be the case is complicated, but seems to arise ultimately (and mostly) from a) the fact that Ibn ʿAsakir is working with various transmissions from Ibn Saʿd, and these might have been passed on in pieces through written notebooks or collations, as just mentioned (meaning, the transmission <em>was</em> highly mediated); b) the alignment data we have is based on a specific edition of <a href="http://0230ibnsacd.tabaqatkubra.shamela0001686-ara1/">Ibn Saʿd’s text</a> held in the OpenITI. In other cases, when an author relied directly upon an earlier work, citations map much more easily to text reuse alignments.</p>
+  </li>
+</ol>
+
+<p>These points suggest that we should be exploring the way that Ibn ʿAsakir cites his information more generally (including the role of transmission from people versus books) and the extent to which distinct transmission chains that include authors of well-known and surviving works might belong to distinct pieces of their books. Does he have at hand books themselves, even if he does not typically cite them directly?</p>
+
+<p>Our lines of enquiry will help us to understand both the reception of Ibn Saʿd’s book, and also how an author such as Ibn ʿAsakir, in producing his massive book, went about his work. Before we can get started, though, we need to work on the names that feature in citations, and that is why named entity recognition, and the ability to cluster related chains of transmission, are so important.</p>
+
+<p>For computer scientists, this sort of work is part of a new stock-in-trade of the digital humanities. For historians, it takes time and patience and iteration. Creating lists of name variants is frankly best done with music running in the background and plans for an evening outside. Working on manuscripts, scholars develop skills, including the ability to read and differentiate different scripts. Patience is required. For understanding books in their digital format, named entity recognition might just be a parallel to this sort of work, with rewards aplenty.</p>
+
+<h3 id="notes"><strong>Notes</strong></h3>
+
+<div class="footnotes" role="doc-endnotes">
+  <ol>
+    <li id="fn:1" role="doc-endnote">
+      <p>The OpenITI file that we used for this chapter, 0571IbnCasakir.TarikhDimashq.JK000916-ara1, is based on the 80-volume, 1995-2001 Dar al-Fikr edition edited by ʿUmar al-ʿAmrawi and ʿAli Shiri, but excludes volumes 71-80. Volumes 71-74 represent a <em>mustadrak</em>, or amendment by the editors (including additional biographical entries); these volumes have now been added to the OpenITI file based on another file in the OpenITI containing the entire Dar al-Fikr work (0571IbnCasakir.TarikhDimashq.Shamela000071-ara1, containing 8.5 million words). Volumes 75-80 represent indices (not added). Gowaart Van Den Bossche and Hamid Reza Hakimi annotated the file for the KITAB project. <a href="#fnref:1" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+    <li id="fn:2" role="doc-endnote">
+      <p>See e.g., Jens Scheiner,  ‘Ibn ʿAsakir’s Virtual Library as Reflected in His <em>TMD</em>,’ in <em>New Perspectives on Ibn ʿAsakir in Islamic Historiography</em>, ed. Steven Judd and Scheiner (Leiden: Brill, 2017), pp. 156-257, esp. at pp. 179-82. <a href="#fnref:2" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+    <li id="fn:3" role="doc-endnote">
+      <p>‘Regular expressions’ is the name of a formalized way of constructing search patterns, implemented in many computer languages and much text editing software. Regular expressions can be used, for example, to allow for intervening words or to locate passages that cross pages or other boundaries. See Jan Goyvaerts and Steven Levithan, <em>Regular Expressions Cookbook</em>, 2nd. rev. ed. (Farnham: O’Reilly, 2012). <a href="#fnref:3" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+    <li id="fn:4" role="doc-endnote">
+      <p>There were also <em>isnad</em>s with between 7 and 12 transmitters within them, but 6 nodes was by far the most common. <a href="#fnref:4" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+    <li id="fn:5" role="doc-endnote">
+      <p>For reflections on varieties of names in another context, and challenges of pinning names to titles, see Konrad Hirschler, <em>A Monument to Medieval Syrian Book Culture: The Library of Ibn ʻAbd al-Hadi</em> (Edinburgh: Edinburgh University Press, 2020), pp. 177-78. <a href="#fnref:5" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+    <li id="fn:6" role="doc-endnote">
+      <p>Scheiner, ‘Ibn ʿAsakir’s Virtual Library,’ p. 181-82 and p. 269. I use death dates for tradents from Scheiner and from Ahmad Nazir Atassi, ‘The transmission of Ibn Saʿd’s biographical dictionary <em>Kitab al-tabaqāt al-kabir</em>,’ <em>Journal of Arabic and Islamic Studies</em>(2012), pp. 56–80. <a href="#fnref:6" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+    <li id="fn:7" role="doc-endnote">
+      <p>Atassi has noted that ‘expecting a verbatim match between the reports found in a consulted compilation and the corresponding report in the printed [<em>al-Tabaqat al-kabir</em>] is unrealistic.’ ‘The transmission of Ibn Saʿd’s biographical dictionary,’ p. 73. <a href="#fnref:7" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+        
+          <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Updated:</strong> <time datetime="2020-10-05T00:00:00+01:00">October 05, 2020</time></p>
+        
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=Mapping Who’s Who in Isnads – First Steps http://localhost:4000/2020/10-05.html" class="btn btn--twitter" title="Share on Twitter"><i class="fa fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/2020/10-05.html" class="btn btn--facebook" title="Share on Facebook"><i class="fa fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://plus.google.com/share?url=http://localhost:4000/2020/10-05.html" class="btn btn--google-plus" title="Share on Google Plus"><i class="fa fa-fw fa-google-plus" aria-hidden="true"></i><span> Google+</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http://localhost:4000/2020/10-05.html" class="btn btn--linkedin" title="Share on LinkedIn"><i class="fa fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="http://localhost:4000/2020/09-30.html" class="pagination--pager" title="Between Manuscripts and Digital Texts: Commentaries on Hadith Raʾs al-Jalut
+">Previous</a>
+    
+    
+      <a href="http://localhost:4000/2020/10-19.html" class="pagination--pager" title="OpenITI release 2020.2.3
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+      <div class="page__comments">
+  
+  
+    <h4 class="page__comments-title">Leave a Comment</h4>
+    <section id="disqus_thread"></section>
+  
+</div>
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      
+        <h4 class="page__related-title">You May Also Enjoy</h4>
+      
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="http://localhost:4000/2021/01-21.html" rel="permalink">Diversifying the OpenITI corpus, One Text at a Time
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+
+
+  9 minute read
+ :: <i>Posted on January 21, 2021</i></p>
+    
+    <p class="archive__item-excerpt" itemprop="description">The vast majority of texts in the OpenITI corpus were sourced from three major collections of digital texts originally prepared by organisations based in the Middle East (see Peter Verkinderen’s excellent blog on the largest of them, Shamela). These collections have proven invaluable to researchers, not in the least...</p>
+  </article>
+</div>
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="http://localhost:4000/2020/12-11.html" rel="permalink">Tracing the origins of a historical fragment focused on the Sāmānids
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+
+
+  2 minute read
+ :: <i>Posted on December 11, 2020</i></p>
+    
+    <p class="archive__item-excerpt" itemprop="description">At the Arabic Pasts conference this year, Hugh Kennedy and I presented a paper in the panel dedicated to the Invisible East program, chaired by the program’s PI Arezou Azad. The paper focused on a fragment from an as-yet-unknown Arabic historical text, focused on the Sāmānid dynasty of the 4th/10th century. The frag...</p>
+  </article>
+</div>
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="http://localhost:4000/2020/12-03.html" rel="permalink">Al-Maktaba al-Shāmila: a short history
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+
+
+  10 minute read
+ :: <i>Posted on December 3, 2020</i></p>
+    
+    <p class="archive__item-excerpt" itemprop="description">(This is the first blog post in a longer series of posts about the sources of OpenITI)
+
+Al-Maktaba al-Shāmila (“The comprehensive library”, often referred to simply as Shamela) is a free software that aims at providing a digital research environment for Islamic scholars, and comes with a large collection of Arabic p...</p>
+  </article>
+</div>
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="http://localhost:4000/2020/11-19.html" rel="permalink">KITAB postdoc Gowaart Van Den Bossche wins BRAIS-De Gruyter dissertation prize – 2020
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+
+
+  less than 1 minute read
+ :: <i>Posted on November 19, 2020</i></p>
+    
+    <p class="archive__item-excerpt" itemprop="description">The British Association for Islamic Studies (BRAIS) and De Gruyter have announced the outcome of the fifth (2020) round of the BRAIS – De Gruyter Prize in the Study of Islam and the Muslim World. The winning submission is Gowaart Van Den Bossche’s PhD thesis, which he defended in 2019 at Ghent University, right befo...</p>
+  </article>
+</div>
+        
+      </div>
+    </div>
+  
+</div>
+
+    <div class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+    
+    
+    
+      <li><a href="http://github.com/https://github.com/kitab-project-org/"><i class="fa fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+    
+    
+    <li><a href="http://localhost:4000/feed.xml"><i class="fa fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2021 Knowledge, Information Technology, and the Arabic Book. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+      </footer>
+    </div>
+
+    <script src="http://localhost:4000/assets/js/main.min.js"></script>
+
+
+
+
+
+  
+
+
+
+
+
+  </body>
+</html>

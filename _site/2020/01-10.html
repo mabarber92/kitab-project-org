@@ -1,0 +1,476 @@
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin SEO -->
+
+
+
+
+
+
+
+
+
+<title>When al-Tabarī is Not (Just) al-Tabarī: The Challenges Posed by Composite Editions in the OpenITI Corpus - KITAB Project</title>
+
+
+
+
+<meta name="description" content="In the past few months the KITAB team have been closely studying the issue of versioning and composite editions in the OpenITI corpus. The problem of versioning is as follows: For many of the texts in the corpus we possess multiple versions, often based on various editions. Take, for example, al-Tabarī’s Kitāb al-Taʾrīkh, for which there are 5 versions, based on 3 editions. A closer study of the data by Sarah Savant has shown that these versions can sometimes vary greatly in length. Moreover, the passim outputs suggest that some of these versions vary hugely in content (in extreme cases, the passim results suggest that they might be entirely different works).This problem relates in part to the existence of composite editions in the corpus. Some of the works in the corpus identified as one book might in fact be several different works collected into one book. For example, if for book X, version A is shorter than version C and version C shares only some of its content with version A, it is possible that version C contains all or part of book X plus another work (see figure 1 below). There are two ways in which these composite editions can come into being: 1 they were assembled in the original manuscript, 2. They were assembled by the editor. The existence of composite editions poses an intellectual challenge as much as it does a practical one. The structure of the OpenITI corpus favours single works written by single authors: the github repositories are ordered by death date of an individual author, then by author, then by work. In such a structure, how does one practically categorise a work that is composed by two authors or that is a composite of two works? One answer is to split the books into their pieces, and then categorise each piece by its respective author. Such a response is bound to excite intellectual tensions. If the two works were brought together in a manuscript, then surely separating them is ignoring a valuable stage in the intellectual and transmission history of those two books? We must remember, that a key component of KITAB’s research is the study of the transmission and reuse of Arabic text. Passim outputs have identified that 21% of Ibn al-Athīr’s al-Kāmil fī al-taʾrīkh is from al-Tabarī’s Kitāb al-Taʾrīkh, but we would not use this as justification for separating al-Tabarī’s Kitāb al-Taʾrīkh from Ibn al-Athir’s work.Separating works assembled by a modern editor would appear more easily justifiable. However, in the context of a Virtual Reading Room (VRR), such as that produced for the Digital Sira Project (DSP), even this poses difficult questions. If in the Reading Room we state that the digital text is based on a certain edition, then our readers might reasonably expect to find everything that is in the original edition. In fact, KITAB’s current mARkdown policy is to preserve the editor’s structural decisions, and why should their choice of works be an exception? In short, the question of composite editions reaches into the very heart of what we mean by a book and what we mean by book history.Until recently, I could participate in these debates from the blissful vista of my ivory tower, an engaging intellectual discussion among the many that we have in the KITAB team. Then when assembling data for al-Tabarī’s Kitāb al-Taʾrīkh for the VRR, I made a discomfiting discovery. As the VRR is concerned with the Sira of Ibn Ishaq, one rarely ventures beyond the first three volumes of the Kitāb al-Taʾrīkh. However, the entirety of the work will appear in the VRR and so the contents pages need to be easy to navigate. As I scrolled through the contents list, one title stood out: ‘Then began the year 380 (AH)’. Al-Tabarī died in the year 310 AH, so unless he had a lesser-known side-line in time travel or prophecy, this could not possibly have been written by him. It, of course, transpired that it was not. In fact, the edition we had chosen for the Digital Sira Project had three additional works added to the end (two continuations of al-Tabarī’s history plus another of al-Tabarī’s works). Now we shall have to decide: should all these texts appear in the VRR? If so, how? As a separate work, or clearly indicated in the contents pages for al-Tabarī’s Kitāb al-Taʾrīkh?We have been working intensely with al-Tabarī’s Kitāb al-Taʾrīkh for over 6 months and no one on the Digital Sira Project team had spotted it was a composite edition. The oversight illustrates the very scale of KITAB’s endeavour. Al-Tabarī’s Kitāb al-Taʾrīkh is a large work, and we are working intensely with only the Sira portions of it. Moreover, the additional 3 texts are comparatively short, so the word-length of the version did not appear to be suspect (there are many reasons word counts might differ, many of them benign, such as writing out of dates – which over the course of a million-word work, can really add up the words).This discovery underlines the importance of formulating specific rules and checks to be applied when texts are prepared for addition to the VRR. In fact, one important output of our work to create the VRR is documentation detailing the process follow when selecting and preparing texts. The task of organising the corpus and inserting it into the VRR is certainly, therefore, a mammoth one.Nonetheless, we are learning much about our corpus from this detailed look at individual texts, and there is something exciting about working with a corpus that can so routinely surprise.">
+
+
+
+
+<meta property="og:locale" content="en">
+<meta property="og:site_name" content="KITAB Project">
+<meta property="og:title" content="When al-Tabarī is Not (Just) al-Tabarī: The Challenges Posed by Composite Editions in the OpenITI Corpus">
+
+
+  <link rel="canonical" href="http://localhost:4000/2020/01-10.html">
+  <meta property="og:url" content="http://localhost:4000/2020/01-10.html">
+
+
+
+  <meta property="og:description" content="In the past few months the KITAB team have been closely studying the issue of versioning and composite editions in the OpenITI corpus. The problem of versioning is as follows: For many of the texts in the corpus we possess multiple versions, often based on various editions. Take, for example, al-Tabarī’s Kitāb al-Taʾrīkh, for which there are 5 versions, based on 3 editions. A closer study of the data by Sarah Savant has shown that these versions can sometimes vary greatly in length. Moreover, the passim outputs suggest that some of these versions vary hugely in content (in extreme cases, the passim results suggest that they might be entirely different works).This problem relates in part to the existence of composite editions in the corpus. Some of the works in the corpus identified as one book might in fact be several different works collected into one book. For example, if for book X, version A is shorter than version C and version C shares only some of its content with version A, it is possible that version C contains all or part of book X plus another work (see figure 1 below). There are two ways in which these composite editions can come into being: 1 they were assembled in the original manuscript, 2. They were assembled by the editor. The existence of composite editions poses an intellectual challenge as much as it does a practical one. The structure of the OpenITI corpus favours single works written by single authors: the github repositories are ordered by death date of an individual author, then by author, then by work. In such a structure, how does one practically categorise a work that is composed by two authors or that is a composite of two works? One answer is to split the books into their pieces, and then categorise each piece by its respective author. Such a response is bound to excite intellectual tensions. If the two works were brought together in a manuscript, then surely separating them is ignoring a valuable stage in the intellectual and transmission history of those two books? We must remember, that a key component of KITAB’s research is the study of the transmission and reuse of Arabic text. Passim outputs have identified that 21% of Ibn al-Athīr’s al-Kāmil fī al-taʾrīkh is from al-Tabarī’s Kitāb al-Taʾrīkh, but we would not use this as justification for separating al-Tabarī’s Kitāb al-Taʾrīkh from Ibn al-Athir’s work.Separating works assembled by a modern editor would appear more easily justifiable. However, in the context of a Virtual Reading Room (VRR), such as that produced for the Digital Sira Project (DSP), even this poses difficult questions. If in the Reading Room we state that the digital text is based on a certain edition, then our readers might reasonably expect to find everything that is in the original edition. In fact, KITAB’s current mARkdown policy is to preserve the editor’s structural decisions, and why should their choice of works be an exception? In short, the question of composite editions reaches into the very heart of what we mean by a book and what we mean by book history.Until recently, I could participate in these debates from the blissful vista of my ivory tower, an engaging intellectual discussion among the many that we have in the KITAB team. Then when assembling data for al-Tabarī’s Kitāb al-Taʾrīkh for the VRR, I made a discomfiting discovery. As the VRR is concerned with the Sira of Ibn Ishaq, one rarely ventures beyond the first three volumes of the Kitāb al-Taʾrīkh. However, the entirety of the work will appear in the VRR and so the contents pages need to be easy to navigate. As I scrolled through the contents list, one title stood out: ‘Then began the year 380 (AH)’. Al-Tabarī died in the year 310 AH, so unless he had a lesser-known side-line in time travel or prophecy, this could not possibly have been written by him. It, of course, transpired that it was not. In fact, the edition we had chosen for the Digital Sira Project had three additional works added to the end (two continuations of al-Tabarī’s history plus another of al-Tabarī’s works). Now we shall have to decide: should all these texts appear in the VRR? If so, how? As a separate work, or clearly indicated in the contents pages for al-Tabarī’s Kitāb al-Taʾrīkh?We have been working intensely with al-Tabarī’s Kitāb al-Taʾrīkh for over 6 months and no one on the Digital Sira Project team had spotted it was a composite edition. The oversight illustrates the very scale of KITAB’s endeavour. Al-Tabarī’s Kitāb al-Taʾrīkh is a large work, and we are working intensely with only the Sira portions of it. Moreover, the additional 3 texts are comparatively short, so the word-length of the version did not appear to be suspect (there are many reasons word counts might differ, many of them benign, such as writing out of dates – which over the course of a million-word work, can really add up the words).This discovery underlines the importance of formulating specific rules and checks to be applied when texts are prepared for addition to the VRR. In fact, one important output of our work to create the VRR is documentation detailing the process follow when selecting and preparing texts. The task of organising the corpus and inserting it into the VRR is certainly, therefore, a mammoth one.Nonetheless, we are learning much about our corpus from this detailed look at individual texts, and there is something exciting about working with a corpus that can so routinely surprise.">
+
+
+
+
+
+  
+
+  
+
+
+
+
+
+  <meta property="og:type" content="article">
+  <meta property="article:published_time" content="2020-01-10T00:00:00+00:00">
+
+
+
+
+
+
+
+
+  <script type="application/ld+json">
+    {
+      "@context" : "http://schema.org",
+      "@type" : "Person",
+      "name" : "Knowledge, Information Technology, and the Arabic Book",
+      "url" : "http://localhost:4000",
+      "sameAs" : null
+    }
+  </script>
+
+
+
+
+
+
+<!-- end SEO -->
+
+
+<link href="http://localhost:4000/feed.xml" type="application/atom+xml" rel="alternate" title="KITAB Project Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://localhost:4000/assets/css/main.css">
+
+<meta http-equiv="cleartype" content="on">
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use http://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+  </head>
+
+  <body class="layout--single">
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+    <div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        <button><div class="navicon"></div></button>
+        <ul class="visible-links">
+          <li class="masthead__menu-item masthead__menu-item--lg"><a href="http://localhost:4000/">KITAB Project</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000">Blog</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/pilot/">Our Pilot</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/corpus/">Corpus (OpenITI)</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/methods/">Text Reuse Methods</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/about/">About the Project</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/about-passim/">About passim</a></li>
+          
+        </ul>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+    
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+<div itemscope itemtype="http://schema.org/Person">
+
+  
+
+  <div class="author__content">
+    <h3 class="author__name" itemprop="name">Mathew Barber</h3>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs">
+      <i class="fa fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+  <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
+    <meta itemprop="headline" content="When al-Tabarī is Not (Just) al-Tabarī: The Challenges Posed by Composite Editions in the OpenITI Corpus">
+    <meta itemprop="description" content="In the past few months the KITAB team have been closely studying the issue of versioning and composite editions in the OpenITI corpus. The problem of versioning is as follows: For many of the texts in the corpus we possess multiple versions, often based on various editions. Take, for example, al-Tabarī’s Kitāb al-Taʾrīkh, for which there are 5 versions, based on 3 editions. A closer study of the data by Sarah Savant has shown that these versions can sometimes vary greatly in length. Moreover, the passim outputs suggest that some of these versions vary hugely in content (in extreme cases, the passim results suggest that they might be entirely different works).This problem relates in part to the existence of composite editions in the corpus. Some of the works in the corpus identified as one book might in fact be several different works collected into one book. For example, if for book X, version A is shorter than version C and version C shares only some of its content with version A, it is possible that version C contains all or part of book X plus another work (see figure 1 below). There are two ways in which these composite editions can come into being: 1 they were assembled in the original manuscript, 2. They were assembled by the editor. The existence of composite editions poses an intellectual challenge as much as it does a practical one. The structure of the OpenITI corpus favours single works written by single authors: the github repositories are ordered by death date of an individual author, then by author, then by work. In such a structure, how does one practically categorise a work that is composed by two authors or that is a composite of two works? One answer is to split the books into their pieces, and then categorise each piece by its respective author. Such a response is bound to excite intellectual tensions. If the two works were brought together in a manuscript, then surely separating them is ignoring a valuable stage in the intellectual and transmission history of those two books? We must remember, that a key component of KITAB’s research is the study of the transmission and reuse of Arabic text. Passim outputs have identified that 21% of Ibn al-Athīr’s al-Kāmil fī al-taʾrīkh is from al-Tabarī’s Kitāb al-Taʾrīkh, but we would not use this as justification for separating al-Tabarī’s Kitāb al-Taʾrīkh from Ibn al-Athir’s work.Separating works assembled by a modern editor would appear more easily justifiable. However, in the context of a Virtual Reading Room (VRR), such as that produced for the Digital Sira Project (DSP), even this poses difficult questions. If in the Reading Room we state that the digital text is based on a certain edition, then our readers might reasonably expect to find everything that is in the original edition. In fact, KITAB’s current mARkdown policy is to preserve the editor’s structural decisions, and why should their choice of works be an exception? In short, the question of composite editions reaches into the very heart of what we mean by a book and what we mean by book history.Until recently, I could participate in these debates from the blissful vista of my ivory tower, an engaging intellectual discussion among the many that we have in the KITAB team. Then when assembling data for al-Tabarī’s Kitāb al-Taʾrīkh for the VRR, I made a discomfiting discovery. As the VRR is concerned with the Sira of Ibn Ishaq, one rarely ventures beyond the first three volumes of the Kitāb al-Taʾrīkh. However, the entirety of the work will appear in the VRR and so the contents pages need to be easy to navigate. As I scrolled through the contents list, one title stood out: ‘Then began the year 380 (AH)’. Al-Tabarī died in the year 310 AH, so unless he had a lesser-known side-line in time travel or prophecy, this could not possibly have been written by him. It, of course, transpired that it was not. In fact, the edition we had chosen for the Digital Sira Project had three additional works added to the end (two continuations of al-Tabarī’s history plus another of al-Tabarī’s works). Now we shall have to decide: should all these texts appear in the VRR? If so, how? As a separate work, or clearly indicated in the contents pages for al-Tabarī’s Kitāb al-Taʾrīkh?We have been working intensely with al-Tabarī’s Kitāb al-Taʾrīkh for over 6 months and no one on the Digital Sira Project team had spotted it was a composite edition. The oversight illustrates the very scale of KITAB’s endeavour. Al-Tabarī’s Kitāb al-Taʾrīkh is a large work, and we are working intensely with only the Sira portions of it. Moreover, the additional 3 texts are comparatively short, so the word-length of the version did not appear to be suspect (there are many reasons word counts might differ, many of them benign, such as writing out of dates – which over the course of a million-word work, can really add up the words).This discovery underlines the importance of formulating specific rules and checks to be applied when texts are prepared for addition to the VRR. In fact, one important output of our work to create the VRR is documentation detailing the process follow when selecting and preparing texts. The task of organising the corpus and inserting it into the VRR is certainly, therefore, a mammoth one.Nonetheless, we are learning much about our corpus from this detailed look at individual texts, and there is something exciting about working with a corpus that can so routinely surprise.">
+    <meta itemprop="datePublished" content="January 10, 2020">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 class="page__title" itemprop="headline">When al-Tabarī is Not (Just) al-Tabarī: The Challenges Posed by Composite Editions in the OpenITI Corpus
+</h1>
+          
+            <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+
+
+  4 minute read
+ :: <i>Posted on January 10, 2020</i></p>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        <p>In the past few months the KITAB team have been closely studying the issue of versioning and composite editions in the OpenITI corpus. The problem of versioning is as follows: For many of the texts in the corpus we possess multiple versions, often based on various editions. Take, for example, al-Tabarī’s <em>Kitāb al-Taʾrīkh</em>, for which there are 5 versions, based on 3 editions. A closer study of the data by Sarah Savant has shown that these versions can sometimes vary greatly in length. Moreover, the passim outputs suggest that some of these versions vary hugely in content (in extreme cases, the passim results suggest that they might be entirely different works).</p>
+
+<p>This problem relates in part to the existence of composite editions in the corpus. Some of the works in the corpus identified as one book might in fact be several different works collected into one book. For example, if for book X, version A is shorter than version C and version C shares only some of its content with version A, it is possible that version C contains all or part of book X plus another work (see figure 1 below). There are two ways in which these composite editions can come into being: 1 they were assembled in the original manuscript, 2. They were assembled by the editor.</p>
+
+<p><em> <img src="/images/old_posts/compositeedition-1024x610.jpg" alt="Image" /></em></p>
+
+<p>The existence of composite editions poses an intellectual challenge as much as it does a practical one. The structure of the OpenITI corpus favours single works written by single authors: the github repositories are ordered by death date of an individual author, then by author, then by work. In such a structure, how does one practically categorise a work that is composed by two authors or that is a composite of two works? One answer is to split the books into their pieces, and then categorise each piece by its respective author. Such a response is bound to excite intellectual tensions. If the two works were brought together in a manuscript, then surely separating them is ignoring a valuable stage in the intellectual and transmission history of those two books? We must remember, that a key component of KITAB’s research is the study of the transmission and reuse of Arabic text. Passim outputs have identified that 21% of Ibn al-Athīr’s <em>al-Kāmil fī al-taʾrīkh</em> is from al-Tabarī’s <em>Kitāb al-Taʾrīkh</em>, but we would not use this as justification for separating al-Tabarī’s <em>Kitāb al-Taʾrīkh</em> from Ibn al-Athir’s work.</p>
+
+<p>Separating works assembled by a modern editor would appear more easily justifiable. However, in the context of a Virtual Reading Room (VRR), such as that produced for the Digital Sira Project (DSP), even this poses difficult questions. If in the Reading Room we state that the digital text is based on a certain edition, then our readers might reasonably expect to find everything that is in the original edition. In fact, KITAB’s current mARkdown policy is to preserve the editor’s structural decisions, and why should their choice of works be an exception? In short, the question of composite editions reaches into the very heart of what we mean by a book and what we mean by book history.</p>
+
+<p>Until recently, I could participate in these debates from the blissful vista of my ivory tower, an engaging intellectual discussion among the many that we have in the KITAB team. Then when assembling data for al-Tabarī’s <em>Kitāb al-Taʾrīkh</em> for the VRR, I made a discomfiting discovery. As the VRR is concerned with the <em>Sira</em> of Ibn Ishaq, one rarely ventures beyond the first three volumes of the <em>Kitāb al-Taʾrīkh.</em> However, the entirety of the work will appear in the VRR and so the contents pages need to be easy to navigate. As I scrolled through the contents list, one title stood out: ‘Then began the year 380 (AH)’. Al-Tabarī died in the year 310 AH, so unless he had a lesser-known side-line in time travel or prophecy, this could not possibly have been written by him. It, of course, transpired that it was not. In fact, the edition we had chosen for the Digital Sira Project had three additional works added to the end (two continuations of al-Tabarī’s history plus another of al-Tabarī’s works). Now we shall have to decide: should all these texts appear in the VRR? If so, how? As a separate work, or clearly indicated in the contents pages for al-Tabarī’s <em>Kitāb al-Taʾrīkh</em>?</p>
+
+<p>We have been working intensely with al-Tabarī’s <em>Kitāb al-Taʾrīkh</em> for over 6 months and no one on the Digital Sira Project team had spotted it was a composite edition. The oversight illustrates the very scale of KITAB’s endeavour. Al-Tabarī’s <em>Kitāb al-Taʾrīkh</em> is a large work, and we are working intensely with only the <em>Sira</em> portions of it. Moreover, the additional 3 texts are comparatively short, so the word-length of the version did not appear to be suspect (there are many reasons word counts might differ, many of them benign, such as writing out of dates – which over the course of a million-word work, can really add up the words).</p>
+
+<p>This discovery underlines the importance of formulating specific rules and checks to be applied when texts are prepared for addition to the VRR. In fact, one important output of our work to create the VRR is documentation detailing the process follow when selecting and preparing texts. The task of organising the corpus and inserting it into the VRR is certainly, therefore, a mammoth one.</p>
+
+<p>Nonetheless, we are learning much about our corpus from this detailed look at individual texts, and there is something exciting about working with a corpus that can so routinely surprise.</p>
+
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+        
+          <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Updated:</strong> <time datetime="2020-01-10T00:00:00+00:00">January 10, 2020</time></p>
+        
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=When al-Tabarī is Not (Just) al-Tabarī: The Challenges Posed by Composite Editions in the OpenITI Corpus http://localhost:4000/2020/01-10.html" class="btn btn--twitter" title="Share on Twitter"><i class="fa fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/2020/01-10.html" class="btn btn--facebook" title="Share on Facebook"><i class="fa fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://plus.google.com/share?url=http://localhost:4000/2020/01-10.html" class="btn btn--google-plus" title="Share on Google Plus"><i class="fa fa-fw fa-google-plus" aria-hidden="true"></i><span> Google+</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http://localhost:4000/2020/01-10.html" class="btn btn--linkedin" title="Share on LinkedIn"><i class="fa fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="http://localhost:4000/2019/12-03.html" class="pagination--pager" title="On Commentaries, Digressions, Transtextualities, and Rabbit Holes
+">Previous</a>
+    
+    
+      <a href="http://localhost:4000/2020/02-03.html" class="pagination--pager" title="Tracking Traditions: Identifying Isnads in the OpenITI Corpus
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+      <div class="page__comments">
+  
+  
+    <h4 class="page__comments-title">Leave a Comment</h4>
+    <section id="disqus_thread"></section>
+  
+</div>
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      
+        <h4 class="page__related-title">You May Also Enjoy</h4>
+      
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="http://localhost:4000/2021/01-21.html" rel="permalink">Diversifying the OpenITI corpus, One Text at a Time
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+
+
+  9 minute read
+ :: <i>Posted on January 21, 2021</i></p>
+    
+    <p class="archive__item-excerpt" itemprop="description">The vast majority of texts in the OpenITI corpus were sourced from three major collections of digital texts originally prepared by organisations based in the Middle East (see Peter Verkinderen’s excellent blog on the largest of them, Shamela). These collections have proven invaluable to researchers, not in the least...</p>
+  </article>
+</div>
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="http://localhost:4000/2020/12-11.html" rel="permalink">Tracing the origins of a historical fragment focused on the Sāmānids
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+
+
+  2 minute read
+ :: <i>Posted on December 11, 2020</i></p>
+    
+    <p class="archive__item-excerpt" itemprop="description">At the Arabic Pasts conference this year, Hugh Kennedy and I presented a paper in the panel dedicated to the Invisible East program, chaired by the program’s PI Arezou Azad. The paper focused on a fragment from an as-yet-unknown Arabic historical text, focused on the Sāmānid dynasty of the 4th/10th century. The frag...</p>
+  </article>
+</div>
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="http://localhost:4000/2020/12-03.html" rel="permalink">Al-Maktaba al-Shāmila: a short history
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+
+
+  10 minute read
+ :: <i>Posted on December 3, 2020</i></p>
+    
+    <p class="archive__item-excerpt" itemprop="description">(This is the first blog post in a longer series of posts about the sources of OpenITI)
+
+Al-Maktaba al-Shāmila (“The comprehensive library”, often referred to simply as Shamela) is a free software that aims at providing a digital research environment for Islamic scholars, and comes with a large collection of Arabic p...</p>
+  </article>
+</div>
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="http://localhost:4000/2020/11-19.html" rel="permalink">KITAB postdoc Gowaart Van Den Bossche wins BRAIS-De Gruyter dissertation prize – 2020
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+
+
+  less than 1 minute read
+ :: <i>Posted on November 19, 2020</i></p>
+    
+    <p class="archive__item-excerpt" itemprop="description">The British Association for Islamic Studies (BRAIS) and De Gruyter have announced the outcome of the fifth (2020) round of the BRAIS – De Gruyter Prize in the Study of Islam and the Muslim World. The winning submission is Gowaart Van Den Bossche’s PhD thesis, which he defended in 2019 at Ghent University, right befo...</p>
+  </article>
+</div>
+        
+      </div>
+    </div>
+  
+</div>
+
+    <div class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+    
+    
+    
+      <li><a href="http://github.com/https://github.com/kitab-project-org/"><i class="fa fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+    
+    
+    <li><a href="http://localhost:4000/feed.xml"><i class="fa fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2021 Knowledge, Information Technology, and the Arabic Book. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+      </footer>
+    </div>
+
+    <script src="http://localhost:4000/assets/js/main.min.js"></script>
+
+
+
+
+
+  
+
+
+
+
+
+  </body>
+</html>

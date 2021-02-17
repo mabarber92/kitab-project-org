@@ -1,0 +1,533 @@
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin SEO -->
+
+
+
+
+
+
+
+
+
+<title>Tracking Traditions: Identifying Isnads in the OpenITI Corpus - KITAB Project</title>
+
+
+
+
+<meta name="description" content="Due to its size and coverage, the OpenITI corpus is useful for a wide variety of research purposes. Particularly, it represents an excellent opportunity to apply computational methods from natural language processing and machine learning to solve problems not only of interest to historians, but also to computer scientists. This post will focus on one problem in particular—that of detecting embedded genres in texts in the OpenITI corpus. Embedded genres are portions of a larger work that can be thought of as belonging to a genre distinct from that of the work itself, such as poetry embedded in a historical narrative or chains of transmitters (isnads) embedded in a discussion of grammar. This phenomena is found throughout the corpus.As a case study, we will focus on detecting isnads: we will give an overview of machine learning and of the process used to create the training data and models for automatic identification of isnāds in the corpus. Unlike prior work on automatic ḥadith tagging, we focus exclusively on trying to identify isnads, rather than also trying to simultaneously extract the corresponding stories (matns) for each chain (Harrag et al, 2014; Maraoui et al, 2019, Altammami et al, 2019) or extract information from the identified isnads (Siddiqui et al, 2014), as others have done. Additionally, we are working with a much larger and correspondingly more diverse collection of texts. Furthermore, much of the existing work, like that cited above, focuses on using rule-based systems to identify isnads and the individual transmitters within them which limits the generalizability of these models to previously unseen texts.The task of identifying isnāds in the corpus has interesting future applications, both historiographically and technically. For historians, even something as simple as the ability to identify where isnads occur allows one to, for example, track how the importance of certain texts change over time based on what gets cited and how, or to understand the relative importance of ḥadīth citations in different texts.Computationally, our research on isnads has myriad applications to other problems in natural language processing. It lays the groundwork for improving the models used to track text reuse in the corpus, as isnāds currently indicate a great deal of similarity of reuse that is statistically meaningless. Additionally, it allows one to look at the problem of converting the text of an isnad into the network of relationships among mentioned transmitters using the isnāds found with this model as training data. Then, rather than having, say, a piece of text which describes that Ibn Sa’d heard some information from Ibn Ishaq, the computer would know that there are two people, one called Ibn Sa’d, the other called Ibn Ishaq and that the former received information from the latter. This would, in turn, allow scholars to apply methods from social network analysis to understand how texts were compiled and transmitted by exploring how different people were involved in the dissemination of knowledge. Similarly, this also creates a wealth of training data for named-entity tagging in classical Arabic texts, as isnads are innately name-rich. This will allow later research to leverage the output of this model as a way of improving the performance of models designed to locate the names of people in a text using the names present in isnads as additional training data.Having discussed why this task is useful to resolve, we will turn our attention to how exactly we can go about performing it on a collection of texts on the scale of our corpus, with about 4,200 unique texts totaling over 1.5 billion words. In order to underscore the iterative nature of this sort of work, we will present two different approaches to the task of isnad detection. Both approaches involve building mathematical models of what isnads look like using a set of examples created by human annotators. These models can then be used to find other isnāds in texts which the model has never seen before. This is an example of a “supervised problem,” where the model learns from training data, which consists of examples of what it is trying to find—in this case isnads—and examples of what not to look for. (For an example of an unsupervised problem, such as test reuse detection, see the discussion in previous blog posts.) The exact form of the training data can vary depending on how the models work.The first approach relies on the idea that isnads display a characteristic distribution of particular words, including “transmissive terms” like haddathana or qala, or common name elements like “ibn” that can be used to identify what parts of a text are likely to be isnads. Since in other contexts these terms will have a different distribution, looking for regions of text which use similar language to known isnads will be enough to reliably identify them. This is done by building two language models, which are trained on different kinds of text: one is trained on examples of isnads and another is trained on examples of text which are not isnads (the latter is called the “background”). Examples of the training data for the isnad model can be seen in Figure 1 below. It consists solely of a collection of isnads provided by human annotators. The background model is trained on the entire corpus. Figure 1: Training data for the isnad modelThese models can be used to quantify the likelihood that some piece of text is an isnad or is not an isnad, respectively. Text that looks more similar to the training data used for a model will receive a higher likelihood under that model. Using these two models, we can figure out the best way to divide a new text into sections, some of which are isnāds and some of which are not, effectively breaking the text into a series of labeled sections of words. For example, if a certain portion of the text looks similar to the isnads which were used as training data for the model, it will be labeled as an isnad, since it is more likely under the isnad model. In contrast, portions of the text that look similar to the background will be labeled as not an isnad, since they are more likely under the background language model.As sensible as this approach sounds, it actually performs quite poorly since it is not very sensitive to the different contexts in which words can appear and how that affects their meaning. For instance, qala (“he said”) can be used both as a transmissive term within an isnad and as a way of introducing quotations. This model isn’t capable of distinguishing between those two situations easily.To rectify these issues, we decided that, rather than trying to tag entire spans of words as isnad or not, we would instead tag individual words as part of an isnad or not, based on other words that surround them within some fixed window. Using this alternative method, we would be able to give the model a more nuanced understanding of context and its effect of what the correct labels for the words should be. This process, unfortunately, involves much more labor-intensive manual annotation of texts to insert isnad markers, as in Figure 2 below. @Isnad_Beg@ marks the beginning of an isnad, while @Isnad_End@ marks its end.Figure 2: Manually annotated text with isnad markers used to train the word-tagging model — @Isnad_Beg@ marks the beginning of an isnad, while @Isnad_End@ concludes itThis text is then converted into a list of words and the correct tags associated with them, as in Figure 3. Words at the beginning of isnads are tagged as “B_Isnad”, while those that are inside an isnād are tagged as “I_Isnad”. Finally, although this is not visible in the example tags below, words that are not part of an isnad receive the tag “O” (“Outside”). This data is then used to train the model by associating some information with each word—both about the word itself and about the frequencies of words used before and after it, within some fixed window. Computer scientists call this process “featurization”. For example, an early passage from Ibn Qutaybah’s Gharib al-ḥadith (below), it is tagged and featurized as in Figure 3.قال أخبرنا أبو محمد عبد الله بن مسلم بن قتيبةFigure 3: An example of tagged text and featurization with a window size of five words. Note how “بن” occurs twice after the current word within the window, and that is reflected in the value for the “a_بن” feature.During training, the model will then use this representation of the text to learn to interpret things like the presence of a high number of transmissive terms or names in the text around a word as an indicator that it is part of an isnad. Unlike the first approach, this model also has the ability to take context into account when the surrounding text doesn’t look like an isnad, and label the text accordingly. This will reduce false positive matches where, as in the example above, qala could be used to introduce quotations of written text. Once trained, the model can then be used to label isnads in new texts by inferring the most likely tags for that new text. To do this, the text is featurized as described above and the trained model is used to find the most likely tag sequence (labeling of words as part of an isnad or not) for that featurized data.To evaluate the model, we performed a process called ten-fold cross-validation: first, the data is divided into ten pieces, called folds; second, a model is trained on nine of the folds; third, the trained model is tested on the remaining tenth fold; then the process is repeated nine more times until each fold has been used as test data. This results in ten trained models and ten sets of scores, which are then averaged—as shown in the table below in Table 1.            Precision      Recall      F1              .853      .805      .819      Table 1: Evaluation Statistics for the Word Tagging ModelPrecision and recall are two similar metrics used to measure the performance of machine learning algorithms, with a critical difference. Precision measures the percentage of words that the model tagged as part of an isnad that actually are part of isnads. Recall, in contrast, measures the percentage of words that should be labeled as part of an isnad that the model labels as such.To give a concrete explanation for what these measures mean, a model with high precision but low recall would tend to label few words as part of an isnad, but those that it did would usually be correctly labeled. Conversely, a high-recall, low-precision model would label many words as part of an isnad, finding most of the words it ought to, but also erroneously labeling many words as part of an isnad that are not. F1 is used to summarize precision and recall in a single value. We cannot, unfortunately, say how this compares to human results on the isnad detection task, as we don’t have any data on how difficult the task is for humans.As a further experiment, we tagged the entirety of Ibn ʿAsakir (d. 571/1176)’s Taʾrikh Madinat Dimashq (800,000 words in total) and found that, according to our model, it contains just under ninety-one thousand isnads, comprising about 40% of the text.This work would have been impossible without close collaboration between myself and other members of the Kitab team. In particular, Professor Sarah Savant, Professor Kevin Jaques, research assistant Mathew Barber and PhD student Hassan Ahmed provided vital training data for the models discussed above.Works Cited:Altammami, Shatha, Atwell, Eric, and Alsalka, Ammar. 2019. Text Segmentation Using N-grams to Annotate Hadith Corpus. In Proceedings of the 3rd Workshop on Arabic Corpus Linguistics, 31-39. ACL.Harrag, Fouzi. 2014. Text mining approach for knowledge extraction in Sahˆıh al-Bukhari. Computers in Human Behavior, 30:558–566.Maraoui, Hajer, Haddar, Kais, and Romary, Laurent. 2018. Segmentation tool for hadith corpus to generate TEI encoding. In International Conference on Advanced Intelligent Systems and Informatics, 252–260. Springer.Siddiqui, Muazzam, Saleh, Mostafa, and Bagais, Ahmed. 2014. Extraction and visualization of the chain of narrators from hadiths using named entity recognition and classification. Int. J. Comput. Linguist. Res, 5(1):14–25.">
+
+
+
+
+<meta property="og:locale" content="en">
+<meta property="og:site_name" content="KITAB Project">
+<meta property="og:title" content="Tracking Traditions: Identifying Isnads in the OpenITI Corpus">
+
+
+  <link rel="canonical" href="http://localhost:4000/2020/02-03.html">
+  <meta property="og:url" content="http://localhost:4000/2020/02-03.html">
+
+
+
+  <meta property="og:description" content="Due to its size and coverage, the OpenITI corpus is useful for a wide variety of research purposes. Particularly, it represents an excellent opportunity to apply computational methods from natural language processing and machine learning to solve problems not only of interest to historians, but also to computer scientists. This post will focus on one problem in particular—that of detecting embedded genres in texts in the OpenITI corpus. Embedded genres are portions of a larger work that can be thought of as belonging to a genre distinct from that of the work itself, such as poetry embedded in a historical narrative or chains of transmitters (isnads) embedded in a discussion of grammar. This phenomena is found throughout the corpus.As a case study, we will focus on detecting isnads: we will give an overview of machine learning and of the process used to create the training data and models for automatic identification of isnāds in the corpus. Unlike prior work on automatic ḥadith tagging, we focus exclusively on trying to identify isnads, rather than also trying to simultaneously extract the corresponding stories (matns) for each chain (Harrag et al, 2014; Maraoui et al, 2019, Altammami et al, 2019) or extract information from the identified isnads (Siddiqui et al, 2014), as others have done. Additionally, we are working with a much larger and correspondingly more diverse collection of texts. Furthermore, much of the existing work, like that cited above, focuses on using rule-based systems to identify isnads and the individual transmitters within them which limits the generalizability of these models to previously unseen texts.The task of identifying isnāds in the corpus has interesting future applications, both historiographically and technically. For historians, even something as simple as the ability to identify where isnads occur allows one to, for example, track how the importance of certain texts change over time based on what gets cited and how, or to understand the relative importance of ḥadīth citations in different texts.Computationally, our research on isnads has myriad applications to other problems in natural language processing. It lays the groundwork for improving the models used to track text reuse in the corpus, as isnāds currently indicate a great deal of similarity of reuse that is statistically meaningless. Additionally, it allows one to look at the problem of converting the text of an isnad into the network of relationships among mentioned transmitters using the isnāds found with this model as training data. Then, rather than having, say, a piece of text which describes that Ibn Sa’d heard some information from Ibn Ishaq, the computer would know that there are two people, one called Ibn Sa’d, the other called Ibn Ishaq and that the former received information from the latter. This would, in turn, allow scholars to apply methods from social network analysis to understand how texts were compiled and transmitted by exploring how different people were involved in the dissemination of knowledge. Similarly, this also creates a wealth of training data for named-entity tagging in classical Arabic texts, as isnads are innately name-rich. This will allow later research to leverage the output of this model as a way of improving the performance of models designed to locate the names of people in a text using the names present in isnads as additional training data.Having discussed why this task is useful to resolve, we will turn our attention to how exactly we can go about performing it on a collection of texts on the scale of our corpus, with about 4,200 unique texts totaling over 1.5 billion words. In order to underscore the iterative nature of this sort of work, we will present two different approaches to the task of isnad detection. Both approaches involve building mathematical models of what isnads look like using a set of examples created by human annotators. These models can then be used to find other isnāds in texts which the model has never seen before. This is an example of a “supervised problem,” where the model learns from training data, which consists of examples of what it is trying to find—in this case isnads—and examples of what not to look for. (For an example of an unsupervised problem, such as test reuse detection, see the discussion in previous blog posts.) The exact form of the training data can vary depending on how the models work.The first approach relies on the idea that isnads display a characteristic distribution of particular words, including “transmissive terms” like haddathana or qala, or common name elements like “ibn” that can be used to identify what parts of a text are likely to be isnads. Since in other contexts these terms will have a different distribution, looking for regions of text which use similar language to known isnads will be enough to reliably identify them. This is done by building two language models, which are trained on different kinds of text: one is trained on examples of isnads and another is trained on examples of text which are not isnads (the latter is called the “background”). Examples of the training data for the isnad model can be seen in Figure 1 below. It consists solely of a collection of isnads provided by human annotators. The background model is trained on the entire corpus. Figure 1: Training data for the isnad modelThese models can be used to quantify the likelihood that some piece of text is an isnad or is not an isnad, respectively. Text that looks more similar to the training data used for a model will receive a higher likelihood under that model. Using these two models, we can figure out the best way to divide a new text into sections, some of which are isnāds and some of which are not, effectively breaking the text into a series of labeled sections of words. For example, if a certain portion of the text looks similar to the isnads which were used as training data for the model, it will be labeled as an isnad, since it is more likely under the isnad model. In contrast, portions of the text that look similar to the background will be labeled as not an isnad, since they are more likely under the background language model.As sensible as this approach sounds, it actually performs quite poorly since it is not very sensitive to the different contexts in which words can appear and how that affects their meaning. For instance, qala (“he said”) can be used both as a transmissive term within an isnad and as a way of introducing quotations. This model isn’t capable of distinguishing between those two situations easily.To rectify these issues, we decided that, rather than trying to tag entire spans of words as isnad or not, we would instead tag individual words as part of an isnad or not, based on other words that surround them within some fixed window. Using this alternative method, we would be able to give the model a more nuanced understanding of context and its effect of what the correct labels for the words should be. This process, unfortunately, involves much more labor-intensive manual annotation of texts to insert isnad markers, as in Figure 2 below. @Isnad_Beg@ marks the beginning of an isnad, while @Isnad_End@ marks its end.Figure 2: Manually annotated text with isnad markers used to train the word-tagging model — @Isnad_Beg@ marks the beginning of an isnad, while @Isnad_End@ concludes itThis text is then converted into a list of words and the correct tags associated with them, as in Figure 3. Words at the beginning of isnads are tagged as “B_Isnad”, while those that are inside an isnād are tagged as “I_Isnad”. Finally, although this is not visible in the example tags below, words that are not part of an isnad receive the tag “O” (“Outside”). This data is then used to train the model by associating some information with each word—both about the word itself and about the frequencies of words used before and after it, within some fixed window. Computer scientists call this process “featurization”. For example, an early passage from Ibn Qutaybah’s Gharib al-ḥadith (below), it is tagged and featurized as in Figure 3.قال أخبرنا أبو محمد عبد الله بن مسلم بن قتيبةFigure 3: An example of tagged text and featurization with a window size of five words. Note how “بن” occurs twice after the current word within the window, and that is reflected in the value for the “a_بن” feature.During training, the model will then use this representation of the text to learn to interpret things like the presence of a high number of transmissive terms or names in the text around a word as an indicator that it is part of an isnad. Unlike the first approach, this model also has the ability to take context into account when the surrounding text doesn’t look like an isnad, and label the text accordingly. This will reduce false positive matches where, as in the example above, qala could be used to introduce quotations of written text. Once trained, the model can then be used to label isnads in new texts by inferring the most likely tags for that new text. To do this, the text is featurized as described above and the trained model is used to find the most likely tag sequence (labeling of words as part of an isnad or not) for that featurized data.To evaluate the model, we performed a process called ten-fold cross-validation: first, the data is divided into ten pieces, called folds; second, a model is trained on nine of the folds; third, the trained model is tested on the remaining tenth fold; then the process is repeated nine more times until each fold has been used as test data. This results in ten trained models and ten sets of scores, which are then averaged—as shown in the table below in Table 1.            Precision      Recall      F1              .853      .805      .819      Table 1: Evaluation Statistics for the Word Tagging ModelPrecision and recall are two similar metrics used to measure the performance of machine learning algorithms, with a critical difference. Precision measures the percentage of words that the model tagged as part of an isnad that actually are part of isnads. Recall, in contrast, measures the percentage of words that should be labeled as part of an isnad that the model labels as such.To give a concrete explanation for what these measures mean, a model with high precision but low recall would tend to label few words as part of an isnad, but those that it did would usually be correctly labeled. Conversely, a high-recall, low-precision model would label many words as part of an isnad, finding most of the words it ought to, but also erroneously labeling many words as part of an isnad that are not. F1 is used to summarize precision and recall in a single value. We cannot, unfortunately, say how this compares to human results on the isnad detection task, as we don’t have any data on how difficult the task is for humans.As a further experiment, we tagged the entirety of Ibn ʿAsakir (d. 571/1176)’s Taʾrikh Madinat Dimashq (800,000 words in total) and found that, according to our model, it contains just under ninety-one thousand isnads, comprising about 40% of the text.This work would have been impossible without close collaboration between myself and other members of the Kitab team. In particular, Professor Sarah Savant, Professor Kevin Jaques, research assistant Mathew Barber and PhD student Hassan Ahmed provided vital training data for the models discussed above.Works Cited:Altammami, Shatha, Atwell, Eric, and Alsalka, Ammar. 2019. Text Segmentation Using N-grams to Annotate Hadith Corpus. In Proceedings of the 3rd Workshop on Arabic Corpus Linguistics, 31-39. ACL.Harrag, Fouzi. 2014. Text mining approach for knowledge extraction in Sahˆıh al-Bukhari. Computers in Human Behavior, 30:558–566.Maraoui, Hajer, Haddar, Kais, and Romary, Laurent. 2018. Segmentation tool for hadith corpus to generate TEI encoding. In International Conference on Advanced Intelligent Systems and Informatics, 252–260. Springer.Siddiqui, Muazzam, Saleh, Mostafa, and Bagais, Ahmed. 2014. Extraction and visualization of the chain of narrators from hadiths using named entity recognition and classification. Int. J. Comput. Linguist. Res, 5(1):14–25.">
+
+
+
+
+
+  
+
+  
+
+
+
+
+
+  <meta property="og:type" content="article">
+  <meta property="article:published_time" content="2020-02-03T00:00:00+00:00">
+
+
+
+
+
+
+
+
+  <script type="application/ld+json">
+    {
+      "@context" : "http://schema.org",
+      "@type" : "Person",
+      "name" : "Knowledge, Information Technology, and the Arabic Book",
+      "url" : "http://localhost:4000",
+      "sameAs" : null
+    }
+  </script>
+
+
+
+
+
+
+<!-- end SEO -->
+
+
+<link href="http://localhost:4000/feed.xml" type="application/atom+xml" rel="alternate" title="KITAB Project Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://localhost:4000/assets/css/main.css">
+
+<meta http-equiv="cleartype" content="on">
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use http://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+  </head>
+
+  <body class="layout--single">
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+    <div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        <button><div class="navicon"></div></button>
+        <ul class="visible-links">
+          <li class="masthead__menu-item masthead__menu-item--lg"><a href="http://localhost:4000/">KITAB Project</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000">Blog</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/pilot/">Our Pilot</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/corpus/">Corpus (OpenITI)</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/methods/">Text Reuse Methods</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/about/">About the Project</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/about-passim/">About passim</a></li>
+          
+        </ul>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+    
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+<div itemscope itemtype="http://schema.org/Person">
+
+  
+
+  <div class="author__content">
+    <h3 class="author__name" itemprop="name">Ryan Muther</h3>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs">
+      <i class="fa fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+  <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Tracking Traditions: Identifying Isnads in the OpenITI Corpus">
+    <meta itemprop="description" content="Due to its size and coverage, the OpenITI corpus is useful for a wide variety of research purposes. Particularly, it represents an excellent opportunity to apply computational methods from natural language processing and machine learning to solve problems not only of interest to historians, but also to computer scientists. This post will focus on one problem in particular—that of detecting embedded genres in texts in the OpenITI corpus. Embedded genres are portions of a larger work that can be thought of as belonging to a genre distinct from that of the work itself, such as poetry embedded in a historical narrative or chains of transmitters (isnads) embedded in a discussion of grammar. This phenomena is found throughout the corpus.As a case study, we will focus on detecting isnads: we will give an overview of machine learning and of the process used to create the training data and models for automatic identification of isnāds in the corpus. Unlike prior work on automatic ḥadith tagging, we focus exclusively on trying to identify isnads, rather than also trying to simultaneously extract the corresponding stories (matns) for each chain (Harrag et al, 2014; Maraoui et al, 2019, Altammami et al, 2019) or extract information from the identified isnads (Siddiqui et al, 2014), as others have done. Additionally, we are working with a much larger and correspondingly more diverse collection of texts. Furthermore, much of the existing work, like that cited above, focuses on using rule-based systems to identify isnads and the individual transmitters within them which limits the generalizability of these models to previously unseen texts.The task of identifying isnāds in the corpus has interesting future applications, both historiographically and technically. For historians, even something as simple as the ability to identify where isnads occur allows one to, for example, track how the importance of certain texts change over time based on what gets cited and how, or to understand the relative importance of ḥadīth citations in different texts.Computationally, our research on isnads has myriad applications to other problems in natural language processing. It lays the groundwork for improving the models used to track text reuse in the corpus, as isnāds currently indicate a great deal of similarity of reuse that is statistically meaningless. Additionally, it allows one to look at the problem of converting the text of an isnad into the network of relationships among mentioned transmitters using the isnāds found with this model as training data. Then, rather than having, say, a piece of text which describes that Ibn Sa’d heard some information from Ibn Ishaq, the computer would know that there are two people, one called Ibn Sa’d, the other called Ibn Ishaq and that the former received information from the latter. This would, in turn, allow scholars to apply methods from social network analysis to understand how texts were compiled and transmitted by exploring how different people were involved in the dissemination of knowledge. Similarly, this also creates a wealth of training data for named-entity tagging in classical Arabic texts, as isnads are innately name-rich. This will allow later research to leverage the output of this model as a way of improving the performance of models designed to locate the names of people in a text using the names present in isnads as additional training data.Having discussed why this task is useful to resolve, we will turn our attention to how exactly we can go about performing it on a collection of texts on the scale of our corpus, with about 4,200 unique texts totaling over 1.5 billion words. In order to underscore the iterative nature of this sort of work, we will present two different approaches to the task of isnad detection. Both approaches involve building mathematical models of what isnads look like using a set of examples created by human annotators. These models can then be used to find other isnāds in texts which the model has never seen before. This is an example of a “supervised problem,” where the model learns from training data, which consists of examples of what it is trying to find—in this case isnads—and examples of what not to look for. (For an example of an unsupervised problem, such as test reuse detection, see the discussion in previous blog posts.) The exact form of the training data can vary depending on how the models work.The first approach relies on the idea that isnads display a characteristic distribution of particular words, including “transmissive terms” like haddathana or qala, or common name elements like “ibn” that can be used to identify what parts of a text are likely to be isnads. Since in other contexts these terms will have a different distribution, looking for regions of text which use similar language to known isnads will be enough to reliably identify them. This is done by building two language models, which are trained on different kinds of text: one is trained on examples of isnads and another is trained on examples of text which are not isnads (the latter is called the “background”). Examples of the training data for the isnad model can be seen in Figure 1 below. It consists solely of a collection of isnads provided by human annotators. The background model is trained on the entire corpus. Figure 1: Training data for the isnad modelThese models can be used to quantify the likelihood that some piece of text is an isnad or is not an isnad, respectively. Text that looks more similar to the training data used for a model will receive a higher likelihood under that model. Using these two models, we can figure out the best way to divide a new text into sections, some of which are isnāds and some of which are not, effectively breaking the text into a series of labeled sections of words. For example, if a certain portion of the text looks similar to the isnads which were used as training data for the model, it will be labeled as an isnad, since it is more likely under the isnad model. In contrast, portions of the text that look similar to the background will be labeled as not an isnad, since they are more likely under the background language model.As sensible as this approach sounds, it actually performs quite poorly since it is not very sensitive to the different contexts in which words can appear and how that affects their meaning. For instance, qala (“he said”) can be used both as a transmissive term within an isnad and as a way of introducing quotations. This model isn’t capable of distinguishing between those two situations easily.To rectify these issues, we decided that, rather than trying to tag entire spans of words as isnad or not, we would instead tag individual words as part of an isnad or not, based on other words that surround them within some fixed window. Using this alternative method, we would be able to give the model a more nuanced understanding of context and its effect of what the correct labels for the words should be. This process, unfortunately, involves much more labor-intensive manual annotation of texts to insert isnad markers, as in Figure 2 below. @Isnad_Beg@ marks the beginning of an isnad, while @Isnad_End@ marks its end.Figure 2: Manually annotated text with isnad markers used to train the word-tagging model — @Isnad_Beg@ marks the beginning of an isnad, while @Isnad_End@ concludes itThis text is then converted into a list of words and the correct tags associated with them, as in Figure 3. Words at the beginning of isnads are tagged as “B_Isnad”, while those that are inside an isnād are tagged as “I_Isnad”. Finally, although this is not visible in the example tags below, words that are not part of an isnad receive the tag “O” (“Outside”). This data is then used to train the model by associating some information with each word—both about the word itself and about the frequencies of words used before and after it, within some fixed window. Computer scientists call this process “featurization”. For example, an early passage from Ibn Qutaybah’s Gharib al-ḥadith (below), it is tagged and featurized as in Figure 3.قال أخبرنا أبو محمد عبد الله بن مسلم بن قتيبةFigure 3: An example of tagged text and featurization with a window size of five words. Note how “بن” occurs twice after the current word within the window, and that is reflected in the value for the “a_بن” feature.During training, the model will then use this representation of the text to learn to interpret things like the presence of a high number of transmissive terms or names in the text around a word as an indicator that it is part of an isnad. Unlike the first approach, this model also has the ability to take context into account when the surrounding text doesn’t look like an isnad, and label the text accordingly. This will reduce false positive matches where, as in the example above, qala could be used to introduce quotations of written text. Once trained, the model can then be used to label isnads in new texts by inferring the most likely tags for that new text. To do this, the text is featurized as described above and the trained model is used to find the most likely tag sequence (labeling of words as part of an isnad or not) for that featurized data.To evaluate the model, we performed a process called ten-fold cross-validation: first, the data is divided into ten pieces, called folds; second, a model is trained on nine of the folds; third, the trained model is tested on the remaining tenth fold; then the process is repeated nine more times until each fold has been used as test data. This results in ten trained models and ten sets of scores, which are then averaged—as shown in the table below in Table 1.            Precision      Recall      F1              .853      .805      .819      Table 1: Evaluation Statistics for the Word Tagging ModelPrecision and recall are two similar metrics used to measure the performance of machine learning algorithms, with a critical difference. Precision measures the percentage of words that the model tagged as part of an isnad that actually are part of isnads. Recall, in contrast, measures the percentage of words that should be labeled as part of an isnad that the model labels as such.To give a concrete explanation for what these measures mean, a model with high precision but low recall would tend to label few words as part of an isnad, but those that it did would usually be correctly labeled. Conversely, a high-recall, low-precision model would label many words as part of an isnad, finding most of the words it ought to, but also erroneously labeling many words as part of an isnad that are not. F1 is used to summarize precision and recall in a single value. We cannot, unfortunately, say how this compares to human results on the isnad detection task, as we don’t have any data on how difficult the task is for humans.As a further experiment, we tagged the entirety of Ibn ʿAsakir (d. 571/1176)’s Taʾrikh Madinat Dimashq (800,000 words in total) and found that, according to our model, it contains just under ninety-one thousand isnads, comprising about 40% of the text.This work would have been impossible without close collaboration between myself and other members of the Kitab team. In particular, Professor Sarah Savant, Professor Kevin Jaques, research assistant Mathew Barber and PhD student Hassan Ahmed provided vital training data for the models discussed above.Works Cited:Altammami, Shatha, Atwell, Eric, and Alsalka, Ammar. 2019. Text Segmentation Using N-grams to Annotate Hadith Corpus. In Proceedings of the 3rd Workshop on Arabic Corpus Linguistics, 31-39. ACL.Harrag, Fouzi. 2014. Text mining approach for knowledge extraction in Sahˆıh al-Bukhari. Computers in Human Behavior, 30:558–566.Maraoui, Hajer, Haddar, Kais, and Romary, Laurent. 2018. Segmentation tool for hadith corpus to generate TEI encoding. In International Conference on Advanced Intelligent Systems and Informatics, 252–260. Springer.Siddiqui, Muazzam, Saleh, Mostafa, and Bagais, Ahmed. 2014. Extraction and visualization of the chain of narrators from hadiths using named entity recognition and classification. Int. J. Comput. Linguist. Res, 5(1):14–25.">
+    <meta itemprop="datePublished" content="February 03, 2020">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 class="page__title" itemprop="headline">Tracking Traditions: Identifying Isnads in the OpenITI Corpus
+</h1>
+          
+            <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+
+
+  10 minute read
+ :: <i>Posted on February 3, 2020</i></p>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        <p>Due to its size and coverage, the OpenITI corpus is useful for a wide variety of research purposes. Particularly, it represents an excellent opportunity to apply computational methods from natural language processing and machine learning to solve problems not only of interest to historians, but also to computer scientists. This post will focus on one problem in particular—that of detecting embedded genres in texts in the OpenITI corpus. Embedded genres are portions of a larger work that can be thought of as belonging to a genre distinct from that of the work itself, such as poetry embedded in a historical narrative or chains of transmitters (<em>isnad</em>s) embedded in a discussion of grammar. This phenomena is found throughout the corpus.</p>
+
+<p>As a case study, we will focus on detecting <em>isnad</em>s: we will give an overview of machine learning and of the process used to create the training data and models for automatic identification of <em>isnād</em>s in the corpus. Unlike prior work on automatic <em>ḥadith</em> tagging, we focus exclusively on trying to identify <em>isnad</em>s, rather than also trying to simultaneously extract the corresponding stories (<em>matn</em>s) for each chain (Harrag et al, 2014; Maraoui et al, 2019, Altammami et al, 2019) or extract information from the identified <em>isnad</em>s (Siddiqui et al, 2014), as others have done. Additionally, we are working with a much larger and correspondingly more diverse collection of texts. Furthermore, much of the existing work, like that cited above, focuses on using rule-based systems to identify <em>isnad</em>s and the individual transmitters within them which limits the generalizability of these models to previously unseen texts.</p>
+
+<p>The task of identifying <em>isnād</em>s in the corpus has interesting future applications, both historiographically and technically. For historians, even something as simple as the ability to identify where <em>isnad</em>s occur allows one to, for example, track how the importance of certain texts change over time based on what gets cited and how, or to understand the relative importance of <em>ḥadīth</em> citations in different texts.</p>
+
+<p>Computationally, our research on <em>isnad</em>s has myriad applications to other problems in natural language processing. It lays the groundwork for improving the models used to track text reuse in the corpus, as <em>isnād</em>s currently indicate a great deal of similarity of reuse that is statistically meaningless. Additionally, it allows one to look at the problem of converting the text of an <em>isnad</em> into the network of relationships among mentioned transmitters using the <em>isnād</em>s found with this model as training data. Then, rather than having, say, a piece of text which describes that Ibn Sa’d heard some information from Ibn Ishaq, the computer would know that there are two people, one called Ibn Sa’d, the other called Ibn Ishaq and that the former received information from the latter. This would, in turn, allow scholars to apply methods from social network analysis to understand how texts were compiled and transmitted by exploring how different people were involved in the dissemination of knowledge. Similarly, this also creates a wealth of training data for named-entity tagging in classical Arabic texts, as <em>isnad</em>s are innately name-rich. This will allow later research to leverage the output of this model as a way of improving the performance of models designed to locate the names of people in a text using the names present in <em>isnad</em>s as additional training data.</p>
+
+<p>Having discussed why this task is useful to resolve, we will turn our attention to how exactly we can go about performing it on a collection of texts on the scale of our corpus, with about 4,200 unique texts totaling over 1.5 billion words. In order to underscore the iterative nature of this sort of work, we will present two different approaches to the task of <em>isnad</em> detection. Both approaches involve building mathematical models of what <em>isnad</em>s look like using a set of examples created by human annotators. These models can then be used to find other <em>isnād</em>s in texts which the model has never seen before. This is an example of a “supervised problem,” where the model learns from training data, which consists of examples of what it is trying to find—in this case <em>isnad</em>s—and examples of what not to look for. (For an example of an unsupervised problem, such as test reuse detection, see the discussion in previous <a href="http://kitab-project.org/2018/05/02/detecting-what-authors-took-from-earlier-works/">blog</a> <a href="http://kitab-project.org/2019/11/14/judging-the-difference-between-different-arabic-text-versions-mathematically/">posts</a>.) The exact form of the training data can vary depending on how the models work.</p>
+
+<p>The first approach relies on the idea that <em>isnad</em>s display a characteristic distribution of particular words, including “transmissive terms” like <em>haddathana</em> or <em>qala</em>, or common name elements like “<em>ibn</em>” that can be used to identify what parts of a text are likely to be <em>isnad</em>s. Since in other contexts these terms will have a different distribution, looking for regions of text which use similar language to known <em>isnad</em>s will be enough to reliably identify them. This is done by building two language models, which are trained on different kinds of text: one is trained on examples of <em>isnad</em>s and another is trained on examples of text which are not <em>isnads</em> (the latter is called the “background”). Examples of the training data for the <em>isnad</em> model can be seen in Figure 1 below. It consists solely of a collection of <em>isnad</em>s provided by human annotators. The background model is trained on the entire corpus.</p>
+
+<p> </p>
+
+<p><img src="/images/old_posts/Ryan-1a-1024x300.png" alt="Image" /></p>
+
+<p><strong>Figure 1</strong>: Training data for the <em>isnad</em> model</p>
+
+<p>These models can be used to quantify the likelihood that some piece of text is an <em>isnad</em> or is not an <em>isnad</em>, respectively. Text that looks more similar to the training data used for a model will receive a higher likelihood under that model. Using these two models, we can figure out the best way to divide a new text into sections, some of which are <em>isnād</em>s and some of which are not, effectively breaking the text into a series of labeled sections of words. For example, if a certain portion of the text looks similar to the <em>isnad</em>s which were used as training data for the model, it will be labeled as an <em>isnad</em>, since it is more likely under the <em>isnad</em> model. In contrast, portions of the text that look similar to the background will be labeled as not an <em>isnad</em>, since they are more likely under the background language model.</p>
+
+<p>As sensible as this approach sounds, it actually performs quite poorly since it is not very sensitive to the different contexts in which words can appear and how that affects their meaning. For instance, <em>qala</em> (“he said”) can be used both as a transmissive term within an <em>isnad</em> and as a way of introducing quotations. This model isn’t capable of distinguishing between those two situations easily.</p>
+
+<p>To rectify these issues, we decided that, rather than trying to tag entire spans of words as <em>isnad</em> or not, we would instead tag individual words as part of an <em>isnad</em> or not, based on other words that surround them within some fixed window. Using this alternative method, we would be able to give the model a more nuanced understanding of context and its effect of what the correct labels for the words should be. This process, unfortunately, involves much more labor-intensive manual annotation of texts to insert <em>isnad</em> markers, as in Figure 2 below. @Isnad_Beg@ marks the beginning of an <em>isnad</em>, while @Isnad_End@ marks its end.</p>
+
+<p><img src="/images/old_posts/Ryan-1b-1024x394.png" alt="Image" /></p>
+
+<p><strong>Figure 2</strong>: Manually annotated text with <em>isnad</em> markers used to train the word-tagging model — @Isnad_Beg@ marks the beginning of an <em>isnad</em>, while @Isnad_End@ concludes it</p>
+
+<p>This text is then converted into a list of words and the correct tags associated with them, as in Figure 3. Words at the beginning of <em>isnad</em>s are tagged as “B_Isnad”, while those that are inside an <em>isnād</em> are tagged as “I_Isnad”. Finally, although this is not visible in the example tags below, words that are not part of an <em>isnad</em> receive the tag “O” (“Outside”). This data is then used to train the model by associating some information with each word—both about the word itself and about the frequencies of words used before and after it, within some fixed window. Computer scientists call this process “featurization”. For example, an early passage from Ibn Qutaybah’s <em>Gharib al-ḥadith</em> (below), it is tagged and featurized as in Figure 3.</p>
+
+<p>قال أخبرنا أبو محمد عبد الله بن مسلم بن قتيبة</p>
+
+<p><img src="/images/old_posts/Ryan-1c-1024x459.png" alt="Image" /></p>
+
+<p><strong>Figure 3</strong>: An example of tagged text and featurization with a window size of five words. Note how “بن” occurs twice after the current word within the window, and that is reflected in the value for the “a_بن” feature.</p>
+
+<p>During training, the model will then use this representation of the text to learn to interpret things like the presence of a high number of transmissive terms or names in the text around a word as an indicator that it is part of an <em>isnad</em>. Unlike the first approach, this model also has the ability to take context into account when the surrounding text doesn’t look like an <em>isnad</em>, and label the text accordingly. This will reduce false positive matches where, as in the example above, <em>qala</em> could be used to introduce quotations of written text. Once trained, the model can then be used to label <em>isnad</em>s in new texts by inferring the most likely tags for that new text. To do this, the text is featurized as described above and the trained model is used to find the most likely tag sequence (labeling of words as part of an <em>isnad</em> or not) for that featurized data.</p>
+
+<p>To evaluate the model, we performed a process called ten-fold cross-validation: first, the data is divided into ten pieces, called folds; second, a model is trained on nine of the folds; third, the trained model is tested on the remaining tenth fold; then the process is repeated nine more times until each fold has been used as test data. This results in ten trained models and ten sets of scores, which are then averaged—as shown in the table below in Table 1.</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>Precision</td>
+      <td>Recall</td>
+      <td>F1</td>
+    </tr>
+    <tr>
+      <td>.853</td>
+      <td>.805</td>
+      <td>.819</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Table 1</strong>: Evaluation Statistics for the Word Tagging Model</p>
+
+<p>Precision and recall are two similar metrics used to measure the performance of machine learning algorithms, with a critical difference. Precision measures the percentage of words that the model tagged as part of an <em>isnad</em> that actually are part of <em>isnad</em>s. Recall, in contrast, measures the percentage of words that should be labeled as part of an <em>isnad</em> that the model labels as such.</p>
+
+<p>To give a concrete explanation for what these measures mean, a model with high precision but low recall would tend to label few words as part of an <em>isnad</em>, but those that it did would usually be correctly labeled. Conversely, a high-recall, low-precision model would label many words as part of an <em>isnad</em>, finding most of the words it ought to, but also erroneously labeling many words as part of an <em>isnad</em> that are not. F1 is used to summarize precision and recall in a single value. We cannot, unfortunately, say how this compares to human results on the <em>isnad</em> detection task, as we don’t have any data on how difficult the task is for humans.</p>
+
+<p>As a further experiment, we tagged the entirety of Ibn ʿAsakir (d. 571/1176)’s <em>Taʾrikh Madinat Dimashq</em> (800,000 words in total) and found that, according to our model, it contains just under ninety-one thousand <em>isnad</em>s, comprising about 40% of the text.</p>
+
+<p>This work would have been impossible without close collaboration between myself and other members of the Kitab team. In particular, Professor Sarah Savant, Professor Kevin Jaques, research assistant Mathew Barber and PhD student Hassan Ahmed provided vital training data for the models discussed above.</p>
+
+<h3 id="works-cited"><strong>Works Cited:</strong></h3>
+
+<p>Altammami, Shatha, Atwell, Eric, and Alsalka, Ammar. 2019. Text Segmentation Using N-grams to Annotate Hadith Corpus. In <em>Proceedings of the 3rd Workshop on Arabic Corpus Linguistics</em>, 31-39. ACL.</p>
+
+<p>Harrag, Fouzi. 2014. Text mining approach for knowledge extraction in Sahˆıh al-Bukhari. <em>Computers in Human Behavior</em>, 30:558–566.</p>
+
+<p>Maraoui, Hajer, Haddar, Kais, and Romary, Laurent. 2018. Segmentation tool for hadith corpus to generate TEI encoding. In <em>International Conference on Advanced Intelligent Systems and Informatics</em>, 252–260. Springer.</p>
+
+<p>Siddiqui, Muazzam, Saleh, Mostafa, and Bagais, Ahmed. 2014. Extraction and visualization of the chain of narrators from hadiths using named entity recognition and classification. <em>Int. J. Comput. Linguist. Res,</em> 5(1):14–25.</p>
+
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+        
+          <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Updated:</strong> <time datetime="2020-02-03T00:00:00+00:00">February 03, 2020</time></p>
+        
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=Tracking Traditions: Identifying Isnads in the OpenITI Corpus http://localhost:4000/2020/02-03.html" class="btn btn--twitter" title="Share on Twitter"><i class="fa fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/2020/02-03.html" class="btn btn--facebook" title="Share on Facebook"><i class="fa fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://plus.google.com/share?url=http://localhost:4000/2020/02-03.html" class="btn btn--google-plus" title="Share on Google Plus"><i class="fa fa-fw fa-google-plus" aria-hidden="true"></i><span> Google+</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http://localhost:4000/2020/02-03.html" class="btn btn--linkedin" title="Share on LinkedIn"><i class="fa fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="http://localhost:4000/2020/01-10.html" class="pagination--pager" title="When al-Tabarī is Not (Just) al-Tabarī: The Challenges Posed by Composite Editions in the OpenITI Corpus
+">Previous</a>
+    
+    
+      <a href="http://localhost:4000/2020/03-06.html" class="pagination--pager" title="The New OpenITI Metadata Search
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+      <div class="page__comments">
+  
+  
+    <h4 class="page__comments-title">Leave a Comment</h4>
+    <section id="disqus_thread"></section>
+  
+</div>
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      
+        <h4 class="page__related-title">You May Also Enjoy</h4>
+      
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="http://localhost:4000/2021/01-21.html" rel="permalink">Diversifying the OpenITI corpus, One Text at a Time
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+
+
+  9 minute read
+ :: <i>Posted on January 21, 2021</i></p>
+    
+    <p class="archive__item-excerpt" itemprop="description">The vast majority of texts in the OpenITI corpus were sourced from three major collections of digital texts originally prepared by organisations based in the Middle East (see Peter Verkinderen’s excellent blog on the largest of them, Shamela). These collections have proven invaluable to researchers, not in the least...</p>
+  </article>
+</div>
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="http://localhost:4000/2020/12-11.html" rel="permalink">Tracing the origins of a historical fragment focused on the Sāmānids
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+
+
+  2 minute read
+ :: <i>Posted on December 11, 2020</i></p>
+    
+    <p class="archive__item-excerpt" itemprop="description">At the Arabic Pasts conference this year, Hugh Kennedy and I presented a paper in the panel dedicated to the Invisible East program, chaired by the program’s PI Arezou Azad. The paper focused on a fragment from an as-yet-unknown Arabic historical text, focused on the Sāmānid dynasty of the 4th/10th century. The frag...</p>
+  </article>
+</div>
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="http://localhost:4000/2020/12-03.html" rel="permalink">Al-Maktaba al-Shāmila: a short history
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+
+
+  10 minute read
+ :: <i>Posted on December 3, 2020</i></p>
+    
+    <p class="archive__item-excerpt" itemprop="description">(This is the first blog post in a longer series of posts about the sources of OpenITI)
+
+Al-Maktaba al-Shāmila (“The comprehensive library”, often referred to simply as Shamela) is a free software that aims at providing a digital research environment for Islamic scholars, and comes with a large collection of Arabic p...</p>
+  </article>
+</div>
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="http://localhost:4000/2020/11-19.html" rel="permalink">KITAB postdoc Gowaart Van Den Bossche wins BRAIS-De Gruyter dissertation prize – 2020
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+
+
+  less than 1 minute read
+ :: <i>Posted on November 19, 2020</i></p>
+    
+    <p class="archive__item-excerpt" itemprop="description">The British Association for Islamic Studies (BRAIS) and De Gruyter have announced the outcome of the fifth (2020) round of the BRAIS – De Gruyter Prize in the Study of Islam and the Muslim World. The winning submission is Gowaart Van Den Bossche’s PhD thesis, which he defended in 2019 at Ghent University, right befo...</p>
+  </article>
+</div>
+        
+      </div>
+    </div>
+  
+</div>
+
+    <div class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+    
+    
+    
+      <li><a href="http://github.com/https://github.com/kitab-project-org/"><i class="fa fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+    
+    
+    <li><a href="http://localhost:4000/feed.xml"><i class="fa fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2021 Knowledge, Information Technology, and the Arabic Book. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+      </footer>
+    </div>
+
+    <script src="http://localhost:4000/assets/js/main.min.js"></script>
+
+
+
+
+
+  
+
+
+
+
+
+  </body>
+</html>

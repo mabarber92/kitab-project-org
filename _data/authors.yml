@@ -1,13 +1,13 @@
 sarah_savant:
   name             : "Sarah Savant"
-  avatar           : "/images/kitab/sarah_savant.jpg" # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
-  bio              : "Sarah Bowen Savant, Associate Professor, AKU-ISMC, and Principle Investigator of KITAB. Dr Savant is a cultural historian specialising in the Middle East and Iran ca. 600-1500. Her work on KITAB is motivated by a desire to write a cultural history of the Arabic book using digital tools. Her publications include three monographs and numerous articles treating ethnic identity, cultural memory, genealogy, and history writing."
-  location         : "London, UK"
-  email            : "sarah.savant@aku.edu"
+  avatar           : # path of avatar image, e.g. ""
+  bio              : 
+  location         :
+  email            :
   uri              :
   flickr           :
-  facebook         : ""
-  github           : "SarahKITAB"
+  facebook         :
+  github           :
   google_plus      :
   instagram        :
   linkedin         :
@@ -16,17 +16,17 @@ sarah_savant:
   stackoverflow    : # "123456/username" (the last part of your profile url, e.g. http://stackoverflow.com/users/123456/username)
   steam            :
   tumblr           :
-  twitter          : ""
-maxim_romanov:
-  name             : "Maxim Romanov"
-  avatar           : "/images/kitab/maxim_romanov.png" # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
-  bio              : "Universitätsassistent für Digital Humanities (PhD in Near Eastern Studies, U of Michigan, 2013), Institut für Geschichte, Universität Wien. He studies Islamic historical texts with computational methods, currently focusing on the analysis of multivolume biographical and bibliographical collections."
-  location         : "Vienna, Austria"
-  email            : "romanov.maxim@gmail.com"
+  twitter          :
+mathew_barber:
+  name             : "Mathew Barber"
+  avatar           : # path of avatar image, e.g. ""
+  bio              : 
+  location         :
+  email            :
   uri              :
   flickr           :
-  facebook         : "maxim.romanov.925"
-  github           : "maximromanov"
+  facebook         :
+  github           :
   google_plus      :
   instagram        :
   linkedin         :
@@ -35,17 +35,131 @@ maxim_romanov:
   stackoverflow    : # "123456/username" (the last part of your profile url, e.g. http://stackoverflow.com/users/123456/username)
   steam            :
   tumblr           :
-  twitter          : "maximromanov"
+  twitter          :
+peter_verkinderen:
+  name             : "Peter Verkinderen"
+  avatar           : # path of avatar image, e.g. ""
+  bio              : 
+  location         :
+  email            :
+  uri              :
+  flickr           :
+  facebook         :
+  github           :
+  google_plus      :
+  instagram        :
+  linkedin         :
+  pinterest        :
+  soundcloud       :
+  stackoverflow    : # "123456/username" (the last part of your profile url, e.g. http://stackoverflow.com/users/123456/username)
+  steam            :
+  tumblr           :
+  twitter          :
+aslisho_qurboniev:
+  name             : "Aslisho Qurboniev"
+  avatar           : # path of avatar image, e.g. ""
+  bio              : 
+  location         :
+  email            :
+  uri              :
+  flickr           :
+  facebook         :
+  github           :
+  google_plus      :
+  instagram        :
+  linkedin         :
+  pinterest        :
+  soundcloud       :
+  stackoverflow    : # "123456/username" (the last part of your profile url, e.g. http://stackoverflow.com/users/123456/username)
+  steam            :
+  tumblr           :
+  twitter          :
+claire_savina:
+  name             : "Claire Savina"
+  avatar           : # path of avatar image, e.g. ""
+  bio              : 
+  location         :
+  email            :
+  uri              :
+  flickr           :
+  facebook         :
+  github           :
+  google_plus      :
+  instagram        :
+  linkedin         :
+  pinterest        :
+  soundcloud       :
+  stackoverflow    : # "123456/username" (the last part of your profile url, e.g. http://stackoverflow.com/users/123456/username)
+  steam            :
+  tumblr           :
+  twitter          :
+anjum_alam:
+  name             : "Anjum Alam"
+  avatar           : # path of avatar image, e.g. ""
+  bio              : 
+  location         :
+  email            :
+  uri              :
+  flickr           :
+  facebook         :
+  github           :
+  google_plus      :
+  instagram        :
+  linkedin         :
+  pinterest        :
+  soundcloud       :
+  stackoverflow    : # "123456/username" (the last part of your profile url, e.g. http://stackoverflow.com/users/123456/username)
+  steam            :
+  tumblr           :
+  twitter          :
+gowaart_van_den_bossche:
+  name             : "Gowaart Van Den Bossche"
+  avatar           : # path of avatar image, e.g. ""
+  bio              : 
+  location         :
+  email            :
+  uri              :
+  flickr           :
+  facebook         :
+  github           :
+  google_plus      :
+  instagram        :
+  linkedin         :
+  pinterest        :
+  soundcloud       :
+  stackoverflow    : # "123456/username" (the last part of your profile url, e.g. http://stackoverflow.com/users/123456/username)
+  steam            :
+  tumblr           :
+  twitter          :
+masoumeh_seydi:
+  name             : "Masoumeh Seydi"
+  avatar           : # path of avatar image, e.g. ""
+  bio              : 
+  location         :
+  email            :
+  uri              :
+  flickr           :
+  facebook         :
+  github           :
+  google_plus      :
+  instagram        :
+  linkedin         :
+  pinterest        :
+  soundcloud       :
+  stackoverflow    : # "123456/username" (the last part of your profile url, e.g. http://stackoverflow.com/users/123456/username)
+  steam            :
+  tumblr           :
+  twitter          :
 david_smith:
   name             : "David Smith"
-  avatar           : "/images/kitab/david_smith.jpg" # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
-  bio              : "David Smith is an Assistant Professor in the College of Computer and Information Science at Northeastern University and a founding member of the NULab for Texts, Maps, and Networks, Northeastern’s center for the digital humanities and computational social sciences. Previously, he was a research faculty member at the University of Massachusetts’ Center for Intelligent Information Retrieval, a Ph.D. student in computer science at Johns Hopkins University, and the head programmer at the Perseus Digital Library Project. His research focuses on building statistical models of human language, with applications to information retrieval, machine translation, the humanities, and social sciences. Most recently, he has been working on inference for social networks from textual evidence, in collaboration with colleagues in English, history, and political science, under the aegis of the Proteus and Viral Texts projects."
-  location         : "Boston, USA"
-  email            : ""
+  avatar           : # path of avatar image, e.g. ""
+  bio              : 
+  location         :
+  email            :
   uri              :
   flickr           :
-  facebook         : ""
-  github           : ""
+  facebook         :
+  github           :
   google_plus      :
   instagram        :
   linkedin         :
@@ -54,4 +168,99 @@ david_smith:
   stackoverflow    : # "123456/username" (the last part of your profile url, e.g. http://stackoverflow.com/users/123456/username)
   steam            :
   tumblr           :
-  twitter          : ""
+  twitter          :
+lorenz_nigst:
+  name             : "Lorenz Nigst"
+  avatar           : # path of avatar image, e.g. ""
+  bio              : 
+  location         :
+  email            :
+  uri              :
+  flickr           :
+  facebook         :
+  github           :
+  google_plus      :
+  instagram        :
+  linkedin         :
+  pinterest        :
+  soundcloud       :
+  stackoverflow    : # "123456/username" (the last part of your profile url, e.g. http://stackoverflow.com/users/123456/username)
+  steam            :
+  tumblr           :
+  twitter          :
+hamid_reza_hakimi:
+  name             : "Hamid Reza Hakimi"
+  avatar           : # path of avatar image, e.g. ""
+  bio              : 
+  location         :
+  email            :
+  uri              :
+  flickr           :
+  facebook         :
+  github           :
+  google_plus      :
+  instagram        :
+  linkedin         :
+  pinterest        :
+  soundcloud       :
+  stackoverflow    : # "123456/username" (the last part of your profile url, e.g. http://stackoverflow.com/users/123456/username)
+  steam            :
+  tumblr           :
+  twitter          :
+thomas_benfey:
+  name             : "Thomas Benfey"
+  avatar           : # path of avatar image, e.g. ""
+  bio              : 
+  location         :
+  email            :
+  uri              :
+  flickr           :
+  facebook         :
+  github           :
+  google_plus      :
+  instagram        :
+  linkedin         :
+  pinterest        :
+  soundcloud       :
+  stackoverflow    : # "123456/username" (the last part of your profile url, e.g. http://stackoverflow.com/users/123456/username)
+  steam            :
+  tumblr           :
+  twitter          :
+ryan_muther:
+  name             : "Ryan Muther"
+  avatar           : # path of avatar image, e.g. ""
+  bio              : 
+  location         :
+  email            :
+  uri              :
+  flickr           :
+  facebook         :
+  github           :
+  google_plus      :
+  instagram        :
+  linkedin         :
+  pinterest        :
+  soundcloud       :
+  stackoverflow    : # "123456/username" (the last part of your profile url, e.g. http://stackoverflow.com/users/123456/username)
+  steam            :
+  tumblr           :
+  twitter          :
+sarah_savant_masoumeh_seydi:
+  name             : "Sarah Savant and Masoumeh Seydi"
+  avatar           : # path of avatar image, e.g. ""
+  bio              : 
+  location         :
+  email            :
+  uri              :
+  flickr           :
+  facebook         :
+  github           :
+  google_plus      :
+  instagram        :
+  linkedin         :
+  pinterest        :
+  soundcloud       :
+  stackoverflow    : # "123456/username" (the last part of your profile url, e.g. http://stackoverflow.com/users/123456/username)
+  steam            :
+  tumblr           :
+  twitter          :

@@ -1,0 +1,482 @@
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin SEO -->
+
+
+
+
+
+
+
+
+
+<title>On Commentaries, Digressions, Transtextualities, and Rabbit Holes - KITAB Project</title>
+
+
+
+
+<meta name="description" content="Running passim on the OpenITI corpus allows us to identify a vast number of instances of text reuse, but the quality of these results from a historical point of view depends on the quality of texts in the corpus. As the material was pulled from various often inconsistently formatted digital corpora (mainly Shamela, al-Jāmiʿ al-kabīr, and Shia Online), the text quality of books in our corpus needs to be properly assessed and harmonised as much as possible. Part of our responsibility as postdoctoral fellows with the KITAB project involves evaluating the quality of a number of such texts as well as tagging their general structure. In this blog post I discuss a number of complexities of this job, especially as they relate to the larger research questions of text reuse and the many-sided “inter-“ and even “transtextualities” (Gérard Genette) in our corpus, and to what we jokingly refer to as the rabbit holes you can fall into when doing this work.Some time ago I decided to work on the annotation of al-Risāla l-ʿuthmāniyya, a text on the virtues of ʿUthmān attributed to the early Islamic polymath al-Jāḥiẓ (d. 255/868-9). In doing so, I found out that this particular text had been published as part of a compilation that also included an appendix containing the refutation of al-Jāḥiẓ’s arguments by his contemporary Jaʿfar al-Iskāfī (d. 240/854). To complicate matters further, this other text is in fact only known to have survived through being quoted in Sharḥ Nahj al-Balāgha, a large-scale “commentary” on the earlier Nahj al-balāgha (“The Peak of Eloquence”). The refutation found in our edition of al-Jāḥiẓ’s al-Risāla l-ʿuthmāniyya is thus an extract tacked on by a modern editor and does not reflect the historical transmission of al-Jāḥiẓ’s text.Nahj al-balāgha itself consists of various sayings, sermons and speeches attributed to ʿAlī b. Abī Ṭālib (d. 40/661), who was widely appreciated as having been extremely eloquent and well-spoken (i.e. balīgh). Its compilation is generally attributed to al-Sharīf al-Rāḍī (d. 1016 CE), but in our corpus it is still filed as a work by ʿAlī b. Abī Ṭālib himself. The later Sharḥ Nahj al-Balāgha was compiled by the seventh/thirteenth century scholar Ibn Abī l-Ḥadīd (d. 656/1258) and has become arguably even more popular than al-Rāḍī’s text. This popularity may be explained through the particular predilections of “post-classical” Arabic literary tastes: Ibn Abī l-Ḥadīd did not just comment on the lexical and semantic meanings of various words and phrases, but also took the occasion to display his vast knowledge of the Arabic written tradition. This results in twenty volumes of associative digressions on matters of poetry, literary theory, and also on some doctrinal issues—it is interesting to note that the work of Ibn Abī l-Ḥadīd, who belonged to the Shāfiʿīte madhhab, cuts across doctrinal divides and remains popular amongst both Shiites and Sunnites. It is in these digressions that we should locate the quotations from Jaʿfar al-Iskāfī’s refutation of al-Risālat l-ʿuthmāniyya, which Ibn Abī l-Ḥadīd deemed relevant to include. In the visualisation of text reuse data between the digital version of al-Jāḥiẓ’ al–Risālat l-ʿuthmāniyya (top) and that of Sharḥ Nahj al-Balāgha (bottom) pictured below, one can see that the correlation of the texts is mostly comprised of one chunk near the end of the first work (i.e. the appendix containing al-Iskāfī’s refutation) which is unsurprisingly found more or less verbatim in the second work (in the thirteenth volume to be more exact), as well as a smattering of other material throughout the work.Image 1: top represents the digital version of al-Jāḥiẓ’s al-Risāla l-ʿuthmāniyya, bottom the digital version of Ibn Abī l-Ḥadīd’s Sharḥ Nahj al-balāgha. Red blocks denote the chunks of text shared between the two texts while the yellow lines show their position within the works.Below is a visualisation of the relationship between this work and the work it comments on, Nahj al-balāgha:Image 2: top represents the digital version Ibn Abī l-Ḥadīd’s Sharḥ Nahj al-balāgha, bottom represents the digital version of the much shorter Nahj al-balāgha. One can see how material from Nahj al-balāgha is found all across the Sharḥ, as would be expected from a commentary, though with several fairly large gaps which are likely caused by Ibn Abī l-Ḥadīd’s extensive digressions.The most surprising aspect of this visualisation is that the original Nahj al-Balāgha does not seem to have a full match only with the Sharḥ — this is clear from the fact that the red block of text that represents Nahj al-balāgha is not fully coloured, which one would expect if we’re dealing with a word-for-word commentary. If we look at statistics on word match between these two digital works, it appears that the Sharḥ only includes 45% of Nahj al-balāgha. Does this mean that Ibn Abī l-Ḥadīd only commented on about half of the original text? Having gone through the entirety of Ibn Abī l-Ḥadīd’s twenty volumes, this struck me as unlikely, so I took a closer look at the digital version of Nahj al-Balāgha. It turns out that when the digital version of this text had been prepared for the OpenITI corpus, the footnotes had not been successfully deleted. However, in a way this was somewhat fortunate, as these footnotes add another layer of beautiful complexity to our case: these footnotes consist almost entirely of another commentary on this text by none other than Muḥammad ʿAbduh (d. 1905). It is interesting to note that ʿAbduh’s commentary is much drier and to the point than that of Ibn Abī l-Ḥadīd and resembles much more our modern use of footnotes, an obvious shift in audience tastes for this kind of material. It could be argued that this digital text as such preserves not one, but two texts, albeit in a completely different way than the earlier example of the al-Risāla l-ʿUthmāniyya in which the editor simply tagged on a commentary to the end. The editor of this version of Nahj al-Balāgha, on the other hand, included the commentary in a way that is reminiscent of practices common in later periods of the Islamic written tradition, i.e. with marginal and interlinear commentaries which do not easily translate to the format of a modern edition.Cases such as these create a complexity in our corpus which we have to address and distinguish thoroughly if we want to create reliable data on text reuse. We have recently taken a number of decisions to resolve problematic cases such as these: in the case of books containing more than one text we have decided to transfer the additional text(s) into (a) separate file(s), and residual footnotes we will transfer to endnotes which can then be excluded for certain types of analysis while preserving them for other types. Of course, even when our data becomes “cleaner”, qualitative assessment will always be needed. At the same time, problems such as these also highlight the vibrant complexity of the Arabic written tradition itself, and provide food for thought and discussion for the general research angles of the KITAB project.Image 3: general visualisation of textual relationships in this case study.">
+
+
+
+
+<meta property="og:locale" content="en">
+<meta property="og:site_name" content="KITAB Project">
+<meta property="og:title" content="On Commentaries, Digressions, Transtextualities, and Rabbit Holes">
+
+
+  <link rel="canonical" href="http://localhost:4000/2019/12-03.html">
+  <meta property="og:url" content="http://localhost:4000/2019/12-03.html">
+
+
+
+  <meta property="og:description" content="Running passim on the OpenITI corpus allows us to identify a vast number of instances of text reuse, but the quality of these results from a historical point of view depends on the quality of texts in the corpus. As the material was pulled from various often inconsistently formatted digital corpora (mainly Shamela, al-Jāmiʿ al-kabīr, and Shia Online), the text quality of books in our corpus needs to be properly assessed and harmonised as much as possible. Part of our responsibility as postdoctoral fellows with the KITAB project involves evaluating the quality of a number of such texts as well as tagging their general structure. In this blog post I discuss a number of complexities of this job, especially as they relate to the larger research questions of text reuse and the many-sided “inter-“ and even “transtextualities” (Gérard Genette) in our corpus, and to what we jokingly refer to as the rabbit holes you can fall into when doing this work.Some time ago I decided to work on the annotation of al-Risāla l-ʿuthmāniyya, a text on the virtues of ʿUthmān attributed to the early Islamic polymath al-Jāḥiẓ (d. 255/868-9). In doing so, I found out that this particular text had been published as part of a compilation that also included an appendix containing the refutation of al-Jāḥiẓ’s arguments by his contemporary Jaʿfar al-Iskāfī (d. 240/854). To complicate matters further, this other text is in fact only known to have survived through being quoted in Sharḥ Nahj al-Balāgha, a large-scale “commentary” on the earlier Nahj al-balāgha (“The Peak of Eloquence”). The refutation found in our edition of al-Jāḥiẓ’s al-Risāla l-ʿuthmāniyya is thus an extract tacked on by a modern editor and does not reflect the historical transmission of al-Jāḥiẓ’s text.Nahj al-balāgha itself consists of various sayings, sermons and speeches attributed to ʿAlī b. Abī Ṭālib (d. 40/661), who was widely appreciated as having been extremely eloquent and well-spoken (i.e. balīgh). Its compilation is generally attributed to al-Sharīf al-Rāḍī (d. 1016 CE), but in our corpus it is still filed as a work by ʿAlī b. Abī Ṭālib himself. The later Sharḥ Nahj al-Balāgha was compiled by the seventh/thirteenth century scholar Ibn Abī l-Ḥadīd (d. 656/1258) and has become arguably even more popular than al-Rāḍī’s text. This popularity may be explained through the particular predilections of “post-classical” Arabic literary tastes: Ibn Abī l-Ḥadīd did not just comment on the lexical and semantic meanings of various words and phrases, but also took the occasion to display his vast knowledge of the Arabic written tradition. This results in twenty volumes of associative digressions on matters of poetry, literary theory, and also on some doctrinal issues—it is interesting to note that the work of Ibn Abī l-Ḥadīd, who belonged to the Shāfiʿīte madhhab, cuts across doctrinal divides and remains popular amongst both Shiites and Sunnites. It is in these digressions that we should locate the quotations from Jaʿfar al-Iskāfī’s refutation of al-Risālat l-ʿuthmāniyya, which Ibn Abī l-Ḥadīd deemed relevant to include. In the visualisation of text reuse data between the digital version of al-Jāḥiẓ’ al–Risālat l-ʿuthmāniyya (top) and that of Sharḥ Nahj al-Balāgha (bottom) pictured below, one can see that the correlation of the texts is mostly comprised of one chunk near the end of the first work (i.e. the appendix containing al-Iskāfī’s refutation) which is unsurprisingly found more or less verbatim in the second work (in the thirteenth volume to be more exact), as well as a smattering of other material throughout the work.Image 1: top represents the digital version of al-Jāḥiẓ’s al-Risāla l-ʿuthmāniyya, bottom the digital version of Ibn Abī l-Ḥadīd’s Sharḥ Nahj al-balāgha. Red blocks denote the chunks of text shared between the two texts while the yellow lines show their position within the works.Below is a visualisation of the relationship between this work and the work it comments on, Nahj al-balāgha:Image 2: top represents the digital version Ibn Abī l-Ḥadīd’s Sharḥ Nahj al-balāgha, bottom represents the digital version of the much shorter Nahj al-balāgha. One can see how material from Nahj al-balāgha is found all across the Sharḥ, as would be expected from a commentary, though with several fairly large gaps which are likely caused by Ibn Abī l-Ḥadīd’s extensive digressions.The most surprising aspect of this visualisation is that the original Nahj al-Balāgha does not seem to have a full match only with the Sharḥ — this is clear from the fact that the red block of text that represents Nahj al-balāgha is not fully coloured, which one would expect if we’re dealing with a word-for-word commentary. If we look at statistics on word match between these two digital works, it appears that the Sharḥ only includes 45% of Nahj al-balāgha. Does this mean that Ibn Abī l-Ḥadīd only commented on about half of the original text? Having gone through the entirety of Ibn Abī l-Ḥadīd’s twenty volumes, this struck me as unlikely, so I took a closer look at the digital version of Nahj al-Balāgha. It turns out that when the digital version of this text had been prepared for the OpenITI corpus, the footnotes had not been successfully deleted. However, in a way this was somewhat fortunate, as these footnotes add another layer of beautiful complexity to our case: these footnotes consist almost entirely of another commentary on this text by none other than Muḥammad ʿAbduh (d. 1905). It is interesting to note that ʿAbduh’s commentary is much drier and to the point than that of Ibn Abī l-Ḥadīd and resembles much more our modern use of footnotes, an obvious shift in audience tastes for this kind of material. It could be argued that this digital text as such preserves not one, but two texts, albeit in a completely different way than the earlier example of the al-Risāla l-ʿUthmāniyya in which the editor simply tagged on a commentary to the end. The editor of this version of Nahj al-Balāgha, on the other hand, included the commentary in a way that is reminiscent of practices common in later periods of the Islamic written tradition, i.e. with marginal and interlinear commentaries which do not easily translate to the format of a modern edition.Cases such as these create a complexity in our corpus which we have to address and distinguish thoroughly if we want to create reliable data on text reuse. We have recently taken a number of decisions to resolve problematic cases such as these: in the case of books containing more than one text we have decided to transfer the additional text(s) into (a) separate file(s), and residual footnotes we will transfer to endnotes which can then be excluded for certain types of analysis while preserving them for other types. Of course, even when our data becomes “cleaner”, qualitative assessment will always be needed. At the same time, problems such as these also highlight the vibrant complexity of the Arabic written tradition itself, and provide food for thought and discussion for the general research angles of the KITAB project.Image 3: general visualisation of textual relationships in this case study.">
+
+
+
+
+
+  
+
+  
+
+
+
+
+
+  <meta property="og:type" content="article">
+  <meta property="article:published_time" content="2019-12-03T00:00:00+00:00">
+
+
+
+
+
+
+
+
+  <script type="application/ld+json">
+    {
+      "@context" : "http://schema.org",
+      "@type" : "Person",
+      "name" : "Knowledge, Information Technology, and the Arabic Book",
+      "url" : "http://localhost:4000",
+      "sameAs" : null
+    }
+  </script>
+
+
+
+
+
+
+<!-- end SEO -->
+
+
+<link href="http://localhost:4000/feed.xml" type="application/atom+xml" rel="alternate" title="KITAB Project Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://localhost:4000/assets/css/main.css">
+
+<meta http-equiv="cleartype" content="on">
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use http://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+  </head>
+
+  <body class="layout--single">
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+    <div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        <button><div class="navicon"></div></button>
+        <ul class="visible-links">
+          <li class="masthead__menu-item masthead__menu-item--lg"><a href="http://localhost:4000/">KITAB Project</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000">Blog</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/pilot/">Our Pilot</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/corpus/">Corpus (OpenITI)</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/methods/">Text Reuse Methods</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/about/">About the Project</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/about-passim/">About passim</a></li>
+          
+        </ul>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+    
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+<div itemscope itemtype="http://schema.org/Person">
+
+  
+
+  <div class="author__content">
+    <h3 class="author__name" itemprop="name">Gowaart Van Den Bossche</h3>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs">
+      <i class="fa fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+  <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
+    <meta itemprop="headline" content="On Commentaries, Digressions, Transtextualities, and Rabbit Holes">
+    <meta itemprop="description" content="Running passim on the OpenITI corpus allows us to identify a vast number of instances of text reuse, but the quality of these results from a historical point of view depends on the quality of texts in the corpus. As the material was pulled from various often inconsistently formatted digital corpora (mainly Shamela, al-Jāmiʿ al-kabīr, and Shia Online), the text quality of books in our corpus needs to be properly assessed and harmonised as much as possible. Part of our responsibility as postdoctoral fellows with the KITAB project involves evaluating the quality of a number of such texts as well as tagging their general structure. In this blog post I discuss a number of complexities of this job, especially as they relate to the larger research questions of text reuse and the many-sided “inter-“ and even “transtextualities” (Gérard Genette) in our corpus, and to what we jokingly refer to as the rabbit holes you can fall into when doing this work.Some time ago I decided to work on the annotation of al-Risāla l-ʿuthmāniyya, a text on the virtues of ʿUthmān attributed to the early Islamic polymath al-Jāḥiẓ (d. 255/868-9). In doing so, I found out that this particular text had been published as part of a compilation that also included an appendix containing the refutation of al-Jāḥiẓ’s arguments by his contemporary Jaʿfar al-Iskāfī (d. 240/854). To complicate matters further, this other text is in fact only known to have survived through being quoted in Sharḥ Nahj al-Balāgha, a large-scale “commentary” on the earlier Nahj al-balāgha (“The Peak of Eloquence”). The refutation found in our edition of al-Jāḥiẓ’s al-Risāla l-ʿuthmāniyya is thus an extract tacked on by a modern editor and does not reflect the historical transmission of al-Jāḥiẓ’s text.Nahj al-balāgha itself consists of various sayings, sermons and speeches attributed to ʿAlī b. Abī Ṭālib (d. 40/661), who was widely appreciated as having been extremely eloquent and well-spoken (i.e. balīgh). Its compilation is generally attributed to al-Sharīf al-Rāḍī (d. 1016 CE), but in our corpus it is still filed as a work by ʿAlī b. Abī Ṭālib himself. The later Sharḥ Nahj al-Balāgha was compiled by the seventh/thirteenth century scholar Ibn Abī l-Ḥadīd (d. 656/1258) and has become arguably even more popular than al-Rāḍī’s text. This popularity may be explained through the particular predilections of “post-classical” Arabic literary tastes: Ibn Abī l-Ḥadīd did not just comment on the lexical and semantic meanings of various words and phrases, but also took the occasion to display his vast knowledge of the Arabic written tradition. This results in twenty volumes of associative digressions on matters of poetry, literary theory, and also on some doctrinal issues—it is interesting to note that the work of Ibn Abī l-Ḥadīd, who belonged to the Shāfiʿīte madhhab, cuts across doctrinal divides and remains popular amongst both Shiites and Sunnites. It is in these digressions that we should locate the quotations from Jaʿfar al-Iskāfī’s refutation of al-Risālat l-ʿuthmāniyya, which Ibn Abī l-Ḥadīd deemed relevant to include. In the visualisation of text reuse data between the digital version of al-Jāḥiẓ’ al–Risālat l-ʿuthmāniyya (top) and that of Sharḥ Nahj al-Balāgha (bottom) pictured below, one can see that the correlation of the texts is mostly comprised of one chunk near the end of the first work (i.e. the appendix containing al-Iskāfī’s refutation) which is unsurprisingly found more or less verbatim in the second work (in the thirteenth volume to be more exact), as well as a smattering of other material throughout the work.Image 1: top represents the digital version of al-Jāḥiẓ’s al-Risāla l-ʿuthmāniyya, bottom the digital version of Ibn Abī l-Ḥadīd’s Sharḥ Nahj al-balāgha. Red blocks denote the chunks of text shared between the two texts while the yellow lines show their position within the works.Below is a visualisation of the relationship between this work and the work it comments on, Nahj al-balāgha:Image 2: top represents the digital version Ibn Abī l-Ḥadīd’s Sharḥ Nahj al-balāgha, bottom represents the digital version of the much shorter Nahj al-balāgha. One can see how material from Nahj al-balāgha is found all across the Sharḥ, as would be expected from a commentary, though with several fairly large gaps which are likely caused by Ibn Abī l-Ḥadīd’s extensive digressions.The most surprising aspect of this visualisation is that the original Nahj al-Balāgha does not seem to have a full match only with the Sharḥ — this is clear from the fact that the red block of text that represents Nahj al-balāgha is not fully coloured, which one would expect if we’re dealing with a word-for-word commentary. If we look at statistics on word match between these two digital works, it appears that the Sharḥ only includes 45% of Nahj al-balāgha. Does this mean that Ibn Abī l-Ḥadīd only commented on about half of the original text? Having gone through the entirety of Ibn Abī l-Ḥadīd’s twenty volumes, this struck me as unlikely, so I took a closer look at the digital version of Nahj al-Balāgha. It turns out that when the digital version of this text had been prepared for the OpenITI corpus, the footnotes had not been successfully deleted. However, in a way this was somewhat fortunate, as these footnotes add another layer of beautiful complexity to our case: these footnotes consist almost entirely of another commentary on this text by none other than Muḥammad ʿAbduh (d. 1905). It is interesting to note that ʿAbduh’s commentary is much drier and to the point than that of Ibn Abī l-Ḥadīd and resembles much more our modern use of footnotes, an obvious shift in audience tastes for this kind of material. It could be argued that this digital text as such preserves not one, but two texts, albeit in a completely different way than the earlier example of the al-Risāla l-ʿUthmāniyya in which the editor simply tagged on a commentary to the end. The editor of this version of Nahj al-Balāgha, on the other hand, included the commentary in a way that is reminiscent of practices common in later periods of the Islamic written tradition, i.e. with marginal and interlinear commentaries which do not easily translate to the format of a modern edition.Cases such as these create a complexity in our corpus which we have to address and distinguish thoroughly if we want to create reliable data on text reuse. We have recently taken a number of decisions to resolve problematic cases such as these: in the case of books containing more than one text we have decided to transfer the additional text(s) into (a) separate file(s), and residual footnotes we will transfer to endnotes which can then be excluded for certain types of analysis while preserving them for other types. Of course, even when our data becomes “cleaner”, qualitative assessment will always be needed. At the same time, problems such as these also highlight the vibrant complexity of the Arabic written tradition itself, and provide food for thought and discussion for the general research angles of the KITAB project.Image 3: general visualisation of textual relationships in this case study.">
+    <meta itemprop="datePublished" content="December 03, 2019">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 class="page__title" itemprop="headline">On Commentaries, Digressions, Transtextualities, and Rabbit Holes
+</h1>
+          
+            <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+
+
+  5 minute read
+ :: <i>Posted on December 3, 2019</i></p>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        <p>Running passim on the OpenITI corpus allows us to identify a vast number of instances of text reuse, but the quality of these results from a historical point of view depends on the quality of texts in the corpus. As the material was pulled from various often inconsistently formatted digital corpora (mainly Shamela, al-Jāmiʿ al-kabīr, and Shia Online), the text quality of books in our corpus needs to be properly assessed and harmonised as much as possible. Part of our responsibility as postdoctoral fellows with the KITAB project involves evaluating the quality of a number of such texts as well as tagging their general structure. In this blog post I discuss a number of complexities of this job, especially as they relate to the larger research questions of text reuse and the many-sided “inter-“ and even “transtextualities” (Gérard Genette) in our corpus, and to what we jokingly refer to as the rabbit holes you can fall into when doing this work.</p>
+
+<p>Some time ago I decided to work on the annotation of <em>al-Risāla l-ʿuthmāniyya</em>, a text on the virtues of ʿUthmān attributed to the early Islamic polymath al-Jāḥiẓ (d. 255/868-9). In doing so, I found out that this particular text had been published as part of a compilation that also included an appendix containing the refutation of al-Jāḥiẓ’s arguments by his contemporary Jaʿfar al-Iskāfī (d. 240/854). To complicate matters further, this other text is in fact only known to have survived through being quoted in <em>Sharḥ Nahj al-Balāgha</em>, a large-scale “commentary” on the earlier <em>Nahj al-balāgha</em> (“The Peak of Eloquence”). The refutation found in our edition of al-Jāḥiẓ’s <em>al-Risāla l-ʿuthmāniyya</em> is thus an extract tacked on by a modern editor and does not reflect the historical transmission of al-Jāḥiẓ’s text.</p>
+
+<p><em>Nahj al-balāgha</em> itself consists of various sayings, sermons and speeches attributed to ʿAlī b. Abī Ṭālib (d. 40/661), who was widely appreciated as having been extremely eloquent and well-spoken (i.e. <em>balīgh</em>). Its compilation is generally attributed to al-Sharīf al-Rāḍī (d. 1016 CE), but in our corpus it is still filed as a work by ʿAlī b. Abī Ṭālib himself. The later <em>Sharḥ Nahj al-Balāgha</em> was compiled by the seventh/thirteenth century scholar Ibn Abī l-Ḥadīd (d. 656/1258) and has become arguably even more popular than al-Rāḍī’s text. This popularity may be explained through the particular predilections of “post-classical” Arabic literary tastes: Ibn Abī l-Ḥadīd did not just comment on the lexical and semantic meanings of various words and phrases, but also took the occasion to display his vast knowledge of the Arabic written tradition. This results in twenty volumes of associative digressions on matters of poetry, literary theory, and also on some doctrinal issues—it is interesting to note that the work of Ibn Abī l-Ḥadīd, who belonged to the Shāfiʿīte <em>madhhab</em>, cuts across doctrinal divides and remains popular amongst both Shiites and Sunnites. It is in these digressions that we should locate the quotations from Jaʿfar al-Iskāfī’s refutation of <em>al-Risālat l-ʿuthmāniyya</em>, which Ibn Abī l-Ḥadīd deemed relevant to include. In the visualisation of text reuse data between the digital version of al-Jāḥiẓ’ <em>al</em>–<em>Risālat l-ʿuthmāniyya</em> (top) and that of <em>Sharḥ Nahj al-Balāgha</em> (bottom) pictured below, one can see that the correlation of the texts is mostly comprised of one chunk near the end of the first work (i.e. the appendix containing al-Iskāfī’s refutation) which is unsurprisingly found more or less verbatim in the second work (in the thirteenth volume to be more exact), as well as a smattering of other material throughout the work.</p>
+
+<p><img src="/images/old_posts/viz1.png" alt="Image" /></p>
+
+<p><strong>Image 1:</strong> top represents the digital version of al-Jāḥiẓ’s <em>al-Risāla l-ʿuthmāniyya,</em> bottom the digital version of Ibn Abī l-Ḥadīd’s <em>Sharḥ Nahj al-balāgha</em>. Red blocks denote the chunks of text shared between the two texts while the yellow lines show their position within the works.</p>
+
+<p>Below is a visualisation of the relationship between this work and the work it comments on, <em>Nahj al-balāgha</em>:</p>
+
+<p><img src="/images/old_posts/viz2-1024x462.png" alt="Image" /></p>
+
+<p><strong>Image 2:</strong> top represents the digital version Ibn Abī l-Ḥadīd’s <em>Sharḥ Nahj al-balāgha</em>, bottom represents the digital version of the much shorter <em>Nahj al-balāgha</em>. One can see how material from <em>Nahj al-balāgha</em> is found all across the Sharḥ, as would be expected from a commentary, though with several fairly large gaps which are likely caused by Ibn Abī l-Ḥadīd’s extensive digressions.</p>
+
+<p>The most surprising aspect of this visualisation is that the original <em>Nahj al-Balāgha</em> does not seem to have a full match only with the <em>Sharḥ</em> — this is clear from the fact that the red block of text that represents <em>Nahj al-balāgha</em> is not fully coloured, which one would expect if we’re dealing with a word-for-word commentary. If we look at statistics on word match between these two digital works, it appears that the <em>Sharḥ</em> only includes 45% of <em>Nahj al-balāgha</em>. Does this mean that Ibn Abī l-Ḥadīd only commented on about half of the original text? Having gone through the entirety of Ibn Abī l-Ḥadīd’s twenty volumes, this struck me as unlikely, so I took a closer look at the digital version of <em>Nahj al-Balāgha</em>. It turns out that when the digital version of this text had been prepared for the OpenITI corpus, the footnotes had not been successfully deleted. However, in a way this was somewhat fortunate, as these footnotes add another layer of beautiful complexity to our case: these footnotes consist almost entirely of <em>another</em> commentary on this text by none other than Muḥammad ʿAbduh (d. 1905). It is interesting to note that ʿAbduh’s commentary is much drier and to the point than that of Ibn Abī l-Ḥadīd and resembles much more our modern use of footnotes, an obvious shift in audience tastes for this kind of material. It could be argued that this digital text as such preserves not one, but two texts, albeit in a completely different way than the earlier example of the <em>al-Risāla l-ʿUthmāniyya</em> in which the editor simply tagged on a commentary to the end. The editor of this version of <em>Nahj al-Balāgha,</em> on the other hand, included the commentary in a way that is reminiscent of practices common in later periods of the Islamic written tradition, i.e. with marginal and interlinear commentaries which do not easily translate to the format of a modern edition.</p>
+
+<p>Cases such as these create a complexity in our corpus which we have to address and distinguish thoroughly if we want to create reliable data on text reuse. We have recently taken a number of decisions to resolve problematic cases such as these: in the case of books containing more than one text we have decided to transfer the additional text(s) into (a) separate file(s), and residual footnotes we will transfer to endnotes which can then be excluded for certain types of analysis while preserving them for other types. Of course, even when our data becomes “cleaner”, qualitative assessment will always be needed. At the same time, problems such as these also highlight the vibrant complexity of the Arabic written tradition itself, and provide food for thought and discussion for the general research angles of the KITAB project.</p>
+
+<p><img src="/images/old_posts/diagram.png" alt="Image" /></p>
+
+<p><strong>Image 3:</strong> general visualisation of textual relationships in this case study.</p>
+
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+        
+          <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Updated:</strong> <time datetime="2019-12-03T00:00:00+00:00">December 03, 2019</time></p>
+        
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=On Commentaries, Digressions, Transtextualities, and Rabbit Holes http://localhost:4000/2019/12-03.html" class="btn btn--twitter" title="Share on Twitter"><i class="fa fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/2019/12-03.html" class="btn btn--facebook" title="Share on Facebook"><i class="fa fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://plus.google.com/share?url=http://localhost:4000/2019/12-03.html" class="btn btn--google-plus" title="Share on Google Plus"><i class="fa fa-fw fa-google-plus" aria-hidden="true"></i><span> Google+</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http://localhost:4000/2019/12-03.html" class="btn btn--linkedin" title="Share on LinkedIn"><i class="fa fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="http://localhost:4000/2019/11-14.html" class="pagination--pager" title="Judging the Differences between Arabic Text Versions Mathematically
+">Previous</a>
+    
+    
+      <a href="http://localhost:4000/2020/01-10.html" class="pagination--pager" title="When al-Tabarī is Not (Just) al-Tabarī: The Challenges Posed by Composite Editions in the OpenITI Corpus
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+      <div class="page__comments">
+  
+  
+    <h4 class="page__comments-title">Leave a Comment</h4>
+    <section id="disqus_thread"></section>
+  
+</div>
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      
+        <h4 class="page__related-title">You May Also Enjoy</h4>
+      
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="http://localhost:4000/2021/01-21.html" rel="permalink">Diversifying the OpenITI corpus, One Text at a Time
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+
+
+  9 minute read
+ :: <i>Posted on January 21, 2021</i></p>
+    
+    <p class="archive__item-excerpt" itemprop="description">The vast majority of texts in the OpenITI corpus were sourced from three major collections of digital texts originally prepared by organisations based in the Middle East (see Peter Verkinderen’s excellent blog on the largest of them, Shamela). These collections have proven invaluable to researchers, not in the least...</p>
+  </article>
+</div>
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="http://localhost:4000/2020/12-11.html" rel="permalink">Tracing the origins of a historical fragment focused on the Sāmānids
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+
+
+  2 minute read
+ :: <i>Posted on December 11, 2020</i></p>
+    
+    <p class="archive__item-excerpt" itemprop="description">At the Arabic Pasts conference this year, Hugh Kennedy and I presented a paper in the panel dedicated to the Invisible East program, chaired by the program’s PI Arezou Azad. The paper focused on a fragment from an as-yet-unknown Arabic historical text, focused on the Sāmānid dynasty of the 4th/10th century. The frag...</p>
+  </article>
+</div>
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="http://localhost:4000/2020/12-03.html" rel="permalink">Al-Maktaba al-Shāmila: a short history
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+
+
+  10 minute read
+ :: <i>Posted on December 3, 2020</i></p>
+    
+    <p class="archive__item-excerpt" itemprop="description">(This is the first blog post in a longer series of posts about the sources of OpenITI)
+
+Al-Maktaba al-Shāmila (“The comprehensive library”, often referred to simply as Shamela) is a free software that aims at providing a digital research environment for Islamic scholars, and comes with a large collection of Arabic p...</p>
+  </article>
+</div>
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="http://localhost:4000/2020/11-19.html" rel="permalink">KITAB postdoc Gowaart Van Den Bossche wins BRAIS-De Gruyter dissertation prize – 2020
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+
+
+  less than 1 minute read
+ :: <i>Posted on November 19, 2020</i></p>
+    
+    <p class="archive__item-excerpt" itemprop="description">The British Association for Islamic Studies (BRAIS) and De Gruyter have announced the outcome of the fifth (2020) round of the BRAIS – De Gruyter Prize in the Study of Islam and the Muslim World. The winning submission is Gowaart Van Den Bossche’s PhD thesis, which he defended in 2019 at Ghent University, right befo...</p>
+  </article>
+</div>
+        
+      </div>
+    </div>
+  
+</div>
+
+    <div class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+    
+    
+    
+      <li><a href="http://github.com/https://github.com/kitab-project-org/"><i class="fa fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+    
+    
+    <li><a href="http://localhost:4000/feed.xml"><i class="fa fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2021 Knowledge, Information Technology, and the Arabic Book. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+      </footer>
+    </div>
+
+    <script src="http://localhost:4000/assets/js/main.min.js"></script>
+
+
+
+
+
+  
+
+
+
+
+
+  </body>
+</html>
